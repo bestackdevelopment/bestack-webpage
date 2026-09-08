@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Creamos páginas web profesionales, rápidas y optimizadas. Servicios de desarrollo, mantenimiento y ecommerce.",
   openGraph: {
     type: "website",
-    locale: "es_ES",
+    locale: "es_MX",
     siteName,
     url: siteUrl,
     title: `${siteName} | Agencia de Desarrollo Web Profesional`,
