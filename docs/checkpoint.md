@@ -17,7 +17,7 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | `741179b` — *feat: seccion de Ejemplos y limpieza del home (Fase 2)* |
+| Último commit | `0929d6b` — *fix: quitar jerga interna del copy publico de Ejemplos (review)* |
 | Working tree | **limpio** |
 | vs `origin/main` | 4 commits adelante + la Fase 2, SIN push (el Patrón no ha autorizado subirlos) |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
