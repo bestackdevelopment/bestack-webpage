@@ -17,11 +17,18 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | `e87960e` — *feat: normaliza logos del marquee de tecnologias y agrega TS, Vite, Prisma, n8n, Tailscale* |
-| Working tree | **limpio** |
-| vs `origin/main` | sincronizado + cambios de logo por subir |
+| Último commit | *se actualiza al commitear el ajuste de tamaños del marquee* |
+| Working tree | *se actualiza al commitear* |
+| vs `origin/main` | sincronizado + marquee por subir |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 | Último cambio de **código** | 23-sep-2026 (Fase 2: Ejemplos + home + marquee de tecnologías) |
+
+> **Marquee de tecnologías (23-sep-2026):** logos normalizados con tamaño por tipo — los de
+> marca (React, JS, PG, Electron, CSS, Mongo, WP, Elementor, TS, Vite, Prisma, n8n, Tailscale)
+> en caja 48×48 (`object-contain`); los wordmarks (HTML, MySQL, SQLite, Node, Next) a 36px de
+> alto; Tailwind (ratio 8:1, el más extremo) a 32px. Añadidos `ts`, `vite`, `prisma`, `n8n`,
+> `tailscale` (Simple Icons, fuentes oficiales). **Hermes Agent omitido**: su repo oficial
+> (NousResearch/hermes-agent) no tiene logo. Tamaños ajustados con aprobación visual del Patrón.
 
 ## Stack
 
