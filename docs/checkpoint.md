@@ -17,8 +17,8 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | *se actualiza al commitear la Fase 2* |
-| Working tree | *se actualiza al commitear* |
+| Último commit | `741179b` — *feat: seccion de Ejemplos y limpieza del home (Fase 2)* |
+| Working tree | **limpio** |
 | vs `origin/main` | 4 commits adelante + la Fase 2, SIN push (el Patrón no ha autorizado subirlos) |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 | Último cambio de **código** | 23-sep-2026 (Fase 2: Ejemplos + home) |
