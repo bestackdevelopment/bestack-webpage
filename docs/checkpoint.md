@@ -17,11 +17,11 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | `fbe9438` — *docs: checkpoint con el hash final de la Fase 2* |
-| Working tree | **limpio** |
-| vs `origin/main` | **Sincronizado** — push hecho el 23-sep-2026 tras autorización del Patrón |
+| Último commit | `6655ffe` — *docs: checkpoint actualizado tras el push a GitHub* → + stack logos |
+| Working tree | *se actualiza al commitear* |
+| vs `origin/main` | sincronizado + cambios de logo por subir |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
-| Último cambio de **código** | 23-sep-2026 (Fase 2: Ejemplos + home) |
+| Último cambio de **código** | 23-sep-2026 (Fase 2: Ejemplos + home + marquee de tecnologías) |
 
 ## Stack
 
