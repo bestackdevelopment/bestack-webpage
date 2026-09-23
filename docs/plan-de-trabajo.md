@@ -16,8 +16,8 @@ blog con lo que se aplica en los proyectos.
 | # | Fase | Estado |
 |---|---|---|
 | 1 | Base del sitio (home, 5 landings de servicio, contacto, SEO, navbar/footer) | ✅ Terminada (8-sep-2026) |
-| 2 | Sección de **Ejemplos** + limpieza del home | ⏳ **Siguiente** |
-| 3 | **Blog** (Notion como CMS, sin rebuild) | ⏳ Después de la 2 |
+| 2 | Sección de **Ejemplos** + limpieza del home | ✅ **Terminada (23-sep-2026)** — ver checkpoint |
+| 3 | **Blog** (Notion como CMS, sin rebuild) | ⏳ **Siguiente** |
 | 4 | Formulario con **Resend** + dominio | ⏳ Al final |
 | 5 | **Publicación** | ⏳ Solo cuando el Patrón la autorice |
 
@@ -35,37 +35,26 @@ y SEO on-page (`sitemap.ts`, `robots.ts`, `icon.svg`, Open Graph).
 **Hueco conocido:** el contenido de proyectos quedó sin definir, por eso `/proyectos` se
 dejó en "Próximamente" a propósito.
 
-### Fase 2 — Contenido real: sección de Ejemplos + home ⏳ SIGUIENTE
+### Fase 2 — Contenido real: sección de Ejemplos + home ✅
 
-**Por qué ahora:** es lo que desbloquea `/proyectos` (hoy en standby esperando justo esta
-definición) y lo que quita el contenido de relleno del home. Sin esto, el sitio no demuestra
-nada y enseña testimonios falsos.
+**Ejecutada el 23-sep-2026.** Ver el detalle completo en `docs/checkpoint.md`.
 
-**2.1 — Sección de Ejemplos**
+**2.1 — Sección de Ejemplos** ✅
 
-- Renombrar **"Portfolio" → "Ejemplos"** y la ruta **`/proyectos` → `/ejemplos`**. Son 8 puntos
-  (líneas al 23-sep-2026):
-  `components/navbar.tsx` (33/36 y 73/77 — menú escritorio y móvil) · `components/footer.tsx`
-  (75/78) · `app/page.tsx` (72 "Ver Portfolio" y 128) · `app/proyectos/page.tsx` (9 metadata y
-  23 encabezado) · `app/sitemap.ts` (8) · y el enlace de
-  `app/servicios/paginas-informativas/page.tsx` (158, que ya dice "Ver ejemplos" pero apunta a
-  `/proyectos`).
+- Renombrado **"Portfolio" → "Ejemplos"** y la ruta **`/proyectos` → `/ejemplos`** (8 puntos).
 - Índice `/ejemplos` con las 4 entradas y **filtros por tipo de solución**.
 - Páginas de detalle `/ejemplos/[slug]` (4), con la estructura de 8 secciones.
-- Contenido y estructura: **`docs/ejemplos.md`** — no inventar nada fuera de ahí.
+- Contenido en `lib/ejemplos.ts` (tipa `docs/ejemplos.md`).
 
-**2.2 — Home: quitar el contenido de relleno**
+**2.2 — Home: quitar el contenido de relleno** ✅
 
-- Reemplazar la sección de testimonios (`app/page.tsx` ~148-180) por **"Cómo trabajamos"**.
-  Hoy tiene **3 testimonios falsos idénticos** ("Cliente 1/2/3 · Empresa"). Copy y estructura
-  en **`docs/contenido-home.md`**.
-- Activar **"Proyectos Destacados"** (`app/page.tsx` ~128): hoy dice "EN STANDBY" y no enlaza a
-  nada. Debe mostrar 3 tarjetas hacia los ejemplos.
+- Testimonios falsos → **"Cómo trabajamos"** (copy de `docs/contenido-home.md`).
+- **"Proyectos Destacados"** activos con 3 tarjetas hacia los ejemplos.
 - Imágenes: **placeholders** (las capturas las toma el Patrón).
 
-**Criterio de aceptación:** las 4 páginas de ejemplo renderizan en navegador real y sin links
-muertos; el home no tiene testimonios falsos ni textos de "en standby"; ninguna parte del sitio
-dice "Portfolio"; `pnpm lint` y `pnpm build` en verde.
+**Criterio de aceptación:** ✅ `pnpm lint` y `pnpm build` en verde; el home sin testimonios
+falsos ni textos de "en standby"; ninguna parte dice "Portfolio"; 4 páginas de ejemplo SSG.
+**Pendiente del Patrón:** revisar las páginas nuevas en navegador real.
 
 ### Fase 3 — Blog ⏳
 

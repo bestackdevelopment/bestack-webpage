@@ -72,10 +72,10 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/proyectos"
+                  href="/ejemplos"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Portfolio
+                  Ejemplos
                 </Link>
               </li>
               <li>

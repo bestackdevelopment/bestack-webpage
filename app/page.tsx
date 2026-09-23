@@ -1,15 +1,11 @@
 import Link from "next/link"
-import { IconFolderCode } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AllServices } from "@/components/all-services"
 import { Stack } from "@/components/stack"
+import { EjemploCard } from "@/components/ejemplo-card"
+import { getEjemplosDestacados } from "@/lib/ejemplos"
 
 export default function HomePage() {
   const beneficios = [
@@ -32,6 +28,29 @@ export default function HomePage() {
       title: "Soporte Continuo",
       description:
         "Acompañamiento técnico y actualizaciones durante todo el proyecto",
+    },
+  ]
+
+  const pasos = [
+    {
+      title: "Diagnóstico",
+      description:
+        "Revisamos qué necesitas y cómo opera hoy tu negocio. De ahí sale el alcance: qué se construye y qué no.",
+    },
+    {
+      title: "Propuesta",
+      description:
+        "Te entregamos alcance, tiempo y precio por escrito, para que sepas exactamente qué estás comprando.",
+    },
+    {
+      title: "Construcción",
+      description:
+        "Se construye por tramos y los ves funcionando en el camino: no esperas hasta el final para ver el sistema.",
+    },
+    {
+      title: "Entrega y soporte",
+      description:
+        "El sistema se entrega funcionando y documentado, con acompañamiento y actualizaciones.",
     },
   ]
 
@@ -69,7 +88,7 @@ export default function HomePage() {
               asChild
               className="text-lg px-8 bg-transparent"
             >
-              <Link href="/proyectos">Ver Portfolio</Link>
+              <Link href="/ejemplos">Ver Ejemplos</Link>
             </Button>
           </div>
         </div>
@@ -125,53 +144,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Portfolio Preview — EN STANDBY: pendiente definir los proyectos reales */}
+      {/* Proyectos Destacados */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Proyectos Destacados</h2>
             <p className="text-muted-foreground text-lg">
-              Estamos preparando nuestra selección de proyectos
+              Ejemplos de lo que podemos construir, aplicados a distintos giros
             </p>
           </div>
-          <Card className="max-w-2xl mx-auto border-dashed">
-            <CardContent className="py-16 flex flex-col items-center text-center gap-4">
-              <IconFolderCode className="w-12 h-12 text-primary" stroke={1.5} />
-              <p className="text-lg font-semibold">Próximamente</p>
-              <p className="text-muted-foreground">
-                Muy pronto mostraremos aquí nuestros trabajos más recientes.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {getEjemplosDestacados().map((ejemplo) => (
+              <EjemploCard key={ejemplo.slug} ejemplo={ejemplo} />
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="text-base px-8"
+            >
+              <Link href="/ejemplos">Ver todos los ejemplos</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Cómo trabajamos */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              Lo Que Dicen Nuestros Clientes
-            </h2>
+            <h2 className="text-4xl font-bold mb-4">Cómo trabajamos</h2>
             <p className="text-muted-foreground text-lg">
-              Testimonios reales de proyectos exitosos
+              Sin sorpresas: así se lleva un proyecto con BeStack.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((testimonial) => (
-              <Card key={testimonial} className="border-border">
-                <CardContent className="pt-6">
-                  <p className="text-muted-foreground mb-4 italic">
-                    &quot;Excelente servicio y resultados. El equipo de BeStack
-                    superó nuestras expectativas.&quot;
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary" />
-                    <div>
-                      <p className="font-semibold">Cliente {testimonial}</p>
-                      <p className="text-sm text-muted-foreground">Empresa</p>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {pasos.map((paso, index) => (
+              <Card
+                key={paso.title}
+                className="border-border hover:shadow-lg transition-shadow"
+              >
+                <CardHeader>
+                  <span className="text-sm font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                    Paso {index + 1}
+                  </span>
+                  <CardTitle className="text-xl">{paso.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{paso.description}</p>
                 </CardContent>
               </Card>
             ))}

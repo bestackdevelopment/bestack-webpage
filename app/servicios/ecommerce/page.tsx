@@ -78,6 +78,12 @@ const data: ServiceLandingData = {
     body: "Conversemos sobre tu modelo de negocio y creemos la tienda perfecta",
     cta: "Contactar Ahora",
   },
+  ejemplo: {
+    href: "/ejemplos/laserbox",
+    label: "Ver el ejemplo",
+    description:
+      "Un ecommerce integrado a un sistema de operación: mira cómo lo hicimos en LaserBox.",
+  },
 }
 
 export default function EcommercePage() {

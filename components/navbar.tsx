@@ -30,10 +30,10 @@ export default function Navbar() {
               Servicios
             </Link>
             <Link
-              href="/proyectos"
+              href="/ejemplos"
               className="text-foreground/80 hover:text-primary transition-colors font-semibold"
             >
-              Portfolio
+              Ejemplos
             </Link>
             <Button asChild className="bg-primary hover:bg-primary/90">
               <Link href="/contacto">Comenzar Proyecto</Link>
@@ -70,11 +70,11 @@ export default function Navbar() {
               Servicios
             </Link>
             <Link
-              href="/proyectos"
+              href="/ejemplos"
               className="block text-foreground/80 hover:text-primary transition-colors font-semibold"
               onClick={() => setIsOpen(false)}
             >
-              Portfolio
+              Ejemplos
             </Link>
             <Button asChild className="w-full bg-primary hover:bg-primary/90">
               <Link href="/contacto">Comenzar Proyecto</Link>

@@ -155,7 +155,7 @@ export default function PaginasInformativasPage() {
               asChild
               className="border-2 border-[#42BEC0]/50 hover:bg-[#42BEC0] hover:text-white hover:border-[#42BEC0] transition-all bg-transparent"
             >
-              <Link href="/proyectos">Ver ejemplos</Link>
+              <Link href="/ejemplos">Ver ejemplos</Link>
             </Button>
           </div>
         </div>

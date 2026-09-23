@@ -53,6 +53,15 @@ export type ServiceLandingData = {
     body: string
     cta: string
   }
+  /**
+   * Enlace opcional a un ejemplo relacionado (docs/ejemplos.md → Funcionalidad).
+   * Se renderiza solo si el servicio define su ejemplo correspondiente.
+   */
+  ejemplo?: {
+    href: string
+    label: string
+    description: string
+  }
 }
 
 export function ServiceLanding({ data }: { data: ServiceLandingData }) {
@@ -162,6 +171,20 @@ export function ServiceLanding({ data }: { data: ServiceLandingData }) {
           </Accordion>
         </div>
       </section>
+
+      {/* Ejemplo relacionado */}
+      {data.ejemplo && (
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              {data.ejemplo.description}
+            </h2>
+            <Button size="lg" asChild className={accentButton[data.accent]}>
+              <Link href={data.ejemplo.href}>{data.ejemplo.label}</Link>
+            </Button>
+          </div>
+        </section>
+      )}
 
       {/* CTA final */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
