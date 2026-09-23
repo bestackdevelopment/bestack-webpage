@@ -249,8 +249,8 @@ en el hosting del negocio.
 ## Datos por confirmar antes de publicar
 
 1. **LaserBox:** ¿el sistema de operación ya corre en el taller (va limpio) o también se marca
-   "en desarrollo"? ¿El ecommerce tiene repo/stack definido? No se encontró un proyecto de
-   ecommerce en el Dev Server.
+   "en desarrollo"? — *El ecommerce todavía no está creado* (confirmado por el Patrón el
+   23-sep-2026): va marcado como "en desarrollo" y todavía no tiene repositorio.
 2. **SysOp:** confirmar que la descripción multi-tenant puede publicarse así (sin nombre del
    cliente ni detalles de la operación real).
 3. **Bahía:** confirmar el stack exacto (el registrado proviene del portafolio de 2024).
