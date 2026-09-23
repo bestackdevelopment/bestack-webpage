@@ -3,8 +3,11 @@
 **Última actualización:** 23 de septiembre de 2026 (subfire).
 
 Especificación completa de la sección que reemplaza a "Portfolio": qué se muestra, cómo se
-estructura cada página y el copy aprobado. **Todo el contenido de proyectos sale de aquí —
-no se inventa nada fuera de este documento.**
+estructura cada página y el copy de los 4 ejemplos. **Todo el contenido sale de aquí — no se
+inventa nada fuera de este documento.**
+
+> ⚠️ **Este repositorio es público.** No meter credenciales, datos de clientes, nombres de
+> personas ni información interna de las operaciones. Las capturas se publican con datos demo.
 
 ## Qué es y por qué "Ejemplos"
 
@@ -20,17 +23,21 @@ prospecto se identifique por su giro.
 - **Giro** (agroalimentario, taller de corte láser, seguridad perimetral, renta de espacios)
 - **Estado**: `En operación` · `En desarrollo`
 
+**Qué se espera de la sección:** que un visitante que llega buscando un sistema, un agente o
+un sitio web reconozca su propio negocio en alguno de los ejemplos y escriba por el formulario.
+No es una galería para presumir: es una herramienta de venta.
+
 ## Los 4 ejemplos
 
-8 desarrollos agrupados en 4 páginas (los tres primeros bloques del listado son la misma
-fórmula aplicada dos veces; se presentan por cliente para que no se lean como relleno).
+8 desarrollos agrupados en 4 páginas (los dos primeros son la misma fórmula aplicada dos veces;
+se presentan por cliente para que no se lean como relleno).
 
-| slug | Nombre | Giro | Tipo | Estado | Qué muestra |
-|---|---|---|---|---|---|
-| `bidhara` | Bidhara — Flores comestibles y microgreens | Agroalimentario | Implementación integral | En operación | Catálogo en línea + sistema de operación + agente IA "Cortana" |
-| `laserbox` | LaserBox — Taller de corte láser | Manufactura / taller | Implementación integral | En desarrollo | Ecommerce + sistema de operación + agente IA "Aserrín" |
-| `sysop` | SysOp — Configuración operacional | Seguridad perimetral | SaaS | En desarrollo | Plataforma multi-tenant: proveedor, clientes directos y sub-clientes |
-| `bahia` | Bahía Business Center | Renta de espacios | Sitio corporativo | En operación | Sitio con SSR para SEO, orientado a captación |
+| slug | Nombre | Giro | Tipo | Estado |
+|---|---|---|---|---|
+| `bidhara` | Bidhara — Flores comestibles y microgreens | Agroalimentario | Implementación integral | En operación |
+| `laserbox` | LaserBox — Taller de corte láser | Manufactura / taller | Implementación integral | En desarrollo |
+| `sysop` | SysOp — Configuración operacional | Seguridad perimetral | SaaS | En desarrollo |
+| `bahia` | Bahía Business Center | Renta de espacios | Sitio corporativo | En operación |
 
 **Fuera del sitio:** los 12 proyectos hechos para la agencia Lanzaweb, y los proyectos viejos
 que el Patrón descartó (Titanes, Magone, SAI, Interurbana, Melba).
@@ -85,9 +92,15 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 ---
 
-## Copy — Ejemplo 1: Bidhara
+# Copy
 
-*(muestra del tono, pendiente de aprobación del Patrón)*
+> **Estado del copy:** los 4 textos son **borrador v1**, pendiente de la aprobación del tono
+> por el Patrón. Construir las páginas con esto; los ajustes de redacción no cambian la
+> estructura.
+>
+> **"Qué cambió" va sin métricas** hasta que el Patrón aporte los números. No estimarlos.
+
+## Ejemplo 1 — Bidhara
 
 **Bidhara — Flores comestibles y microgreens**
 *Giro:* agroalimentario · *Tipo:* implementación integral · *Estado:* En operación
@@ -121,49 +134,125 @@ shadcn/ui · Recharts · JWT · reportes en PDF · Hermes Agent sobre Telegram.
   Menos piezas, menos fallas.
 - **Reportes en PDF.** El negocio los manda y los imprime; un tablero no reemplaza eso.
 
-**Qué cambió.** *(pendiente: los números del Patrón — no se estiman)*
+**Qué cambió.** *(pendiente: los números del Patrón)*
 
 ---
 
-## Ejemplos 2 a 4 — hechos verificados y lo que falta
+## Ejemplo 2 — LaserBox
 
-### LaserBox — Taller de corte láser
-*Tipo:* implementación integral · *Estado:* En desarrollo
+**LaserBox — Taller de corte láser**
+*Giro:* manufactura / taller de corte láser · *Tipo:* implementación integral · *Estado:* En desarrollo
 
-- Tres piezas: **ecommerce** (en desarrollo), **sistema de operación**, **agente IA "Aserrín"**.
-- **Se presenta como cliente.** No se menciona que el Patrón es socio del taller.
-- **Falta:** stack del ecommerce y del sistema de operación; confirmar si el sistema de
-  operación ya corre o también va como "en desarrollo"; copy completo.
+> **Se presenta como cliente.** No mencionar que el Patrón es socio del taller, ni la relación
+> entre LaserBox y BeStack. Los sistemas que BeStack construyó para LaserBox se presentan como
+> el trabajo que son.
 
-### SysOp — Configuración operacional
-*Tipo:* SaaS · *Estado:* En desarrollo
+**El reto.** Un taller que cotiza a mano y lleva la producción y el inventario repartidos entre
+la memoria de quien atiende y hojas de cálculo. Cotizar un trabajo tomaba tiempo y el precio
+terminaba dependiendo de quién lo calculara.
 
-- Plataforma multi-tenant para operaciones de seguridad perimetral: el proveedor administra
-  sus instalaciones, sus clientes directos y sus sub-clientes.
-- Capas: `/config` (plataforma), `/ops` y `/ops-admin` (operación en campo), `/client`
-  (portal de cliente).
-- Stack verificado (23-sep-2026, repo `csic-solutions-mvp`): Next.js + Vite · Express ·
-  Prisma · PostgreSQL (Supabase) · desplegado en Railway.
-- **Se muestra sin el nombre del cliente y con datos demo** en las capturas.
-- **Falta:** copy completo.
+**La solución — tres piezas:**
 
-### Bahía Business Center
-*Tipo:* sitio corporativo · *Estado:* En operación
+1. **Sistema de operación** — clientes, cotizaciones, producción, inventario y usuarios.
+   Cotizar deja de ser un cálculo a mano: el precio sale del sistema, no de la memoria.
+2. **Ecommerce** *(en desarrollo)* — el canal de venta en línea de los productos del taller.
+3. **Agente IA "Aserrín"** — opera sobre el mismo sistema: consulta y registra desde Telegram,
+   sin abrir la aplicación.
 
-- Sitio para negocio de renta de oficinas privadas y coworking. Desarrollo con SSR para
-  aprovechar SEO.
-- En vivo: `bahiabusinesscenter.com.mx` (verificado HTTP 200 el 23-sep-2026).
-- Es trabajo de 2024 — es el único sitio web de la lista, sirve de ejemplo para la línea de
-  "páginas corporativas".
-- **Falta:** copy completo; confirmar stack exacto.
+**Cómo se aplicó.** Express + Prisma + SQLite · React + Vite + Tailwind CSS · Tabler Icons ·
+monorepo pnpm · API con autenticación.
+
+**Por qué así.**
+
+- **SQLite, no un motor grande.** Un taller con un solo punto de operación no necesita un
+  servidor de base de datos: un archivo respaldable es más simple de mantener y de mover.
+- **Las cotizaciones dentro del sistema.** Es la pieza que más tiempo ahorra: el precio deja
+  de depender de la persona que atiende.
+- **Producción e inventario junto a la venta.** Lo que se cotiza, lo que se produce y lo que
+  se consume son el mismo dato, no tres hojas distintas.
+- **Mobile y tablet primero.** En un taller se consulta de pie, junto a la máquina, no sentado
+  en un escritorio.
+
+**Qué cambió.** *(pendiente: los números del Patrón)*
 
 ---
 
-## Pendientes de esta sección
+## Ejemplo 3 — SysOp
 
-1. **Aprobar el tono** del copy (muestra: Bidhara).
-2. **Los números** de resultados de cada ejemplo.
-3. **Escribir el copy** de LaserBox, SysOp y Bahía en el mismo tono.
-4. **Confirmar** los datos marcados como "falta" en cada ejemplo.
-5. Decidir si la sección se llama `/ejemplos` en la URL o se conserva `/proyectos` con el
-   texto "Ejemplos" (recomendado: renombrar también la URL, es más claro).
+**SysOp — Configuración operacional**
+*Giro:* seguridad perimetral · *Tipo:* SaaS · *Estado:* En desarrollo
+
+> **Se muestra sin el nombre del cliente.** Las capturas van con datos demo, nunca con
+> información real de la operación.
+
+**El reto.** Las empresas de seguridad perimetral operan con protocolos, turnos, roles y
+evidencia repartidos entre papel, mensajería y hojas de cálculo. Cuando un proveedor atiende
+varias instalaciones a la vez, ese desorden se multiplica por cada cliente.
+
+**La solución.** Una plataforma multi-tenant —se construye una vez y se opera para muchos
+clientes— organizada en capas:
+
+- **Configuración** — el nivel de plataforma administra instalaciones, clientes y módulos.
+- **Operación** — el personal ejecuta protocolos y levanta incidencias con evidencia
+  fotográfica desde el celular.
+- **Portal de cliente** — el proveedor administra a sus clientes directos y a los sub-clientes
+  de estos, y cada uno ve únicamente lo suyo.
+
+**Cómo se aplicó.** Next.js · Express · Prisma + PostgreSQL · PWA instalable con precache por
+rutas · internacionalización · almacenamiento de evidencia en la nube · despliegue gestionado.
+
+**Por qué así.**
+
+- **Multi-tenant desde el modelo de datos, no desde la interfaz.** Los permisos no se resuelven
+  escondiendo botones: cada recurso tiene dueño en la base de datos.
+- **PWA en vez de aplicación nativa.** La operación ocurre en instalaciones con señal
+  irregular; una app web instalable no depende de una tienda y se actualiza sola.
+- **Evidencia fotográfica obligatoria en las incidencias.** Es lo que convierte un reporte en
+  algo verificable.
+- **Capas separadas por rol.** Quien opera en campo no ve la configuración, y un cliente nunca
+  ve a otro.
+
+**Qué cambió.** *(pendiente: los números del Patrón)*
+
+---
+
+## Ejemplo 4 — Bahía Business Center
+
+**Bahía Business Center**
+*Giro:* renta de espacios (coworking, oficinas privadas y virtuales, salas) · *Tipo:* sitio
+corporativo · *Estado:* En operación
+
+**El reto.** Un negocio de renta de espacios en una plaza turística compite por las búsquedas
+locales de "oficina", "coworking" y "sala de juntas". En ese terreno el sitio tiene que ser
+rastreable por los buscadores, no solo verse bien.
+
+**La solución.** Un sitio corporativo con renderizado en servidor, para que el contenido exista
+en HTML desde el primer byte — la condición para competir en buscadores. Organizado por tipo de
+espacio, con la ubicación y un único llamado a la acción: cotizar.
+
+**Cómo se aplicó.** Next.js con renderizado en servidor · React · Tailwind CSS · publicación
+en el hosting del negocio.
+
+**Por qué así.**
+
+- **Renderizado en servidor en vez de una aplicación de una sola página.** Un negocio local
+  vive de búsqueda: si el contenido no llega en el HTML, no existe para Google.
+- **Un solo llamado a la acción.** Los cinco tipos de espacio compiten entre sí por la misma
+  atención; el objetivo del sitio es que el visitante cotice.
+- **El producto es el lugar.** Fotos y video del espacio real venden una oficina; las imágenes
+  genéricas, no.
+
+**Qué cambió.** *(pendiente: los números del Patrón)*
+
+---
+
+## Datos por confirmar antes de publicar
+
+1. **LaserBox:** ¿el sistema de operación ya corre en el taller (va limpio) o también se marca
+   "en desarrollo"? ¿El ecommerce tiene repo/stack definido? No se encontró un proyecto de
+   ecommerce en el Dev Server.
+2. **SysOp:** confirmar que la descripción multi-tenant puede publicarse así (sin nombre del
+   cliente ni detalles de la operación real).
+3. **Bahía:** confirmar el stack exacto (el registrado proviene del portafolio de 2024).
+4. **Los 4:** los números de "Qué cambió".
+5. **Aprobación del tono** de este copy.

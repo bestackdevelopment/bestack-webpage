@@ -20,6 +20,28 @@ Guía para agentes de IA que trabajan en este repositorio. Léela antes de tocar
 **Al terminar una tarea, actualizar `docs/checkpoint.md`.** Es el mecanismo para que
 cualquier agente (o el Patrón) pueda retomar sin releer el historial completo.
 
+## Sincronización de la información (regla dura)
+
+Estos documentos son la **única fuente de verdad** del proyecto: **lo que no está aquí, no
+existe**. El Patrón —a través de subfire, su asistente— mantiene la información de negocio; el
+agente en el Dev Server ejecuta y mantiene el estado.
+
+| Cuándo | Qué actualizar |
+|---|---|
+| Antes de empezar | Leer `docs/checkpoint.md` y `docs/ejemplos.md` |
+| Al terminar una tarea | `docs/checkpoint.md`: estado del repo, rutas, pendientes abiertos |
+| Si cambia una decisión de producto o contenido | `docs/plan-de-trabajo.md` (tabla de decisiones) y `docs/ejemplos.md` si toca contenido |
+| Si falta un dato de contenido | **Preguntar.** El copy sale de `docs/ejemplos.md`, no de la imaginación |
+| Al cerrar un tramo | Repo consistente (`pnpm lint`, `pnpm build`) y commit registrado en el checkpoint |
+
+**Una decisión que solo vive en una conversación no existe para el siguiente agente.**
+Si algo se acordó hablando y no está en un documento, escríbelo.
+
+## Este repositorio es público
+
+No incluir credenciales, nombres de clientes, datos de personas ni información interna de las
+operaciones. Las capturas de los ejemplos se publican **con datos demo**.
+
 ## Stack
 
 - **Next.js 16** (App Router, React Server Components)

@@ -73,12 +73,15 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 ## Cómo proceder
 
 1. Leer `docs/plan-de-trabajo.md` para el orden de las fases.
-2. Leer `docs/ejemplos.md` antes de tocar `/proyectos` o `/ejemplos` — ahí está el contenido
-   y la estructura ya decididos. **No inventar contenido de proyectos.**
+2. Leer `docs/ejemplos.md` antes de tocar `/proyectos` o `/ejemplos` — ahí está el copy y la
+   estructura ya definidos. **No inventar contenido de proyectos.**
 3. Respetar las convenciones de `AGENTS.md`.
 4. **Antes de dar algo por terminado:** `pnpm lint` y `pnpm build`, y verificar en navegador
    real (no basta con que compile). El Patrón verifica los entregables web en navegador.
 5. Al terminar: **actualizar este archivo** (estado del repo, rutas, pendientes).
+6. Si una decisión de producto o de contenido cambia, registrarla en
+   `docs/plan-de-trabajo.md` (tabla de decisiones) y en `docs/ejemplos.md` si aplica.
+   **Lo que no está escrito no existe para el siguiente agente.**
 
 ## Reglas de contenido
 
