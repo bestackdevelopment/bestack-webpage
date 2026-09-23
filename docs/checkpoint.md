@@ -17,9 +17,9 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | *se actualiza al commitear el ajuste de tamaños del marquee* |
-| Working tree | *se actualiza al commitear* |
-| vs `origin/main` | sincronizado + marquee por subir |
+| Último commit | `d6a079c` — *fix: ajusta tamano de logos del marquee por tipo (aprobado en navegador)* |
+| Working tree | **limpio** |
+| vs `origin/main` | **Sincronizado** — push hecho el 23-sep-2026 |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 | Último cambio de **código** | 23-sep-2026 (Fase 2: Ejemplos + home + marquee de tecnologías) |
 
