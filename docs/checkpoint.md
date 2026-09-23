@@ -70,6 +70,16 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 6. **Blog (fase 5).** No existe nada. La estrategia acordada está en
    `docs/plan-de-trabajo.md` (fase 5).
 
+7. **🔴 Testimonios falsos en el home.** La sección `{/* Testimonials */}` de `app/page.tsx`
+   (~líneas 148-180) muestra **3 testimonios inventados**: el mismo texto repetido tres veces,
+   etiquetados "Cliente 1", "Cliente 2" y "Cliente 3" con "Empresa" como cargo. No hay
+   testimonios reales todavía. La sección se sustituye por **"Cómo trabajamos"** (copy en
+   `docs/contenido-home.md`). Los testimonios vuelven cuando existan, con nombre y cargo reales.
+
+8. **"Proyectos Destacados" en standby.** `app/page.tsx` ~límite 128 muestra "Estamos preparando
+   nuestra selección de proyectos". Debe activarse con 3 tarjetas que enlacen a los ejemplos
+   (`docs/contenido-home.md`).
+
 ## Cómo proceder
 
 1. Leer `docs/plan-de-trabajo.md` para el orden de las fases.

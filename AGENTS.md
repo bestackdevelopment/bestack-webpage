@@ -15,7 +15,8 @@ Guía para agentes de IA que trabajan en este repositorio. Léela antes de tocar
 |---|---|
 | `docs/checkpoint.md` | Estado actual, pendientes verificados y cómo proceder. **Empezar aquí.** |
 | `docs/plan-de-trabajo.md` | Fases, orden de trabajo, criterios de aceptación y decisiones tomadas. |
-| `docs/ejemplos.md` | Definición de la sección de Ejemplos: qué se muestra, estructura de las páginas y copy. |
+| `docs/ejemplos.md` | Sección de Ejemplos: qué se muestra, estructura de las páginas y copy de los 4. |
+| `docs/contenido-home.md` | Copy de las secciones del home que se ajustan ("Cómo trabajamos", "Proyectos Destacados"). |
 
 **Al terminar una tarea, actualizar `docs/checkpoint.md`.** Es el mecanismo para que
 cualquier agente (o el Patrón) pueda retomar sin releer el historial completo.

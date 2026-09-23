@@ -30,19 +30,37 @@ y SEO on-page (`sitemap.ts`, `robots.ts`, `icon.svg`, Open Graph).
 **Hueco conocido:** el contenido de proyectos quedó sin definir, por eso `/proyectos` se
 dejó en "Próximamente" a propósito.
 
-### Fase 2 — Sección de Ejemplos ⏳ SIGUIENTE
+### Fase 2 — Contenido real: sección de Ejemplos + home ⏳ SIGUIENTE
 
-**Por qué ahora:** es el contenido que desbloquea `/proyectos`, que hoy está en standby
-esperando justo esta definición. Sin esto, el sitio no demuestra nada.
+**Por qué ahora:** es lo que desbloquea `/proyectos` (hoy en standby esperando justo esta
+definición) y lo que quita el contenido de relleno del home. Sin esto, el sitio no demuestra
+nada y enseña testimonios falsos.
 
-- Renombrar "Portfolio" → **"Ejemplos"**; ruta `/proyectos` → `/ejemplos`.
-- Índice `/ejemplos` con las 4 entradas y filtros por tipo de solución.
-- Páginas de detalle `/ejemplos/[slug]` (4).
-- Imágenes: **placeholders** (las capturas las toma el Patrón).
+**2.1 — Sección de Ejemplos**
+
+- Renombrar **"Portfolio" → "Ejemplos"** y la ruta **`/proyectos` → `/ejemplos`**. Son 8 puntos
+  (líneas al 23-sep-2026):
+  `components/navbar.tsx` (33/36 y 73/77 — menú escritorio y móvil) · `components/footer.tsx`
+  (75/78) · `app/page.tsx` (72 "Ver Portfolio" y 128) · `app/proyectos/page.tsx` (9 metadata y
+  23 encabezado) · `app/sitemap.ts` (8) · y el enlace de
+  `app/servicios/paginas-informativas/page.tsx` (158, que ya dice "Ver ejemplos" pero apunta a
+  `/proyectos`).
+- Índice `/ejemplos` con las 4 entradas y **filtros por tipo de solución**.
+- Páginas de detalle `/ejemplos/[slug]` (4), con la estructura de 8 secciones.
 - Contenido y estructura: **`docs/ejemplos.md`** — no inventar nada fuera de ahí.
 
-**Criterio de aceptación:** las 4 páginas renderizan en navegador real, sin links muertos,
-con el copy de `docs/ejemplos.md` y los placeholders en su lugar.
+**2.2 — Home: quitar el contenido de relleno**
+
+- Reemplazar la sección de testimonios (`app/page.tsx` ~148-180) por **"Cómo trabajamos"**.
+  Hoy tiene **3 testimonios falsos idénticos** ("Cliente 1/2/3 · Empresa"). Copy y estructura
+  en **`docs/contenido-home.md`**.
+- Activar **"Proyectos Destacados"** (`app/page.tsx` ~128): hoy dice "EN STANDBY" y no enlaza a
+  nada. Debe mostrar 3 tarjetas hacia los ejemplos.
+- Imágenes: **placeholders** (las capturas las toma el Patrón).
+
+**Criterio de aceptación:** las 4 páginas de ejemplo renderizan en navegador real y sin links
+muertos; el home no tiene testimonios falsos ni textos de "en standby"; ninguna parte del sitio
+dice "Portfolio"; `pnpm lint` y `pnpm build` en verde.
 
 ### Fase 3 — Formulario de contacto funcional ⏳
 
