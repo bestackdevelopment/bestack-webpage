@@ -8,7 +8,7 @@ Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con 
 
 Sitio corporativo de **BeStack Development** (agencia de desarrollo web). Es la cara
 comercial: explica los servicios, muestra ejemplos de trabajo y capta prospectos por
-formulario. A futuro incluye un blog.
+formulario. Más adelante incluye un blog.
 
 ## Estado del repositorio
 
@@ -17,11 +17,11 @@ formulario. A futuro incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | `d9b448d` — *fix: og:locale a es_MX* (8-sep-2026) |
+| Último commit | `af893ef` — *docs: el ecommerce de LaserBox aun no esta creado* (documentación) |
 | Working tree | **limpio** |
-| vs `origin/main` | **al día** (mismo SHA) |
+| vs `origin/main` | **4 commits adelante, SIN push** (el Patrón no ha autorizado subirlos) |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
-| Último cambio de código | 8-sep-2026 |
+| Último cambio de **código** | 8-sep-2026 (`d9b448d`); después solo hubo documentación |
 
 ## Stack
 
@@ -32,8 +32,8 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 
 | Ruta | Estado |
 |---|---|
-| `/` | Funcional (home completa) |
-| `/contacto` | Funcional, **pero el envío está simulado** (ver pendiente 3) |
+| `/` | Funcional, pero con contenido de relleno (ver pendientes 3 y 4) |
+| `/contacto` | Funcional, **pero el envío está simulado** (ver pendiente 6) |
 | `/proyectos` | **En standby a propósito** — muestra "Próximamente" |
 | `/proyectos/[slug]` | **No existe** — hay que construirlo |
 | `/servicios/paginas-informativas` | Funcional (diseño propio) |
@@ -42,43 +42,55 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 | `/servicios/mantenimiento-web` | Funcional (vía `service-landing.tsx`) |
 | `/servicios/finaliza-tu-web` | Funcional (vía `service-landing.tsx`) |
 | `/ejemplos` y `/ejemplos/[slug]` | **No existen** — es el renombre de `/proyectos` (pendiente 1) |
-| Blog | **No existe** — fase 5 |
+| Blog | **No existe** — fase 3 |
 
 ## Pendientes (verificados en código, 23-sep-2026)
 
+Ordenados según las fases de `docs/plan-de-trabajo.md`.
+
+### Fase 2 — Ejemplos y home
+
 1. **Construir la sección de Ejemplos.** Renombrar "Portfolio" → **"Ejemplos"** y la ruta
-   `/proyectos` → `/ejemplos`. Hoy `/proyectos` muestra "Próximamente" porque el contenido
-   no estaba definido; **ya está definido** en `docs/ejemplos.md` (8 desarrollos agrupados
-   en 4 páginas). Falta el índice, las páginas de detalle y los placeholders de imagen.
+   `/proyectos` → `/ejemplos`. Hoy `/proyectos` muestra "Próximamente" porque el contenido no
+   estaba definido; **ya está definido** en `docs/ejemplos.md` (8 desarrollos agrupados en 4
+   páginas). Falta el índice, las páginas de detalle y los placeholders. La lista exacta de los
+   puntos a renombrar está en `docs/plan-de-trabajo.md`, Fase 2.1.
 
 2. **Construir `/ejemplos/[slug]`.** No existe. La estructura de la página está especificada
    en `docs/ejemplos.md` (sección "Estructura de la página de ejemplo").
 
-3. **🔴 El formulario de contacto simula el envío.** En `components/contact-form.tsx`
-   (función `onSubmit`, ~línea 49) valida con Zod, espera 1.5 s con un `setTimeout` y muestra
-   el mensaje de éxito — pero **no manda nada a ningún lado** (hay un `<PLACEHOLDER>` y un
-   `console.log`). Es peor que estar roto: el prospecto cree que ya escribió. Hay que
-   conectarlo a un backend real (correo o servicio de formularios) y dejar rastro de envío.
-
-4. **Dominio.** `lib/site.ts` tiene `https://bestackdevelopment.com` como placeholder y ese
-   dominio **no resuelve**. Falta registrarlo y definir la URL real de producción
-   (`NEXT_PUBLIC_SITE_URL`).
-
-5. **Sin despliegue.** No hay configuración de deploy en el repo (ni Vercel, ni Netlify, ni
-   Docker). El sitio solo corre en local.
-
-6. **Blog (fase 5).** No existe nada. La estrategia acordada está en
-   `docs/plan-de-trabajo.md` (fase 5).
-
-7. **🔴 Testimonios falsos en el home.** La sección `{/* Testimonials */}` de `app/page.tsx`
+3. **🔴 Testimonios falsos en el home.** La sección `{/* Testimonials */}` de `app/page.tsx`
    (~líneas 148-180) muestra **3 testimonios inventados**: el mismo texto repetido tres veces,
    etiquetados "Cliente 1", "Cliente 2" y "Cliente 3" con "Empresa" como cargo. No hay
    testimonios reales todavía. La sección se sustituye por **"Cómo trabajamos"** (copy en
    `docs/contenido-home.md`). Los testimonios vuelven cuando existan, con nombre y cargo reales.
 
-8. **"Proyectos Destacados" en standby.** `app/page.tsx` ~límite 128 muestra "Estamos preparando
+4. **"Proyectos Destacados" en standby.** `app/page.tsx` ~línea 128 muestra "Estamos preparando
    nuestra selección de proyectos". Debe activarse con 3 tarjetas que enlacen a los ejemplos
    (`docs/contenido-home.md`).
+
+### Fase 3 — Blog
+
+5. **No existe nada del blog.** Ni rutas, ni lectura de contenido, ni caché. Estrategia y
+   trampas documentadas en `docs/plan-de-trabajo.md` (Fase 3). **Empezar por la prueba mínima:**
+   una sola página que lea un post de Notion, lo renderice y quede cacheada con revalidación
+   por tiempo — antes de construir índice y plantillas.
+
+### Fase 4 — Formulario con Resend + dominio
+
+6. **🔴 El formulario de contacto simula el envío.** En `components/contact-form.tsx`
+   (función `onSubmit`, ~línea 49) valida con Zod, espera 1.5 s con un `setTimeout` y muestra
+   el mensaje de éxito — pero **no manda nada a ningún lado** (hay un `<PLACEHOLDER>` y un
+   `console.log`). Es peor que estar roto: el prospecto cree que ya escribió. Se conecta a
+   **Resend** cuando el dominio esté registrado y verificado.
+
+7. **Dominio.** `lib/site.ts` tiene `https://bestackdevelopment.com` como placeholder y ese
+   dominio **no resuelve**. Falta registrarlo y definir la URL real (`NEXT_PUBLIC_SITE_URL`).
+
+### Fase 5 — Publicación
+
+8. **Sin despliegue.** No hay configuración de deploy en el repo (ni Vercel, ni Netlify, ni
+   Docker). El sitio solo corre en local. **No se publica hasta que el Patrón lo autorice.**
 
 ## Cómo proceder
 
@@ -100,5 +112,7 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 - **No mencionar clientes que no se pueden firmar.** Los proyectos hechos para la agencia
   Lanzaweb quedan fuera del sitio.
 - **LaserBox se presenta como cliente.** No mencionar que el Patrón es socio del taller.
+- **Publicar no es decisión del agente.** El sitio no sale a producción hasta que el Patrón
+  lo autorice explícitamente.
 - **Capturas de pantalla:** las toma el Patrón. En el código se dejan **placeholders** con
   las medidas indicadas en `docs/ejemplos.md`.

@@ -8,7 +8,7 @@ se da por terminado cada tramo.
 ## Objetivo del sitio
 
 Ser la cara comercial de BeStack: explicar los servicios, **demostrar con ejemplos lo que
-se puede construir en distintos giros**, y captar prospectos por formulario. A futuro, un
+se puede construir en distintos giros**, y captar prospectos por formulario. Más adelante, un
 blog con lo que se aplica en los proyectos.
 
 ## Fases
@@ -16,10 +16,15 @@ blog con lo que se aplica en los proyectos.
 | # | Fase | Estado |
 |---|---|---|
 | 1 | Base del sitio (home, 5 landings de servicio, contacto, SEO, navbar/footer) | ✅ Terminada (8-sep-2026) |
-| 2 | Sección de **Ejemplos** (índice + 4 páginas de detalle) | ⏳ Siguiente |
-| 3 | Formulario de contacto funcional | ⏳ Pendiente (corto) |
-| 4 | Deploy + dominio | ⏳ Pendiente |
-| 5 | Blog | ⏳ Pendiente (fase mayor) |
+| 2 | Sección de **Ejemplos** + limpieza del home | ⏳ **Siguiente** |
+| 3 | **Blog** (Notion como CMS, sin rebuild) | ⏳ Después de la 2 |
+| 4 | Formulario con **Resend** + dominio | ⏳ Al final |
+| 5 | **Publicación** | ⏳ Solo cuando el Patrón la autorice |
+
+> **Orden redefinido por el Patrón el 23-sep-2026.** El blog **subió** (hay que ver cómo funciona
+> antes de construir el resto); el formulario y el dominio **bajaron al final** (la integración
+> con Resend es corta y necesita el dominio ya verificado); y la publicación es una **decisión
+> explícita del Patrón**: nada se publica hasta que él diga que el sitio está completo.
 
 ### Fase 1 — Base del sitio ✅
 
@@ -62,34 +67,12 @@ nada y enseña testimonios falsos.
 muertos; el home no tiene testimonios falsos ni textos de "en standby"; ninguna parte del sitio
 dice "Portfolio"; `pnpm lint` y `pnpm build` en verde.
 
-### Fase 3 — Formulario de contacto funcional ⏳
+### Fase 3 — Blog ⏳
 
-**Por qué:** hoy el formulario **simula** el envío (`components/contact-form.tsx`, `onSubmit`).
-Mientras el sitio no esté publicado no se pierden prospectos, pero no puede salir a
-producción así.
-
-- Conectar `onSubmit` a un backend real (correo o servicio de formularios).
-- Notificación al correo de BeStack + confirmación real al prospecto.
-- Anti-spam (honeypot o captcha) y rastro de envío.
-
-**Criterio de aceptación:** enviar el formulario desde el sitio publicado y **recibir el
-correo**. Verificado, no supuesto.
-
-### Fase 4 — Deploy + dominio ⏳
-
-- Registrar el dominio (hoy `bestackdevelopment.com` es placeholder en `lib/site.ts` y no
-  resuelve). Se puede registrar en paralelo: la propagación tarda.
-- Definir hosting y desplegar.
-- `NEXT_PUBLIC_SITE_URL` con la URL real de producción.
-- Verificar en producción: home, servicios, ejemplos, formulario.
-
-**Criterio de aceptación:** sitio en vivo con dominio propio, verificado en navegador real.
-
-### Fase 5 — Blog ⏳
+**Por qué subió:** el Patrón quiere **ver funcionando el mecanismo** antes de seguir. Es la
+parte con más riesgo técnico y la que más se va a usar, así que se valida temprano.
 
 **Requisito del Patrón: publicar sin re-build ni deploy.**
-
-Estrategia acordada:
 
 1. **El contenido vive fuera del repo** (no posts en `.md` dentro del proyecto — eso obliga
    a build y deploy por cada post).
@@ -101,37 +84,80 @@ Estrategia acordada:
    blog. `cacheLife` queda como red de seguridad si el webhook falla.
 5. **Imágenes por Cloudinary** (cuenta existente del Patrón, `dfnqqumsc`).
 
+**Empezar por una prueba mínima, no por el blog completo.** Antes de construir índice,
+categorías y plantillas: **una sola página que lea un post de Notion, lo renderice y quede
+cacheada con revalidación por tiempo.** Eso valida las dos incógnitas reales (el renderizado
+de Notion y el caché) sin construir todo el blog. Si algo no cuadra, se descubre ahí y no
+después de 20 archivos.
+
 > ⚠️ **Trampa de Notion:** las imágenes que se **arrastran** al editor se suben a Notion y su
 > URL **expira en ~1 hora**. Hay que insertarlas como **link externo** (`/image` → pestaña
 > "Link" → pegar la URL de Cloudinary): así el bloque es `type: external` y no expira nunca.
 > Verificado en la documentación de Notion: *"These links never expire and will always be
 > returned as-is in API responses."*
 
+> ⚠️ **Dependencia de URL pública.** La revalidación **por tiempo** (`cacheLife`) se puede probar
+> en local. La revalidación **on-demand** —el webhook que dispara Notion al publicar— necesita
+> una **URL alcanzable desde internet**: en local no se puede probar de punta a punta. Cuando
+> se llegue ahí: despliegue de vista previa o túnel temporal. **No reportar el mecanismo como
+> "funcionando" hasta probar el webhook contra una URL pública** — la mitad de caché sí es
+> verificable en local, la otra no.
+
+**Criterio de aceptación:** publicar un post en Notion y verlo aparecer en el sitio **sin
+volver a construir**. Y el mecanismo descrito en el README del repo, para poder retomarlo.
+
+### Fase 4 — Formulario con Resend + dominio ⏳
+
+**Por qué al final:** la integración es corta y **Resend necesita el dominio ya verificado**
+(registros DNS), así que no tiene sentido hacerla antes.
+
+- Registrar el dominio (hoy `bestackdevelopment.com` es placeholder en `lib/site.ts` y no
+  resuelve).
+- Verificarlo en **Resend** y conectar el formulario a esa API.
+- Notificación al correo de BeStack + confirmación real al prospecto.
+- Anti-spam (honeypot o captcha) y rastro de envío.
+
+**Criterio de aceptación:** enviar el formulario y **recibir el correo**. Verificado, no supuesto.
+
+### Fase 5 — Publicación ⏳
+
+**Es decisión del Patrón, no del agente: nada se publica hasta que él diga que el sitio está
+completo.**
+
+- Definir hosting y desplegar.
+- `NEXT_PUBLIC_SITE_URL` con la URL real de producción.
+- Verificar en producción: home, servicios, ejemplos y formulario, en navegador real.
+
+**Criterio de aceptación:** sitio en vivo con dominio propio, verificado por el Patrón.
+
 ## Orden y por qué
 
-**2 → 3 → 4 → 5.** Los ejemplos primero porque son el contenido que hoy bloquea la página;
-el formulario después porque es corto y debe quedar antes de publicar; el dominio se puede
-registrar en paralelo a la fase 2-3 porque la propagación tarda; el blog al final, cuando el
-sitio ya esté vendiendo.
+**2 → 3 → 4 → 5.** Los ejemplos primero (es el contenido que hoy bloquea la página y el relleno
+que hay que quitar); el blog después, porque hay que **ver funcionando** el mecanismo antes de
+construir el resto; luego el formulario y el dominio juntos, porque Resend los necesita en ese
+orden; y la publicación al final, **solo con la autorización del Patrón**.
 
-## Decisiones tomadas (23-sep-2026)
+## Decisiones tomadas
 
-| Decisión | Por qué |
-|---|---|
-| "Ejemplos" en vez de "Portafolio" | No obliga a probar relación con clientes (no hay testimonios) y permite organizar por giro: *"esto es lo que se puede hacer"*. |
-| 8 desarrollos agrupados en **4 páginas** | 6 de los 8 son la misma fórmula (catálogo/ecommerce + sistema + agente) aplicada dos veces; sueltos se leen como relleno. |
-| **Sin testimonios** → sección "Cómo trabajamos" | No hay testimonios reales. Uno genérico resta más de lo que suma. La sección de proceso se pone en su lugar. |
-| **LaserBox se presenta como cliente** | El sitio habla como BeStack, empresa. No se menciona que el Patrón es socio del taller. |
-| Los 12 proyectos de **Lanzaweb quedan fuera** | Fueron trabajo como empleado, no de BeStack. |
-| Proyectos viejos descartados por el Patrón | "Ya están viejos o de plano no me gustan". |
-| **Capturas: las toma el Patrón** | En el código se dejan placeholders con las medidas indicadas en `docs/ejemplos.md`. |
-| Repo sigue **público** por ahora | El Patrón lo pasará a privado más adelante. No hay secretos en el repo. |
+| Fecha | Decisión | Por qué |
+|---|---|---|
+| 23-sep | "Ejemplos" en vez de "Portafolio" | No obliga a probar relación con clientes (no hay testimonios) y permite organizar por giro: *"esto es lo que se puede hacer"*. |
+| 23-sep | 8 desarrollos agrupados en **4 páginas** | 6 de los 8 son la misma fórmula (catálogo/ecommerce + sistema + agente) aplicada dos veces; sueltos se leen como relleno. |
+| 23-sep | **Sin testimonios** → sección "Cómo trabajamos" | No hay testimonios reales. Uno genérico resta más de lo que suma. La sección de proceso se pone en su lugar. |
+| 23-sep | **LaserBox se presenta como cliente** | El sitio habla como BeStack, empresa. No se menciona que el Patrón es socio del taller. |
+| 23-sep | Los 12 proyectos de **Lanzaweb quedan fuera** | Fueron trabajo como empleado, no de BeStack. |
+| 23-sep | Proyectos viejos descartados por el Patrón | "Ya están viejos o de plano no me gustan". |
+| 23-sep | **Capturas: las toma el Patrón** | En el código se dejan placeholders con las medidas indicadas en `docs/ejemplos.md`. |
+| 23-sep | Repo sigue **público** por ahora | El Patrón lo pasará a privado más adelante. No hay secretos en el repo. |
+| 23-sep | **El blog sube al 3.º lugar** | El Patrón quiere ver cómo funciona antes de construir el resto. |
+| 23-sep | **El formulario se hace con Resend, al final** | La integración es corta y necesita el dominio verificado. |
+| 23-sep | **La publicación la autoriza el Patrón** | No se publica hasta que él diga que el sitio está completo. |
 
 ## Datos que faltan (los aporta el Patrón)
 
 1. **Los números de resultados** de cada ejemplo (ventas al día, tiempo ahorrado, volumen).
    Sin número, la sección "Qué cambió" se deja sin métricas — **no se estiman**.
 2. **Aprobación del tono** del copy (la muestra de Bidhara está en `docs/ejemplos.md`).
-3. **El dominio** que va a usar.
+3. **El dominio** que va a usar (lo necesita la Fase 4).
 4. Confirmar si el sistema de operación de **LaserBox ya corre** o también va marcado como
    en desarrollo.
