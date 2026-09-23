@@ -17,8 +17,8 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | `6655ffe` — *docs: checkpoint actualizado tras el push a GitHub* → + stack logos |
-| Working tree | *se actualiza al commitear* |
+| Último commit | `e87960e` — *feat: normaliza logos del marquee de tecnologias y agrega TS, Vite, Prisma, n8n, Tailscale* |
+| Working tree | **limpio** |
 | vs `origin/main` | sincronizado + cambios de logo por subir |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 | Último cambio de **código** | 23-sep-2026 (Fase 2: Ejemplos + home + marquee de tecnologías) |
