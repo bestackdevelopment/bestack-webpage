@@ -14,13 +14,7 @@ type Captura = {
  * el Patrón); cuando exista el archivo, añadir `imagen` al slide y el lightbox
  * mostrará la captura real — docs/ejemplos.md. Cierra con Esc o clic fuera.
  */
-export function EjemploGallery({
-  slug,
-  capturas,
-}: {
-  slug: string
-  capturas: Captura[]
-}) {
+export function EjemploGallery({ capturas }: { capturas: Captura[] }) {
   const [activa, setActiva] = useState<number | null>(null)
 
   useEffect(() => {
@@ -80,7 +74,7 @@ export function EjemploGallery({
                     stroke={1.5}
                   />
                   <p className="text-sm text-muted-foreground">
-                    Captura por el Patrón — {slug}/01.jpg·02.jpg·03.jpg
+                    Captura próximamente
                   </p>
                 </>
               )}

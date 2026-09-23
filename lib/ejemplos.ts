@@ -115,7 +115,7 @@ const ejemplos: Ejemplo[] = [
       },
     ],
     queCambio:
-      "La operación dejó de depender de hojas de cálculo y memoria: catálogo, ventas, gastos e inventario viven en una sola base de datos, consultable desde el celular y Telegram. Los números de resultados se publican cuando el Patrón los confirme.",
+      "La operación dejó de depender de hojas de cálculo y memoria: catálogo, ventas, gastos e inventario viven en una sola base de datos, consultable desde el celular y Telegram.",
   },
   {
     slug: "laserbox",
@@ -174,7 +174,7 @@ const ejemplos: Ejemplo[] = [
       },
     ],
     queCambio:
-      "La cotización dejó de ser un cálculo a mano y el precio sale del sistema. Producción e inventario se consultan con el agente desde el celular, sin abrir la aplicación. Los números de resultados se publican cuando el Patrón los confirme.",
+      "La cotización dejó de ser un cálculo a mano y el precio sale del sistema. Producción e inventario se consultan con el agente desde el celular, sin abrir la aplicación.",
   },
   {
     slug: "sysop",
@@ -221,7 +221,7 @@ const ejemplos: Ejemplo[] = [
       },
     ],
     queCambio:
-      "Protocolos, turnos y evidencia dejan de viajar en papel y mensajería: cada instalación opera con sus procedimientos en una sola plataforma, con evidencia verificable. Los números de resultados se publican cuando el Patrón los confirme.",
+      "Protocolos, turnos y evidencia dejan de viajar en papel y mensajería: cada instalación opera con sus procedimientos en una sola plataforma, con evidencia verificable.",
   },
   {
     slug: "bahia",
@@ -258,7 +258,7 @@ const ejemplos: Ejemplo[] = [
       },
     ],
     queCambio:
-      "El sitio existe en HTML desde el primer byte, organizado por tipo de espacio y con un único camino: cotizar. Los números de resultados se publican cuando el Patrón los confirme.",
+      "El sitio existe en HTML desde el primer byte, organizado por tipo de espacio y con un único camino: cotizar.",
   },
 ]
 

@@ -141,13 +141,13 @@ export default async function EjemploDetallePage({ params }: Props) {
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             {ejemplo.stack}
           </p>
-          {/* Diagrama de arquitectura: hueco, lo arma el Patrón */}
+          {/* Diagrama de arquitectura: hueco pendiente */}
           <div
             aria-hidden
             className="w-full aspect-[16/7] rounded-xl border border-dashed border-border/60 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 flex items-center justify-center"
           >
             <span className="text-sm text-muted-foreground/60">
-              Diagrama de arquitectura (pendiente)
+              Diagrama de arquitectura
             </span>
           </div>
         </div>
@@ -195,10 +195,9 @@ export default async function EjemploDetallePage({ params }: Props) {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-4 text-balance">Galería</h2>
           <p className="text-lg text-muted-foreground mb-12">
-            Capturas del sistema: las publica el Patrón.
+            Así se ve el sistema funcionando.
           </p>
           <EjemploGallery
-            slug={ejemplo.slug}
             capturas={[1, 2, 3].map((n) => ({
               etiqueta: `Captura ${n}`,
               // imagen: `/ejemplos/${ejemplo.slug}/${n}.jpg`, — cuando exista

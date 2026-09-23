@@ -26,7 +26,7 @@ export function EjemploCover({
       )}
     >
       <IconPhoto className="w-10 h-10 text-muted-foreground/50" stroke={1.5} />
-      <span className="sr-only">Captura de {slug} (pendiente)</span>
+      <span className="sr-only">Captura de {slug}</span>
     </div>
   )
 }

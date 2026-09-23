@@ -73,6 +73,11 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
   En la galería el lightbox ya funciona y muestra el placeholder hasta que exista el archivo.
 - El openGraph de las páginas de ejemplo **no incluye imagen** hasta que exista `og.jpg`
   (evita el preview roto); el hueco está comentado en `app/ejemplos/[slug]/page.tsx`.
+- Revisión final (subagente): 0 críticos, 1 importante corregido — se quitó la jerga interna
+  ("el Patrón", "pendiente") del copy público de las 4 páginas y del lightbox. Minors diferidos:
+  foco del lightbox, `aria-pressed` en filtros, slugs duplicados en `sitemap.ts`, una
+  inconsistencia de giro de LaserBox entre tabla y copy de `docs/ejemplos.md` (decidir cuál),
+  `bg-black/80` en overlay del lightbox (no es token del tema).
 - `/servicios/ecommerce` enlaza al ejemplo laserbox (funcionalidad de `docs/ejemplos.md`);
   las demás landings no llevan enlace porque no hay ejemplo correspondiente definido.
 - **Verificación:** `pnpm lint` ✅ y `pnpm build` ✅ (18 rutas, 4 SSG). Verificado con curl que
