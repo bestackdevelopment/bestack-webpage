@@ -46,7 +46,7 @@ Workspace: **BeStackDevelopment's Space**. El bot `DevelopmentServer` ya tiene a
 | Cuándo | Qué actualizar |
 |---|---|
 | Antes de empezar | **Notion** — la página del proyecto: fases abiertas y pendientes. Y `docs/ejemplos.md` si vas a tocar contenido |
-| Al terminar una tarea | **Notion** — la fase correspondiente (estado, avance %) y sus pendientes |
+| Al terminar una tarea | **Notion** — la fase correspondiente: **notas/detalle del trabajo hecho** y sus pendientes. El **estado y el «Avance %» los fija el Patrón**, no el agente |
 | Si cambia una decisión de producto o contenido | **Notion** → base `Decisiones` del proyecto |
 | Si falta un dato de contenido | **Preguntar.** El copy sale de `docs/ejemplos.md`, no de la imaginación |
 | Al cerrar un tramo | Repo consistente (`pnpm lint`, `pnpm build`) y commit |
