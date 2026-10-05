@@ -1,6 +1,18 @@
 import type { Metadata } from "next"
+import {
+  IconArchive,
+  IconArrowsExchange,
+  IconBook,
+  IconBug,
+  IconChecklist,
+  IconCode,
+  IconListCheck,
+  IconRocket,
+  IconSearch,
+} from "@tabler/icons-react"
 
-import { ServiceLanding, type ServiceLandingData } from "@/components/service-landing"
+import { ServiceTemplate, type ServiceTemplateData } from "@/components/service-template"
+import { incluyeGenerico } from "@/lib/servicios-incluye-generico"
 
 export const metadata: Metadata = {
   title: "Finaliza tu Web",
@@ -8,45 +20,59 @@ export const metadata: Metadata = {
     "Completamos proyectos web inconclusos con calidad y profesionalismo para lanzar tu sitio cuanto antes.",
 }
 
-const data: ServiceLandingData = {
+const data: ServiceTemplateData = {
   hero: {
+    badge: "Proyectos inconclusos",
     titleLead: "Finaliza",
     titleAccent: "tu Web",
     accentGradient: "from-primary to-accent",
     subtitle:
       "Completamos proyectos inconclusos con calidad y profesionalismo",
-    cta: "Evaluar mi Proyecto",
-  },
-  accent: "secondary",
-  intro: {
-    heading: "Rescatamos tu Proyecto Web",
-    body: [
-      "¿Tienes un proyecto web sin terminar? Analizamos el código existente, identificamos lo que falta y completamos el desarrollo con los más altos estándares de calidad. Si es necesario, migramos tu proyecto a una base tecnológica moderna para garantizar un resultado mantenible.",
-      "Trabajamos con cualquier base de código, documentamos todo el proceso y te entregamos un sitio completo, optimizado y listo para lanzar. Nuestro objetivo es que finalmente tengas el sitio web que siempre quisiste.",
+    ctas: [
+      { label: "Evaluar mi Proyecto", href: "/contacto" },
+      { label: "Ver ejemplos", href: "/ejemplos", variant: "outline" },
     ],
   },
+  incluye: {
+    lead: {
+      heading: "Rescatamos tu Proyecto Web",
+      body: [
+        "¿Tienes un proyecto web sin terminar? Analizamos el código existente, identificamos lo que falta y completamos el desarrollo con los más altos estándares de calidad. Si es necesario, migramos tu proyecto a una base tecnológica moderna para garantizar un resultado mantenible.",
+        "Trabajamos con cualquier base de código, documentamos todo el proceso y te entregamos un sitio completo, optimizado y listo para lanzar. Nuestro objetivo es que finalmente tengas el sitio web que siempre quisiste.",
+      ],
+    },
+    items: incluyeGenerico,
+  },
   beneficios: [
-    "Análisis del proyecto existente",
-    "Plan de finalización claro",
-    "Código de calidad profesional",
-    "Testing y optimización",
-    "Migración a tecnologías modernas",
-    "Documentación completa",
+    { icon: IconSearch, accent: "primary", text: "Análisis del proyecto existente" },
+    { icon: IconListCheck, accent: "secondary", text: "Plan de finalización claro" },
+    { icon: IconCode, accent: "accent", text: "Código de calidad profesional" },
+    { icon: IconBug, accent: "primary", text: "Testing y optimización" },
+    { icon: IconRocket, accent: "secondary", text: "Migración a tecnologías modernas" },
+    { icon: IconBook, accent: "accent", text: "Documentación completa" },
   ],
   casosUso: [
     {
+      icon: IconArchive,
+      accent: "primary",
       title: "Proyectos Abandonados",
       description: "Retomamos proyectos que quedaron sin terminar",
     },
     {
+      icon: IconCode,
+      accent: "secondary",
       title: "Código Legacy",
       description: "Modernizamos y completamos sitios con código antiguo",
     },
     {
+      icon: IconArrowsExchange,
+      accent: "accent",
       title: "Migraciones",
       description: "Finalizamos migraciones incompletas a nuevas tecnologías",
     },
     {
+      icon: IconChecklist,
+      accent: "primary",
       title: "Funcionalidades Pendientes",
       description: "Completamos features que faltan en tu sitio actual",
     },
@@ -81,5 +107,5 @@ const data: ServiceLandingData = {
 }
 
 export default function FinalizaTuWebPage() {
-  return <ServiceLanding data={data} />
+  return <ServiceTemplate data={data} />
 }

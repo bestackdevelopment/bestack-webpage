@@ -1,6 +1,19 @@
 import type { Metadata } from "next"
+import {
+  IconBuilding,
+  IconBuildingSkyscraper,
+  IconFileText,
+  IconLayoutDashboard,
+  IconMapPin,
+  IconNetwork,
+  IconPlugConnected,
+  IconShieldCheck,
+  IconUsers,
+  IconWorld,
+} from "@tabler/icons-react"
 
-import { ServiceLanding, type ServiceLandingData } from "@/components/service-landing"
+import { ServiceTemplate, type ServiceTemplateData } from "@/components/service-template"
+import { incluyeGenerico } from "@/lib/servicios-incluye-generico"
 
 export const metadata: Metadata = {
   title: "Páginas Corporativas",
@@ -8,47 +21,61 @@ export const metadata: Metadata = {
     "Soluciones empresariales completas con diseño profesional y funcionalidad avanzada para tu negocio.",
 }
 
-const data: ServiceLandingData = {
+const data: ServiceTemplateData = {
   hero: {
+    badge: "Presencia empresarial",
     titleLead: "Páginas",
     titleAccent: "Corporativas",
     accentGradient: "from-accent to-primary",
     subtitle:
       "Soluciones empresariales completas con diseño profesional y funcionalidad avanzada",
-    cta: "Solicitar Presupuesto",
-  },
-  accent: "secondary",
-  intro: {
-    heading: "Soluciones Empresariales a Medida",
-    body: [
-      "Desarrollamos sitios corporativos robustos y escalables. Nuestras soluciones incluyen gestión de contenido avanzada, formularios complejos con validación estricta y una arquitectura pensada para crecer contigo.",
-      "Cada proyecto corporativo se diseña pensando en la escalabilidad futura, la integración con sistemas existentes y la facilidad de mantenimiento. Implementamos las mejores prácticas de seguridad y rendimiento.",
+    ctas: [
+      { label: "Solicitar Presupuesto", href: "/contacto" },
+      { label: "Ver ejemplos", href: "/ejemplos", variant: "outline" },
     ],
   },
+  incluye: {
+    lead: {
+      heading: "Soluciones Empresariales a Medida",
+      body: [
+        "Desarrollamos sitios corporativos robustos y escalables. Nuestras soluciones incluyen gestión de contenido avanzada, formularios complejos con validación estricta y una arquitectura pensada para crecer contigo.",
+        "Cada proyecto corporativo se diseña pensando en la escalabilidad futura, la integración con sistemas existentes y la facilidad de mantenimiento. Implementamos las mejores prácticas de seguridad y rendimiento.",
+      ],
+    },
+    items: incluyeGenerico,
+  },
   beneficios: [
-    "Diseño corporativo profesional",
-    "Gestión de contenido avanzada",
-    "Integración con sistemas empresariales",
-    "Panel de administración personalizado",
-    "Múltiples idiomas",
-    "Alta seguridad y rendimiento",
+    { icon: IconBuilding, accent: "primary", text: "Diseño corporativo profesional" },
+    { icon: IconFileText, accent: "secondary", text: "Gestión de contenido avanzada" },
+    { icon: IconPlugConnected, accent: "accent", text: "Integración con sistemas empresariales" },
+    { icon: IconLayoutDashboard, accent: "primary", text: "Panel de administración personalizado" },
+    { icon: IconWorld, accent: "secondary", text: "Múltiples idiomas" },
+    { icon: IconShieldCheck, accent: "accent", text: "Alta seguridad y rendimiento" },
   ],
   casosUso: [
     {
+      icon: IconBuildingSkyscraper,
+      accent: "primary",
       title: "Sitios Corporativos",
       description:
         "Presencia digital completa para empresas medianas y grandes",
     },
     {
+      icon: IconNetwork,
+      accent: "secondary",
       title: "Intranets Corporativas",
       description: "Portales internos para comunicación y gestión empresarial",
     },
     {
+      icon: IconUsers,
+      accent: "accent",
       title: "Portales de Clientes",
       description:
         "Áreas privadas con funcionalidades específicas para clientes",
     },
     {
+      icon: IconMapPin,
+      accent: "primary",
       title: "Sitios Multi-sucursal",
       description: "Gestión centralizada de múltiples ubicaciones",
     },
@@ -83,5 +110,5 @@ const data: ServiceLandingData = {
 }
 
 export default function PaginasCorporativasPage() {
-  return <ServiceLanding data={data} />
+  return <ServiceTemplate data={data} />
 }
