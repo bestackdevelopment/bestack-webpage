@@ -61,21 +61,34 @@ type Accent = "primary" | "secondary" | "accent"
 type ServiceTemplateData = {
   hero: {
     badge?: string                 // p. ej. "Diseño Web Profesional"
-    titleLead: string              // p. ej. "Páginas"
+    titleLead: string              // puede ir vacío: entonces el degradado cubre todo el título
     titleAccent: string            // p. ej. "Informativas"
     accentGradient: string         // p. ej. "from-accent to-primary"
     subtitle: string
     ctas: { label: string; href: string; variant?: "primary" | "outline" }[]
   }
   incluye: {
-    icon: TablerIcon
-    accent: Accent
-    title: string                  // el número (1., 2., …) lo pone el componente
-    description: string
-  }[]
+    lead?: { heading: string; body: string[] }  // texto de entrada opcional (el `intro` de las 5)
+    items: {
+      icon: TablerIcon
+      accent: Accent
+      title: string                // el número (1., 2., …) lo pone el componente
+      description: string
+    }[]
+  }
   beneficios: { icon: TablerIcon; accent: Accent; text: string }[]
   casosUso: { icon: TablerIcon; accent: Accent; title: string; description: string }[]
   faqs: { question: string; answer: string }[]
+  copy?: {                         // subtítulos de sección (informativas los conserva)
+    beneficiosSubtitle?: string
+    casosSubtitle?: string
+    faqsSubtitle?: string
+  }
+  ejemplo?: {                      // sección opcional (hoy solo ecommerce la usa)
+    href: string
+    label: string
+    description: string
+  }
   final: { heading: string; body: string; cta: string }
 }
 ```
@@ -92,7 +105,8 @@ type ServiceTemplateData = {
 3. **Beneficios Principales** — grid de tarjetas (icono + texto).
 4. **Casos de Uso** — tarjetas (icono + título + descripción).
 5. **Preguntas Frecuentes** — acordeón.
-6. **Gráfico decorativo (compacto) + CTA final.**
+6. **Ejemplo relacionado** — *opcional* (solo si el dato lo define; hoy ecommerce).
+7. **Gráfico decorativo (compacto) + CTA final.**
 
 ## 7. Contenido por página
 
