@@ -18,7 +18,7 @@ export default function ContactoPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-balance font-[family-name:var(--font-jura)]">
             Hablemos de tu{" "}
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pb-[0.15em]">
               Proyecto
             </span>
           </h1>

@@ -1,6 +1,6 @@
 # Contenido del home — secciones que cambian
 
-**Última actualización:** 23 de septiembre de 2026 (subfire).
+**Última actualización:** 5 de octubre de 2026 (Agente Dev Server).
 
 Copy de las secciones del home que se ajustan en la Fase 2 de `docs/plan-de-trabajo.md`.
 Todo el texto sale de aquí — no inventar fuera de este documento.
@@ -13,10 +13,10 @@ prospecto lo detecta de inmediato, y eso resta más de lo que suma. No hay testi
 todavía, así que la sección se sustituye por el proceso de trabajo. **Los testimonios regresan
 cuando existan, con nombre y cargo reales** — ahí esta sección se vuelve a montar.
 
-- **Ubicación:** `app/page.tsx`, sección `{/* Testimonials */}` (~líneas 148-180 al 23-sep-2026).
-- **Estructura:** encabezado + bajada + 4 pasos. Respetar el sistema de diseño actual (rejilla,
-  tarjetas y tokens del tema). Los 4 pasos pueden ir en 2×2 o en 4×1 en escritorio: decidir en
-  la implementación según cómo mejor respire el contenido.
+- **Ubicación:** `app/page.tsx`, sección `{/* Cómo trabajamos */}`.
+- **Estructura:** encabezado + bajada + 4 pasos en **línea de tiempo vertical** (línea a la
+  izquierda, nodos numerados 1–4 con `bg-primary/10` y texto neutro), sin dependencias nuevas.
+  En la revisión de estilos (5-oct-2026) se pasó del 2×2 de tarjetas a esta línea de tiempo.
 
 **Encabezado:** Cómo trabajamos
 
@@ -54,7 +54,27 @@ cuando existan, con nombre y cargo reales** — ahí esta sección se vuelve a m
 - La cuarta (**Bahía**) no entra en destacados: se ve en el índice completo. Es el único sitio
   web de los cuatro, así que sirve mejor como contraste dentro de la sección que como portada.
 
-## 3. Imágenes
+## 3. "¿Por qué elegirnos?" (cards con iconos)
+
+- **Ubicación:** `app/page.tsx`, sección `{/* Benefits Section */}`.
+- **Estructura:** 4 cards con icono (Tabler, `size={40} stroke={1.5}` dentro de caja
+  `rounded-lg bg-primary/10`), título y descripción. Rejilla
+  `grid-cols-1 sm:grid-cols-2 xl:grid-cols-4`.
+- **Añadido en la revisión de estilos (5-oct-2026);** antes eran cards sin icono.
+
+| Icono | Título | Descripción |
+|---|---|---|
+| `IconCpu` | Tecnología Moderna | Construimos con tecnologías de última generación para crear sitios rápidos, seguros y escalables |
+| `IconPalette` | Diseño Profesional | Interfaces minimalistas y elegantes optimizadas para conversión |
+| `IconTrendingUp` | SEO y GEO | Código limpio y estructura pensada para posicionamiento en buscadores y agentes de IA |
+| `IconHeadset` | Soporte Continuo | Acompañamiento técnico y actualizaciones durante todo el proyecto |
+
+> **GEO** = *Generative Engine Optimization*: conseguir que el contenido aparezca y sea citado en
+> las respuestas de IA (ChatGPT, Gemini, Perplexity, Google AI Overviews). El título de la tercera
+> card se cambió de "SEO Optimizado" a **"SEO y GEO"** (decisión del Patrón; ver la base
+> `Decisiones` en Notion).
+
+## 4. Imágenes
 
 Placeholders con las medidas definidas en `docs/ejemplos.md`. **Las capturas las toma el Patrón**
 — el código solo deja el hueco.

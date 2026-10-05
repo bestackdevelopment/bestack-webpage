@@ -63,13 +63,13 @@ export default async function EjemploDetallePage({ params }: Props) {
             {ejemplo.resumen}
           </p>
           <div className="flex flex-wrap justify-center gap-2 mb-10">
-            <span className="text-sm font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary">
+            <span className="text-sm font-medium px-3 py-1.5 rounded-full bg-primary/10 text-foreground">
               {ejemplo.tipo}
             </span>
             <span
               className={
                 ejemplo.estado === "En operación"
-                  ? "text-sm font-medium px-3 py-1.5 rounded-full bg-secondary/10 text-secondary"
+                  ? "text-sm font-medium px-3 py-1.5 rounded-full bg-secondary/10 text-foreground"
                   : "text-sm font-medium px-3 py-1.5 rounded-full bg-muted text-muted-foreground"
               }
             >
@@ -146,7 +146,7 @@ export default async function EjemploDetallePage({ params }: Props) {
             aria-hidden
             className="w-full aspect-[16/7] rounded-xl border border-dashed border-border/60 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 flex items-center justify-center"
           >
-            <span className="text-sm text-muted-foreground/60">
+            <span className="text-sm text-muted-foreground">
               Diagrama de arquitectura
             </span>
           </div>

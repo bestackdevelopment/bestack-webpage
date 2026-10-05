@@ -12,7 +12,7 @@ const data: ServiceLandingData = {
   hero: {
     titleLead: "Finaliza",
     titleAccent: "tu Web",
-    accentGradient: "from-secondary to-primary",
+    accentGradient: "from-primary to-accent",
     subtitle:
       "Completamos proyectos inconclusos con calidad y profesionalismo",
     cta: "Evaluar mi Proyecto",

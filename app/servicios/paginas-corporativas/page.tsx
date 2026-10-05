@@ -12,7 +12,7 @@ const data: ServiceLandingData = {
   hero: {
     titleLead: "Páginas",
     titleAccent: "Corporativas",
-    accentGradient: "from-secondary to-accent",
+    accentGradient: "from-accent to-primary",
     subtitle:
       "Soluciones empresariales completas con diseño profesional y funcionalidad avanzada",
     cta: "Solicitar Presupuesto",

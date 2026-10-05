@@ -134,7 +134,7 @@ export default function PaginasInformativasPage() {
               Diseño Web Profesional
             </span>
           </div>
-          <h1 className="text-5xl sm:text-7xl font-bold mb-8 text-balance font-[family-name:var(--font-jura)] bg-gradient-to-r from-[#FD4B5B] via-[#42BEC0] to-[#665DE2] bg-clip-text text-transparent">
+          <h1 className="text-5xl sm:text-7xl font-bold mb-8 text-balance bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pb-[0.15em]">
             Páginas Informativas
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-12 text-balance max-w-3xl mx-auto leading-relaxed">
@@ -145,7 +145,7 @@ export default function PaginasInformativasPage() {
             <Button
               size="lg"
               asChild
-              className="bg-gradient-to-r from-[#FD4B5B] to-[#FF6B7A] hover:opacity-90 transition-opacity shadow-lg shadow-[#FD4B5B]/25"
+              className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
             >
               <Link href="/contacto">Empieza tu sitio</Link>
             </Button>
@@ -153,7 +153,7 @@ export default function PaginasInformativasPage() {
               size="lg"
               variant="outline"
               asChild
-              className="border-2 border-[#42BEC0]/50 hover:bg-[#42BEC0] hover:text-white hover:border-[#42BEC0] transition-all bg-transparent"
+              className="border-2 border-secondary/50 hover:bg-secondary hover:text-foreground hover:border-secondary transition-all bg-transparent"
             >
               <Link href="/ejemplos">Ver ejemplos</Link>
             </Button>
@@ -164,7 +164,7 @@ export default function PaginasInformativasPage() {
       {/* Service Details */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-16 text-center font-[family-name:var(--font-jura)] bg-gradient-to-r from-[#665DE2] to-[#42BEC0] bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent pb-[0.15em]">
             ¿Qué incluye este servicio?
           </h2>
 
@@ -336,7 +336,7 @@ export default function PaginasInformativasPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 font-[family-name:var(--font-jura)]">
+            <h2 className="text-4xl font-bold mb-4">
               Beneficios Principales
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -374,7 +374,7 @@ export default function PaginasInformativasPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 font-[family-name:var(--font-jura)]">
+            <h2 className="text-4xl font-bold mb-4">
               Casos de Uso
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -397,7 +397,7 @@ export default function PaginasInformativasPage() {
                       <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#665DE2]/20 to-[#42BEC0]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <Icon className="w-7 h-7 text-[#665DE2]" stroke={1.5} />
                       </div>
-                      <CardTitle className="text-xl font-[family-name:var(--font-jura)]">
+                      <CardTitle className="text-xl">
                         {caso.title}
                       </CardTitle>
                     </div>
@@ -418,7 +418,7 @@ export default function PaginasInformativasPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 font-[family-name:var(--font-jura)]">
+            <h2 className="text-4xl font-bold mb-4">
               Preguntas Frecuentes
             </h2>
             <p className="text-muted-foreground text-lg">Resolvemos tus dudas</p>
@@ -445,7 +445,7 @@ export default function PaginasInformativasPage() {
       {/* CTA */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 font-[family-name:var(--font-jura)]">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
             ¿Listo para crear tu página informativa?
           </h2>
           <p className="text-xl text-muted-foreground mb-10 text-balance">
@@ -455,7 +455,7 @@ export default function PaginasInformativasPage() {
           <Button
             size="lg"
             asChild
-            className="bg-gradient-to-r from-[#FD4B5B] to-[#FF6B7A] hover:opacity-90 transition-opacity shadow-xl shadow-[#FD4B5B]/30"
+            className="bg-primary hover:bg-primary/90 shadow-xl shadow-primary/30"
           >
             <Link href="/contacto">Contactar Ahora</Link>
           </Button>

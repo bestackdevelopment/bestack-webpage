@@ -40,7 +40,7 @@ export function EjemploGallery({ capturas }: { capturas: Captura[] }) {
             className="relative w-full aspect-[16/10] rounded-xl border border-dashed border-border/60 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 flex flex-col items-center justify-center gap-2 cursor-zoom-in hover:border-primary/40 transition-colors"
           >
             <IconPhoto className="w-8 h-8 text-muted-foreground/40" stroke={1.5} />
-            <span className="text-xs text-muted-foreground/60">
+            <span className="text-xs text-muted-foreground">
               {captura.etiqueta}
             </span>
           </button>

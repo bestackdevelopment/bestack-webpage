@@ -1,4 +1,10 @@
 import Link from "next/link"
+import {
+  IconCpu,
+  IconHeadset,
+  IconPalette,
+  IconTrendingUp,
+} from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,21 +16,25 @@ import { getEjemplosDestacados } from "@/lib/ejemplos"
 export default function HomePage() {
   const beneficios = [
     {
+      icon: IconCpu,
       title: "Tecnología Moderna",
       description:
         "Construimos con tecnologías de última generación para crear sitios rápidos, seguros y escalables",
     },
     {
+      icon: IconPalette,
       title: "Diseño Profesional",
       description:
         "Interfaces minimalistas y elegantes optimizadas para conversión",
     },
     {
-      title: "SEO Optimizado",
+      icon: IconTrendingUp,
+      title: "SEO y GEO",
       description:
-        "Código limpio y estructura pensada para posicionamiento en buscadores",
+        "Código limpio y estructura pensada para posicionamiento en buscadores y agentes de IA",
     },
     {
+      icon: IconHeadset,
       title: "Soporte Continuo",
       description:
         "Acompañamiento técnico y actualizaciones durante todo el proyecto",
@@ -66,7 +76,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-balance mb-6">
             Desarrollo Web
-            <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pb-[0.15em]">
               Profesional y Moderno
             </span>
           </h1>
@@ -78,7 +88,7 @@ export default function HomePage() {
             <Button
               size="lg"
               asChild
-              className="bg-primary hover:bg-primary/90 text-lg px-8"
+              className="bg-primary hover:bg-primary/90 text-[19px] px-8"
             >
               <Link href="/contacto">Comenzar Proyecto</Link>
             </Button>
@@ -103,20 +113,36 @@ export default function HomePage() {
               Calidad, tecnología y resultados garantizados
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {beneficios.map((beneficio, index) => (
-              <Card
-                key={index}
-                className="border-border hover:shadow-lg transition-shadow"
-              >
-                <CardHeader>
-                  <CardTitle className="text-xl">{beneficio.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{beneficio.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-8">
+            {beneficios.map((beneficio, index) => {
+              const Icon = beneficio.icon
+
+              return (
+                <Card
+                  key={index}
+                  className="border-border hover:shadow-lg transition-shadow h-full"
+                >
+                  <CardHeader>
+                    <div className="w-fit p-2 rounded-lg bg-primary/10">
+                      <Icon
+                        className="text-primary"
+                        size={40}
+                        stroke={1.5}
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <CardTitle className="text-xl">
+                      {beneficio.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {beneficio.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -173,31 +199,37 @@ export default function HomePage() {
 
       {/* Cómo trabajamos */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Cómo trabajamos</h2>
             <p className="text-muted-foreground text-lg">
               Sin sorpresas: así se lleva un proyecto con BeStack.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ol className="relative">
             {pasos.map((paso, index) => (
-              <Card
+              <li
                 key={paso.title}
-                className="border-border hover:shadow-lg transition-shadow"
+                className="relative flex gap-5 pb-10 last:pb-0"
               >
-                <CardHeader>
-                  <span className="text-sm font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                    Paso {index + 1}
-                  </span>
-                  <CardTitle className="text-xl">{paso.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{paso.description}</p>
-                </CardContent>
-              </Card>
+                {index < pasos.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-5 top-10 bottom-0 w-px -translate-x-1/2 bg-border"
+                  />
+                )}
+                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 font-bold text-foreground ring-1 ring-primary/20">
+                  {index + 1}
+                </span>
+                <div className="pt-1.5">
+                  <h3 className="text-xl font-semibold mb-1">{paso.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {paso.description}
+                  </p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -213,7 +245,7 @@ export default function HomePage() {
           <Button
             size="lg"
             asChild
-            className="bg-primary hover:bg-primary/90 text-lg px-12"
+            className="bg-primary hover:bg-primary/90 text-[19px] px-12"
           >
             <Link href="/contacto">Contactar Ahora</Link>
           </Button>

@@ -26,7 +26,7 @@ export function EjemplosExplorador({ ejemplos }: { ejemplos: Ejemplo[] }) {
           className={cn(
             "px-4 py-2 rounded-full text-sm font-medium transition-colors border",
             filtro === null
-              ? "bg-primary text-primary-foreground border-primary"
+              ? "bg-primary/10 text-foreground border-primary"
               : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-foreground/30",
           )}
         >
@@ -40,7 +40,7 @@ export function EjemplosExplorador({ ejemplos }: { ejemplos: Ejemplo[] }) {
             className={cn(
               "px-4 py-2 rounded-full text-sm font-medium transition-colors border",
               filtro === tipo
-                ? "bg-primary text-primary-foreground border-primary"
+                ? "bg-primary/10 text-foreground border-primary"
                 : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-foreground/30",
             )}
           >

@@ -66,7 +66,7 @@ export function ContactForm() {
     <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-xl border-2 border-primary/20 p-8 flex flex-col lg:flex-row justify-between w-full gap-10 lg:gap-20 shadow-lg">
       {/* Left side - Info */}
       <div className="w-full lg:w-1/2 flex flex-col gap-10">
-        <h3 className="text-3xl font-bold font-[family-name:var(--font-jura)] bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+        <h3 className="text-3xl font-bold font-[family-name:var(--font-jura)] bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pb-[0.15em]">
           Cotiza tu desarrollo
         </h3>
         <div className="w-full flex flex-col gap-5">
@@ -340,14 +340,14 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-lg py-3 bg-primary hover:bg-primary/90 transition-all duration-200 ease-in-out text-white font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full rounded-lg py-3 bg-primary hover:bg-primary/90 transition-all duration-200 ease-in-out text-white font-bold text-[19px] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Enviando..." : "Cotizar mi desarrollo"}
             </button>
 
             {submitSuccess && (
               <div className="p-4 bg-secondary/20 border-2 border-secondary rounded-lg">
-                <p className="text-sm text-center font-semibold text-secondary-foreground">
+                <p className="text-sm text-center font-semibold text-foreground">
                   ¡Mensaje enviado exitosamente! Te responderemos pronto.
                 </p>
               </div>

@@ -96,7 +96,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors break-all"
                 >
                   {contactEmail}
                 </a>

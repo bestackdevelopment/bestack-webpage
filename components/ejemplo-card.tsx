@@ -21,13 +21,13 @@ export function EjemploCard({ ejemplo }: { ejemplo: Ejemplo }) {
           <p className="text-sm text-muted-foreground mt-1">{ejemplo.giro}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-foreground">
             {ejemplo.tipo}
           </span>
           <span
             className={
               ejemplo.estado === "En operación"
-                ? "text-xs font-medium px-2.5 py-1 rounded-full bg-secondary/10 text-secondary"
+                ? "text-xs font-medium px-2.5 py-1 rounded-full bg-secondary/10 text-foreground"
                 : "text-xs font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground"
             }
           >
@@ -37,10 +37,10 @@ export function EjemploCard({ ejemplo }: { ejemplo: Ejemplo }) {
         <p className="text-muted-foreground">{ejemplo.resumen}</p>
         <Link
           href={`/ejemplos/${ejemplo.slug}`}
-          className="inline-flex items-center gap-1 text-primary font-medium hover:gap-2 transition-all duration-200"
+          className="inline-flex items-center gap-1 text-foreground font-medium hover:gap-2 transition-all duration-200"
         >
           Ver el ejemplo
-          <IconArrowUpRight className="w-4 h-4" stroke={2} />
+          <IconArrowUpRight className="w-4 h-4 text-primary" stroke={2} />
         </Link>
       </CardContent>
     </Card>

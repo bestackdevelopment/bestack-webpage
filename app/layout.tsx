@@ -41,8 +41,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className={`${jura.variable} ${montserrat.variable} font-sans`}>
+    <html
+      lang="es"
+      className={`${jura.variable} ${montserrat.variable}`}
+    >
+      <body className="font-sans">
         <Navbar />
         {children}
         <Footer />

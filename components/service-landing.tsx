@@ -14,7 +14,7 @@ type Accent = "primary" | "secondary" | "accent"
 
 const accentButton: Record<Accent, string> = {
   primary: "bg-primary hover:bg-primary/90",
-  secondary: "bg-secondary hover:bg-secondary/90",
+  secondary: "bg-secondary hover:bg-secondary/90 text-foreground",
   accent: "bg-accent hover:bg-accent/90",
 }
 
@@ -73,7 +73,7 @@ export function ServiceLanding({ data }: { data: ServiceLandingData }) {
           <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-balance">
             {data.hero.titleLead}{" "}
             <span
-              className={`bg-gradient-to-r ${data.hero.accentGradient} bg-clip-text text-transparent`}
+              className={`bg-gradient-to-r ${data.hero.accentGradient} bg-clip-text text-transparent pb-[0.15em]`}
             >
               {data.hero.titleAccent}
             </span>
