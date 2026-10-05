@@ -54,6 +54,12 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 Las 6 landings de `/servicios/*` comparten la plantilla `components/service-template.tsx`
 (unificadas el 5-oct-2026; la antigua `service-landing.tsx` se retiró).
 
+> **Desviación visual aceptada:** la plantilla reproduce el look de informativas, pero
+> tokeniza el brillo del hero (círculos `primary`/`secondary` con `blur` en vez de los
+> antiguos degradados radiales `rgba`) y los degradados de los iconos de beneficio (paradas
+> de token en vez de las paradas de marca más claras). Desviación menor respecto al hero
+> original de informativas, registrada para trazabilidad.
+
 ## Estilos y accesibilidad (estado, 5-oct-2026)
 
 - **Tipografía:** Montserrat como fuente general. Las variables de fuente de `next/font` se

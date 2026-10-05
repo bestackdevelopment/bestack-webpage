@@ -40,6 +40,7 @@ pnpm lint
 | `/servicios/ecommerce` | Landing de servicio |
 | `/servicios/mantenimiento-web` | Landing de servicio |
 | `/servicios/finaliza-tu-web` | Landing de servicio |
+| `/servicios/agente-ia` | Landing de servicio |
 
 ## Notas
 
