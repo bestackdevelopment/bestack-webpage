@@ -42,7 +42,7 @@ export type ServiceTemplateData = {
   }
   incluye: {
     lead?: { heading: string; body: string[] }
-    items: IncluyeItem[]
+    items: readonly IncluyeItem[]
   }
   beneficios: { icon: TablerIcon; accent: Accent; text: string }[]
   casosUso: { icon: TablerIcon; accent: Accent; title: string; description: string }[]
@@ -78,6 +78,13 @@ const accentText: Record<Accent, string> = {
   accent: "text-accent",
 }
 
+/** Texto legible sobre un fondo sólido del acento correspondiente. */
+const accentOn: Record<Accent, string> = {
+  primary: "text-primary-foreground",
+  secondary: "text-secondary-foreground",
+  accent: "text-accent-foreground",
+}
+
 const accentSolid: Record<Accent, string> = {
   primary: "from-primary to-primary/80",
   secondary: "from-secondary to-secondary/80",
@@ -88,6 +95,23 @@ const accentFade: Record<Accent, string> = {
   primary: "from-primary/10 to-primary/5",
   secondary: "from-secondary/10 to-secondary/5",
   accent: "from-accent/10 to-accent/5",
+}
+
+function SectionHeader({
+  title,
+  subtitle,
+}: {
+  title: string
+  subtitle?: string
+}) {
+  return (
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold mb-4">{title}</h2>
+      {subtitle && (
+        <p className="text-muted-foreground text-lg">{subtitle}</p>
+      )}
+    </div>
+  )
 }
 
 function ServiceGraphic() {
@@ -119,7 +143,10 @@ function ServiceGraphic() {
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-2xl shadow-primary/40">
-            <IconSparkles className="w-8 h-8 text-white" stroke={2} />
+            <IconSparkles
+              className="w-8 h-8 text-primary-foreground"
+              stroke={2}
+            />
           </div>
         </div>
       </div>
@@ -194,9 +221,9 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               <h3 className="text-2xl font-bold mb-4">
                 {data.incluye.lead.heading}
               </h3>
-              {data.incluye.lead.body.map((paragraph, index) => (
+              {data.incluye.lead.body.map((paragraph) => (
                 <p
-                  key={index}
+                  key={paragraph}
                   className="text-muted-foreground leading-relaxed mb-4 last:mb-0"
                 >
                   {paragraph}
@@ -210,7 +237,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               const Icon = item.icon
               return (
                 <div
-                  key={index}
+                  key={item.title}
                   className={`flex items-start gap-4 p-6 bg-card rounded-xl border border-border ${accentHoverBorder[item.accent]} transition-colors group`}
                 >
                   <div
@@ -239,27 +266,26 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       {/* Beneficios Principales */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Beneficios Principales</h2>
-            {data.copy?.beneficiosSubtitle && (
-              <p className="text-muted-foreground text-lg">
-                {data.copy.beneficiosSubtitle}
-              </p>
-            )}
-          </div>
+          <SectionHeader
+            title="Beneficios Principales"
+            subtitle={data.copy?.beneficiosSubtitle}
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.beneficios.map((beneficio, index) => {
+            {data.beneficios.map((beneficio) => {
               const Icon = beneficio.icon
               return (
                 <div
-                  key={index}
+                  key={beneficio.text}
                   className="group relative bg-card p-6 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4">
                     <div
                       className={`w-12 h-12 rounded-lg bg-gradient-to-br ${accentSolid[beneficio.accent]} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <Icon className="w-6 h-6 text-white" stroke={2} />
+                      <Icon
+                        className={`w-6 h-6 ${accentOn[beneficio.accent]}`}
+                        stroke={2}
+                      />
                     </div>
                     <div className="flex-1 pt-1">
                       <span className="font-semibold text-base leading-snug">
@@ -277,20 +303,13 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       {/* Casos de Uso */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Casos de Uso</h2>
-            {data.copy?.casosSubtitle && (
-              <p className="text-muted-foreground text-lg">
-                {data.copy.casosSubtitle}
-              </p>
-            )}
-          </div>
+          <SectionHeader title="Casos de Uso" subtitle={data.copy?.casosSubtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {data.casosUso.map((caso, index) => {
+            {data.casosUso.map((caso) => {
               const Icon = caso.icon
               return (
                 <Card
-                  key={index}
+                  key={caso.title}
                   className="relative border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-xl group overflow-hidden"
                 >
                   <div
@@ -298,8 +317,13 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                   />
                   <CardHeader className="relative">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-7 h-7 text-accent" stroke={1.5} />
+                      <div
+                        className={`w-14 h-14 rounded-xl ${accentIconBox[caso.accent]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <Icon
+                          className={`w-7 h-7 ${accentText[caso.accent]}`}
+                          stroke={1.5}
+                        />
                       </div>
                       <CardTitle className="text-xl">{caso.title}</CardTitle>
                     </div>
@@ -319,18 +343,14 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       {/* Preguntas Frecuentes */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Preguntas Frecuentes</h2>
-            {data.copy?.faqsSubtitle && (
-              <p className="text-muted-foreground text-lg">
-                {data.copy.faqsSubtitle}
-              </p>
-            )}
-          </div>
+          <SectionHeader
+            title="Preguntas Frecuentes"
+            subtitle={data.copy?.faqsSubtitle}
+          />
           <Accordion type="single" collapsible className="space-y-4">
             {data.faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={faq.question}
                 value={`item-${index}`}
                 className="bg-card px-6 rounded-xl border border-border hover:border-accent/50 transition-colors"
               >

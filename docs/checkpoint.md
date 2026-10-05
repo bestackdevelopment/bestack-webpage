@@ -51,8 +51,10 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 | `/servicios/agente-ia` | ✅ Funcional |
 | Blog | ❌ **No existe** — Fase 3 |
 
-Las 6 landings de `/servicios/*` comparten la plantilla `components/service-template.tsx`
-(unificadas el 5-oct-2026; la antigua `service-landing.tsx` se retiró).
+Las 6 landings de `/servicios/*` — `paginas-informativas`, `paginas-corporativas`,
+`ecommerce`, `mantenimiento-web`, `finaliza-tu-web` y `agente-ia` — comparten la plantilla
+`components/service-template.tsx` (unificadas el 5-oct-2026; la antigua `service-landing.tsx`
+se retiró).
 
 > **Desviación visual aceptada:** la plantilla reproduce el look de informativas, pero
 > tokeniza el brillo del hero (círculos `primary`/`secondary` con `blur` en vez de los

@@ -6,7 +6,7 @@ import type { IncluyeItem } from "@/components/service-template"
  * Contenido PROVISIONAL para la sección «¿Qué incluye?» de los servicios que
  * todavía no tienen copy propio. El Patrón lo reemplazará por página.
  */
-export const incluyeGenerico: IncluyeItem[] = [
+export const incluyeGenerico: readonly IncluyeItem[] = [
   {
     icon: IconTarget,
     accent: "primary",
