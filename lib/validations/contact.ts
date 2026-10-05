@@ -27,6 +27,7 @@ export const contactFormSchema = z.object({
       maintenance: z.boolean(),
       catalog: z.boolean(),
       finalize: z.boolean(),
+      aiAgent: z.boolean(),
     })
     .refine(atLeastOneTrue, { message: "Selecciona al menos un servicio" }),
   contactMethods: z

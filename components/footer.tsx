@@ -63,6 +63,14 @@ export default function Footer() {
                   Finaliza tu Web
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/servicios/agente-ia"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Agente IA
+                </Link>
+              </li>
             </ul>
           </div>
 

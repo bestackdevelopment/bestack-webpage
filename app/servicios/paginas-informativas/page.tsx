@@ -121,9 +121,9 @@ export default function PaginasInformativasPage() {
   ]
 
   return (
-    <main className="min-h-screen pt-24">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#FD4B5B]/5 via-[#42BEC0]/5 to-[#665DE2]/5" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(253,75,91,0.1),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(66,190,192,0.1),transparent_50%)]" />

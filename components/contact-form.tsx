@@ -10,6 +10,7 @@ import {
   IconDeviceLaptop,
   IconMail,
   IconPaint,
+  IconRobot,
   IconShoppingCartSearch,
 } from "@tabler/icons-react"
 
@@ -38,6 +39,7 @@ export function ContactForm() {
         maintenance: false,
         catalog: false,
         finalize: false,
+        aiAgent: false,
       },
       contactMethods: {
         whatsApp: false,
@@ -152,7 +154,7 @@ export function ContactForm() {
             <div className="w-full flex flex-col gap-4">
               <span className="font-semibold text-sm">Estoy interesado en:</span>
               <div className="w-full flex flex-col gap-3">
-                <div className="w-full flex flex-col sm:flex-row justify-between gap-3">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Controller
                     name="services.info"
                     control={control}
@@ -199,7 +201,7 @@ export function ContactForm() {
                   />
                 </div>
 
-                <div className="w-full flex flex-col sm:flex-row justify-between gap-3">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Controller
                     name="services.maintenance"
                     control={control}
@@ -246,7 +248,7 @@ export function ContactForm() {
                   />
                 </div>
 
-                <div className="w-full flex justify-start">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Controller
                     name="services.finalize"
                     control={control}
@@ -265,6 +267,28 @@ export function ContactForm() {
                             stroke={1}
                           />
                           <span className="text-sm">Finaliza tu web</span>
+                        </div>
+                      </label>
+                    )}
+                  />
+                  <Controller
+                    name="services.aiAgent"
+                    control={control}
+                    render={({ field }) => (
+                      <label className="flex items-center gap-3 cursor-pointer group">
+                        <input
+                          type="checkbox"
+                          checked={field.value}
+                          onChange={field.onChange}
+                          className="w-4 h-4 cursor-pointer accent-primary"
+                        />
+                        <div className="flex items-center gap-2">
+                          <IconRobot
+                            className="text-primary group-hover:scale-110 transition-transform"
+                            size={28}
+                            stroke={1}
+                          />
+                          <span className="text-sm">Agente IA</span>
                         </div>
                       </label>
                     )}

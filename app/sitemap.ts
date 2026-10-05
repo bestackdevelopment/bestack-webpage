@@ -11,6 +11,7 @@ const routes = [
   "/servicios/ecommerce",
   "/servicios/mantenimiento-web",
   "/servicios/finaliza-tu-web",
+  "/servicios/agente-ia",
 ]
 
 const ejemploSlugs = ["bidhara", "laserbox", "sysop", "bahia"]

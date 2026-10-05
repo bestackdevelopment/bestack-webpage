@@ -49,9 +49,9 @@ export default async function EjemploDetallePage({ params }: Props) {
   const siguiente = ejemplos[(index + 1) % ejemplos.length]
 
   return (
-    <main className="min-h-screen pt-24">
+    <main className="min-h-screen">
       {/* 1. Portada */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
             {ejemplo.giro}
