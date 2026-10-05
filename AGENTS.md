@@ -89,9 +89,10 @@ pnpm lint
 - **Iconos:** siempre `@tabler/icons-react`. No añadir `lucide-react` ni SVGs inline.
 - **Colores:** usar los tokens del tema (`primary`, `secondary`, `accent`…) definidos en
   `app/globals.css`, nunca hex sueltos.
-- **Páginas de servicio:** `ecommerce`, `mantenimiento-web`, `paginas-corporativas` y
-  `finaliza-tu-web` comparten `components/service-landing.tsx` y solo aportan su objeto de
-  datos. `paginas-informativas` tiene diseño propio.
+- **Páginas de servicio:** las seis landings de `/servicios/*` (`paginas-informativas`,
+  `paginas-corporativas`, `ecommerce`, `mantenimiento-web`, `finaliza-tu-web` y `agente-ia`)
+  comparten `components/service-template.tsx` y solo aportan su objeto de datos
+  (`ServiceTemplateData`).
 - **Estado global:** crear stores en `store/` solo cuando el estado sea compartido entre
   componentes. El menú móvil del navbar usa `useState` local a propósito.
 - **Logo:** componente `components/logo.tsx`.

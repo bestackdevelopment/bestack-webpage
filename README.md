@@ -48,9 +48,10 @@ pnpm lint
   `/proyectos/[slug]`.
 - **Formulario de contacto:** la validación (Zod) funciona, pero el envío todavía **no
   está conectado** a ningún backend (`components/contact-form.tsx`, `onSubmit`).
-- **Páginas de servicio:** `ecommerce`, `mantenimiento-web`, `paginas-corporativas` y
-  `finaliza-tu-web` comparten `components/service-landing.tsx` y solo aportan su objeto
-  de datos. `paginas-informativas` tiene diseño propio.
+- **Páginas de servicio:** las seis landings de `/servicios/*` (`paginas-informativas`,
+  `paginas-corporativas`, `ecommerce`, `mantenimiento-web`, `finaliza-tu-web` y `agente-ia`)
+  comparten `components/service-template.tsx` y solo aportan su objeto de datos
+  (`ServiceTemplateData`).
 - **Estado global (Zustand):** crear stores en `store/` cuando aparezca estado
   compartido entre componentes. El menú móvil del navbar usa `useState` local a
   propósito.
