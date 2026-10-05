@@ -1,8 +1,12 @@
 import Link from "next/link"
 import {
   IconCpu,
+  IconFileText,
+  IconHammer,
   IconHeadset,
   IconPalette,
+  IconRocket,
+  IconSearch,
   IconTrendingUp,
 } from "@tabler/icons-react"
 
@@ -43,25 +47,35 @@ export default function HomePage() {
 
   const pasos = [
     {
+      icon: IconSearch,
       title: "Diagnóstico",
       description:
         "Revisamos qué necesitas y cómo opera hoy tu negocio. De ahí sale el alcance: qué se construye y qué no.",
     },
     {
+      icon: IconFileText,
       title: "Propuesta",
       description:
         "Te entregamos alcance, tiempo y precio por escrito, para que sepas exactamente qué estás comprando.",
     },
     {
+      icon: IconHammer,
       title: "Construcción",
       description:
         "Se construye por tramos y los ves funcionando en el camino: no esperas hasta el final para ver el sistema.",
     },
     {
+      icon: IconRocket,
       title: "Entrega y soporte",
       description:
         "El sistema se entrega funcionando y documentado, con acompañamiento y actualizaciones.",
     },
+  ]
+
+  const lineGradients = [
+    "from-primary to-secondary",
+    "from-secondary to-accent",
+    "from-accent to-primary",
   ]
 
   return (
@@ -207,28 +221,39 @@ export default function HomePage() {
             </p>
           </div>
           <ol className="relative">
-            {pasos.map((paso, index) => (
-              <li
-                key={paso.title}
-                className="relative flex gap-5 pb-10 last:pb-0"
-              >
-                {index < pasos.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-5 top-10 bottom-0 w-px -translate-x-1/2 bg-border"
-                  />
-                )}
-                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 font-bold text-foreground ring-1 ring-primary/20">
-                  {index + 1}
-                </span>
-                <div className="pt-1.5">
-                  <h3 className="text-xl font-semibold mb-1">{paso.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {paso.description}
-                  </p>
-                </div>
-              </li>
-            ))}
+            {pasos.map((paso, index) => {
+              const Icon = paso.icon
+
+              return (
+                <li
+                  key={paso.title}
+                  className="relative flex gap-5 pb-10 last:pb-0"
+                >
+                  {index < pasos.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className={`absolute left-5 top-10 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b ${lineGradients[index % lineGradients.length]}`}
+                    />
+                  )}
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-[19px] font-bold text-primary-foreground">
+                    {index + 1}
+                  </span>
+                  <div className="pt-1.5">
+                    <h3 className="mb-1 flex items-center gap-2 text-xl font-semibold">
+                      <Icon
+                        className="size-5 shrink-0 text-primary"
+                        stroke={1.5}
+                        aria-hidden="true"
+                      />
+                      {paso.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {paso.description}
+                    </p>
+                  </div>
+                </li>
+              )
+            })}
           </ol>
         </div>
       </section>

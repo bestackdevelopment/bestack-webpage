@@ -20,10 +20,10 @@ export function AllServices() {
             <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-balance leading-tight">
               Servicios que ofrecemos
             </h2>
-            <p className="text-foreground/80 text-base leading-relaxed">
+            <p className="text-muted-foreground text-base leading-relaxed">
               Nos enfocamos en tus necesidades, transformando tus requerimientos
               en soluciones web de manera
-              <span className="text-foreground font-semibold">
+              <span className="text-muted-foreground font-semibold">
                 {" "}
                 eficaz, rápida y confiable.
               </span>
@@ -40,14 +40,14 @@ export function AllServices() {
               </h3>
             </div>
             <div className="w-full flex flex-col gap-3 text-sm sm:text-base">
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Cada página está meticulosamente construida para ofrecer
                 contenido claro y accesible, garantizando una experiencia de
                 usuario superior.
               </p>
               <Link
                 href="/servicios/paginas-informativas"
-                className="w-fit flex items-center gap-2 text-foreground hover:gap-3 transition-all duration-200 font-medium"
+                className="w-fit flex items-center gap-2 text-muted-foreground hover:gap-3 transition-all duration-200 font-medium"
               >
                 <span className="underline underline-offset-4 decoration-primary/50">
                   Ver más
@@ -67,14 +67,14 @@ export function AllServices() {
               </h3>
             </div>
             <div className="w-full flex flex-col gap-3 text-sm sm:text-base">
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Utilizamos tecnologías de última generación para reforzar la
                 presencia de tu marca y comunicar tu profesionalismo de manera
                 efectiva.
               </p>
               <Link
                 href="/servicios/paginas-corporativas"
-                className="w-fit flex items-center gap-2 text-foreground hover:gap-3 transition-all duration-200 font-medium"
+                className="w-fit flex items-center gap-2 text-muted-foreground hover:gap-3 transition-all duration-200 font-medium"
               >
                 <span className="underline underline-offset-4 decoration-primary/50">
                   Ver más
@@ -97,7 +97,7 @@ export function AllServices() {
               </h3>
             </div>
             <div className="w-full flex flex-col gap-3 text-sm sm:text-base">
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Nuestro servicio incluye actualizaciones regulares, monitoreo de
                 seguridad, copias de seguridad automáticas y optimización del
                 rendimiento. Nos encargamos de los aspectos técnicos para que tú
@@ -105,7 +105,7 @@ export function AllServices() {
               </p>
               <Link
                 href="/servicios/mantenimiento-web"
-                className="w-fit flex items-center gap-2 text-foreground hover:gap-3 transition-all duration-200 font-medium"
+                className="w-fit flex items-center gap-2 text-muted-foreground hover:gap-3 transition-all duration-200 font-medium"
               >
                 <span className="underline underline-offset-4 decoration-primary/50">
                   Ver más
@@ -125,7 +125,7 @@ export function AllServices() {
               </h3>
             </div>
             <div className="w-full flex flex-col gap-3 text-sm sm:text-base">
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Optimiza la visualización de productos y facilita el acceso a la
                 información con un catálogo en línea que se adapta a todos los
                 dispositivos. Maximiza tu alcance y mejora la interacción con tu
@@ -133,7 +133,7 @@ export function AllServices() {
               </p>
               <Link
                 href="/servicios/ecommerce"
-                className="w-fit flex items-center gap-2 text-foreground hover:gap-3 transition-all duration-200 font-medium"
+                className="w-fit flex items-center gap-2 text-muted-foreground hover:gap-3 transition-all duration-200 font-medium"
               >
                 <span className="underline underline-offset-4 decoration-primary/50">
                   Ver más
@@ -151,13 +151,13 @@ export function AllServices() {
               <h3 className="text-lg sm:text-xl font-semibold">Finaliza tu web</h3>
             </div>
             <div className="w-full flex flex-col gap-3 text-sm sm:text-base">
-              <p className="text-foreground/80 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Ya sea que tu proyecto haya quedado estancado o necesite ajustes
                 finales, nuestro equipo se encarga de llevarlo a la etapa final.
               </p>
               <Link
                 href="/servicios/finaliza-tu-web"
-                className="w-fit flex items-center gap-2 text-foreground hover:gap-3 transition-all duration-200 font-medium"
+                className="w-fit flex items-center gap-2 text-muted-foreground hover:gap-3 transition-all duration-200 font-medium"
               >
                 <span className="underline underline-offset-4 decoration-primary/50">
                   Ver más

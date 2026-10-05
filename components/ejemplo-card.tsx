@@ -21,13 +21,13 @@ export function EjemploCard({ ejemplo }: { ejemplo: Ejemplo }) {
           <p className="text-sm text-muted-foreground mt-1">{ejemplo.giro}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-foreground">
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-foreground/80">
             {ejemplo.tipo}
           </span>
           <span
             className={
               ejemplo.estado === "En operación"
-                ? "text-xs font-medium px-2.5 py-1 rounded-full bg-secondary/10 text-foreground"
+                ? "text-xs font-medium px-2.5 py-1 rounded-full bg-secondary/10 text-foreground/80"
                 : "text-xs font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground"
             }
           >

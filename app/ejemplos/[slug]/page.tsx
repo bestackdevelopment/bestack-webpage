@@ -63,13 +63,13 @@ export default async function EjemploDetallePage({ params }: Props) {
             {ejemplo.resumen}
           </p>
           <div className="flex flex-wrap justify-center gap-2 mb-10">
-            <span className="text-sm font-medium px-3 py-1.5 rounded-full bg-primary/10 text-foreground">
+            <span className="text-sm font-medium px-3 py-1.5 rounded-full bg-primary/10 text-foreground/80">
               {ejemplo.tipo}
             </span>
             <span
               className={
                 ejemplo.estado === "En operación"
-                  ? "text-sm font-medium px-3 py-1.5 rounded-full bg-secondary/10 text-foreground"
+                  ? "text-sm font-medium px-3 py-1.5 rounded-full bg-secondary/10 text-foreground/80"
                   : "text-sm font-medium px-3 py-1.5 rounded-full bg-muted text-muted-foreground"
               }
             >
