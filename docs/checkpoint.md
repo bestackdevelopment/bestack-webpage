@@ -43,12 +43,16 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 | `/ejemplos` | ✅ Índice con filtros por tipo de solución + 4 tarjetas |
 | `/ejemplos/[slug]` | ✅ 4 páginas SSG (bidhara, laserbox, sysop, bahia), 8 secciones |
 | `/proyectos` | ❌ Eliminado — renombrado a `/ejemplos` |
-| `/servicios/paginas-informativas` | ✅ Funcional (diseño propio) |
-| `/servicios/paginas-corporativas` | ✅ Funcional (vía `service-landing.tsx`) |
+| `/servicios/paginas-informativas` | ✅ Funcional |
+| `/servicios/paginas-corporativas` | ✅ Funcional |
 | `/servicios/ecommerce` | ✅ Funcional + enlace al ejemplo laserbox |
-| `/servicios/mantenimiento-web` | ✅ Funcional (vía `service-landing.tsx`) |
-| `/servicios/finaliza-tu-web` | ✅ Funcional (vía `service-landing.tsx`) |
+| `/servicios/mantenimiento-web` | ✅ Funcional |
+| `/servicios/finaliza-tu-web` | ✅ Funcional |
+| `/servicios/agente-ia` | ✅ Funcional |
 | Blog | ❌ **No existe** — Fase 3 |
+
+Las 6 landings de `/servicios/*` comparten la plantilla `components/service-template.tsx`
+(unificadas el 5-oct-2026; la antigua `service-landing.tsx` se retiró).
 
 ## Estilos y accesibilidad (estado, 5-oct-2026)
 
@@ -60,6 +64,9 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
   de texto (`--color-muted-foreground`) es `#696969`.
   - **Excepción aceptada por el Patrón:** los encabezados con degradado de marca (extremo
     coral 2.5–3.0 sobre fondos teñidos, por debajo del 3.0 de texto grande).
+- **Tokens de color:** las landings de `/servicios/*` usan solo tokens del tema (`primary`,
+  `secondary`, `accent`…); se eliminaron los hex sueltos (`#FD4B5B`, `#42BEC0`, `#665DE2`,
+  etc.) de su código al unificarlas en `components/service-template.tsx`.
 - **Cómo trabajamos:** línea de tiempo vertical (línea a la izquierda, nodos con degradado de
   marca, un icono Tabler por paso). Ver `docs/contenido-home.md`.
 
