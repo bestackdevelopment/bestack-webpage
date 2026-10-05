@@ -2,6 +2,13 @@
 
 Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con cualquier agente.
 
+> ⚠️ **El estado del proyecto vive en Notion.** Este archivo es solo el estado *técnico* del
+> repo (rutas, verificación, cómo proceder). Antes de retomar: abre la página del proyecto en
+> Notion y revisa las fases y pendientes abiertos. Ver `AGENTS.md` → *Fuente de verdad*.
+>
+> - Proyecto «BeStack — Sitio web» → https://app.notion.com/p/BeStack-Sitio-web-3f032530bf558183bce3d431032c9ca8
+> - Raíz de proyectos → https://app.notion.com/p/BeStack-Development-Proyectos-3f032530bf5581d5aa76c460d8c48460
+
 **Última verificación:** 23 de septiembre de 2026 (agente, tras ejecutar la Fase 2).
 
 ## Qué es

@@ -6,34 +6,50 @@ Guía para agentes de IA que trabajan en este repositorio. Léela antes de tocar
 
 **bestack-webpage** — sitio corporativo de BeStack Development (agencia de desarrollo web).
 
-> **Punto de estado actual**: leer **`docs/checkpoint.md`** antes de retomar el trabajo.
-> Ahí está el estado real, los pendientes y cómo proceder.
+> **Punto de estado actual**: el estado del proyecto vive en **Notion** (ver *Fuente de verdad*).
+> Empezar por la página del proyecto, no por estos archivos.
 
-## Documentación del proyecto
+## Fuente de verdad: Notion
+
+**Notion es la fuente de verdad del proyecto: lo que no está ahí, no existe.**
+
+- **Notion** → estado, avance, fases, pendientes, decisiones y el contenido del blog.
+  **Ahí escriben los dos agentes.**
+- **Este repo** → lo técnico que vive pegado al código: stack, comandos, convenciones,
+  y el copy que el código consume.
+
+### Referencias
+
+| Qué | Dónde |
+|---|---|
+| Raíz de proyectos | https://app.notion.com/p/BeStack-Development-Proyectos-3f032530bf5581d5aa76c460d8c48460 |
+| Proyecto «BeStack — Sitio web» | https://app.notion.com/p/BeStack-Sitio-web-3f032530bf558183bce3d431032c9ca8 |
+| Blog (aparte — es contenido, no gestión) | https://app.notion.com/p/Blog-BeStack-Development-3f032530bf5581ee9fcce88248da1974 |
+
+Dentro de la página del proyecto viven tres bases de datos: **Fases**, **Pendientes** y
+**Decisiones**. Cada fila se abre como página propia — **el detalle va en la fila, no en
+el texto de la página**.
+
+Workspace: **BeStackDevelopment's Space**. El bot `DevelopmentServer` ya tiene acceso.
+
+## Documentación en el repo
 
 | Archivo | Qué contiene |
 |---|---|
-| `docs/checkpoint.md` | Estado actual, pendientes verificados y cómo proceder. **Empezar aquí.** |
-| `docs/plan-de-trabajo.md` | Fases, orden de trabajo, criterios de aceptación y decisiones tomadas. |
-| `docs/ejemplos.md` | Sección de Ejemplos: qué se muestra, estructura de las páginas y copy de los 4. |
+| `docs/ejemplos.md` | Copy y estructura de la sección de Ejemplos. **El copy sale de aquí, no de la imaginación.** |
 | `docs/contenido-home.md` | Copy de las secciones del home que se ajustan ("Cómo trabajamos", "Proyectos Destacados"). |
-
-**Al terminar una tarea, actualizar `docs/checkpoint.md`.** Es el mecanismo para que
-cualquier agente (o el Patrón) pueda retomar sin releer el historial completo.
+| `docs/plan-de-trabajo.md` | Detalle técnico de cada fase y criterios de aceptación. *(El estado vive en Notion.)* |
+| `docs/checkpoint.md` | Estado técnico del repo: rutas, verificación, cómo proceder. *(El estado de producto vive en Notion.)* |
 
 ## Sincronización de la información (regla dura)
 
-Estos documentos son la **única fuente de verdad** del proyecto: **lo que no está aquí, no
-existe**. El Patrón —a través de subfire, su asistente— mantiene la información de negocio; el
-agente en el Dev Server ejecuta y mantiene el estado.
-
 | Cuándo | Qué actualizar |
 |---|---|
-| Antes de empezar | Leer `docs/checkpoint.md` y `docs/ejemplos.md` |
-| Al terminar una tarea | `docs/checkpoint.md`: estado del repo, rutas, pendientes abiertos |
-| Si cambia una decisión de producto o contenido | `docs/plan-de-trabajo.md` (tabla de decisiones) y `docs/ejemplos.md` si toca contenido |
+| Antes de empezar | **Notion** — la página del proyecto: fases abiertas y pendientes. Y `docs/ejemplos.md` si vas a tocar contenido |
+| Al terminar una tarea | **Notion** — la fase correspondiente (estado, avance %) y sus pendientes |
+| Si cambia una decisión de producto o contenido | **Notion** → base `Decisiones` del proyecto |
 | Si falta un dato de contenido | **Preguntar.** El copy sale de `docs/ejemplos.md`, no de la imaginación |
-| Al cerrar un tramo | Repo consistente (`pnpm lint`, `pnpm build`) y commit registrado en el checkpoint |
+| Al cerrar un tramo | Repo consistente (`pnpm lint`, `pnpm build`) y commit |
 
 **Una decisión que solo vive en una conversación no existe para el siguiente agente.**
 Si algo se acordó hablando y no está en un documento, escríbelo.
