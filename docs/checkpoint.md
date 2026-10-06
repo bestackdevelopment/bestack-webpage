@@ -26,7 +26,7 @@ formulario. Más adelante incluye un blog.
 | Rama | `main` |
 | Última actualización | 6-oct-2026 (rename a «Casos de uso», tienda/catálogos en línea, docs sincronizados) |
 | Working tree | **limpio** |
-| vs `origin/main` | **1 commit local sin subir** (6-oct-2026) — el push se confirma |
+| vs `origin/main` | **Sincronizado** — push hecho el 6-oct-2026 |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 
 ## Stack
