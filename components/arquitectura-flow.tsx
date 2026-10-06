@@ -14,20 +14,25 @@ import {
 import "@xyflow/react/dist/style.css"
 import {
   IconApi,
+  IconAppWindow,
   IconBrandNextjs,
   IconBrandNodejs,
   IconBrandPrisma,
   IconBrandReact,
   IconBrandTailwind,
+  IconBrandTelegram,
   IconBrandTypescript,
   IconCloud,
   IconCloudUpload,
   IconDatabase,
   IconDeviceMobile,
   IconFileText,
+  IconLock,
   IconRobot,
   IconSearch,
   IconSettings,
+  IconShare,
+  IconShoppingBag,
   IconUsers,
 } from "@tabler/icons-react"
 
@@ -46,6 +51,11 @@ type TablerIcon = ComponentType<{
 /** Clave de icono (en los datos) → icono Tabler. */
 const ICONOS: Record<ArquitecturaIcono, TablerIcon> = {
   settings: IconSettings,
+  "app-window": IconAppWindow,
+  lock: IconLock,
+  "shopping-bag": IconShoppingBag,
+  social: IconShare,
+  telegram: IconBrandTelegram,
   "device-mobile": IconDeviceMobile,
   users: IconUsers,
   api: IconApi,

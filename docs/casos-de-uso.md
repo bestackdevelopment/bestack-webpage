@@ -57,10 +57,13 @@ Ocho secciones, en este orden:
 
 1. **Portada** — nombre, giro, una línea de qué es, etiquetas de tipo y estado, CTA.
 2. **El reto** — cómo operaba el negocio antes (2-3 párrafos).
-3. **La solución** — las piezas del sistema. En Bidhara y LaserBox son 3 tarjetas
-   (catálogo/tienda en línea · sistema de operación · agente IA). En SysOp y Bahía, la descripción
-   de la plataforma/sitio.
-4. **Cómo se aplicó** — stack y arquitectura. Aquí va un diagrama de la arquitectura.
+3. **La solución** — una tarjeta por pieza. LaserBox lleva 6 (aplicación interna · base de
+   datos centralizada · agente IA · tienda en línea · nube privada · red privada) y Bidhara 3
+   (catálogo en línea · sistema de operación · agente IA). En SysOp y Bahía, la descripción de
+   la plataforma/sitio.
+4. **Cómo se aplicó** — **solo el diagrama** de cómo se conectan las piezas. **No se publica la
+   lista de stack:** el cliente que contrata no la lee y la sección se sostiene con el diagrama
+   (decisión del Patrón, 6-oct-2026).
 5. **Por qué así** — las decisiones y **su razón**. *Es la sección que vende: demuestra
    criterio, no herramientas.* Mínimo 4 decisiones, cada una con su porqué.
 6. **Qué cambió** — el efecto en la operación. **Sin métricas inventadas**: si el Patrón no
@@ -94,9 +97,10 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 # Copy
 
-> **Estado del copy:** los 4 textos son **borrador v1**, pendiente de la aprobación del tono
-> por el Patrón. Construir las páginas con esto; los ajustes de redacción no cambian la
-> estructura.
+> **Estado del copy:** **LaserBox ya está definido y aprobado por el Patrón** (6-oct-2026). Los
+> otros tres siguen como **borrador v1**, pendientes de definir caso por caso. El detalle de
+> cada caso se trabaja en Notion (base «Casos de uso — contenido»); este doc guarda el copy
+> que el código consume.
 >
 > **"Qué cambió" va sin métricas** hasta que el Patrón aporte los números. No estimarlos.
 
@@ -116,12 +120,12 @@ cuánto se gastó, qué queda disponible.
    a usar.
 2. **Sistema de operación** — ventas multi-artículo, clientes, gastos por categoría y
    reportes en PDF. Mobile-first, porque el negocio se opera desde el celular.
-3. **Agente IA "Cortana"** — el dueño le escribe por Telegram: registra ventas, consulta
+3. **Agente IA** — el dueño le escribe por Telegram: registra ventas, consulta
    inventario, sube fotos y pide su reporte del día. Trabaja sobre **la misma base de datos**
    que la app, con permisos restringidos.
 
-**Cómo se aplicó.** PostgreSQL + Prisma · Express + TypeScript · React + Vite + Tailwind +
-shadcn/ui · Recharts · JWT · reportes en PDF · Hermes Agent sobre Telegram.
+> **Los agentes no se nombran.** El nombre del agente es interno del cliente y no se publica
+> (decisión del 6-oct-2026). Aplica a los dos casos que traían agente con nombre.
 
 **Por qué así.**
 
@@ -147,22 +151,28 @@ shadcn/ui · Recharts · JWT · reportes en PDF · Hermes Agent sobre Telegram.
 > entre LaserBox y BeStack. Los sistemas que BeStack construyó para LaserBox se presentan como
 > el trabajo que son.
 
-**El reto.** Un taller que cotiza a mano y lleva la producción y el inventario repartidos entre
-la memoria de quien atiende y hojas de cálculo. Cotizar un trabajo tomaba tiempo y el precio
-terminaba dependiendo de quién lo calculara.
+> **Definido y aprobado por el Patrón el 6-oct-2026.** El agente no se nombra.
 
-**La solución — tres piezas:**
+**El reto.** La operación era la de un negocio de paso: se atendía lo que llegaba y todo se
+anotaba a lápiz y papel. Sin administración ni organización detrás, el control quedaba en la
+memoria de quien atendía.
 
-1. **Sistema de operación** — clientes, cotizaciones, producción, inventario y usuarios.
-   Cotizar deja de ser un cálculo a mano: el precio sale del sistema, no de la memoria.
-2. **Tienda en línea** *(en desarrollo)* — el canal de venta en línea de los productos del taller.
-3. **Agente IA "Aserrín"** — opera sobre el mismo sistema: consulta y registra desde Telegram,
-   sin abrir la aplicación.
+**La solución — seis piezas, una sola fuente de verdad:**
 
-**Cómo se aplicó.** Express + Prisma + SQLite · React + Vite + Tailwind CSS · Tabler Icons ·
-monorepo pnpm · API con autenticación.
+1. **Aplicación interna** — cotizaciones, órdenes de producción, materiales y proveedores en un
+   solo lugar.
+2. **Base de datos centralizada** — toda la información del negocio en una sola fuente: es la
+   que alimenta a la aplicación, a la tienda y al agente.
+3. **Agente IA** — corre en infraestructura propia, entra a la aplicación y responde por
+   Telegram: consulta y registra sin abrir el sistema. También publica contenido en Facebook e
+   Instagram y revisa los mensajes.
+4. **Tienda en línea** *(en desarrollo)* — se construye con los productos que ya viven en la
+   base de datos centralizada.
+5. **Nube privada** — los archivos del negocio (planos, cotizaciones, evidencia), ordenados y
+   accesibles desde la operación.
+6. **Red privada** — se entra a la aplicación sin exponer nada a internet.
 
-**Por qué así.**
+**Por qué así.** La razón de fondo: digitalizar el negocio y darle las herramientas para crecer.
 
 - **SQLite, no un motor grande.** Un taller con un solo punto de operación no necesita un
   servidor de base de datos: un archivo respaldable es más simple de mantener y de mover.
@@ -172,8 +182,19 @@ monorepo pnpm · API con autenticación.
   se consume son el mismo dato, no tres hojas distintas.
 - **Mobile y tablet primero.** En un taller se consulta de pie, junto a la máquina, no sentado
   en un escritorio.
+- **Red privada en vez de exponer la aplicación.** La operación no tiene por qué estar en
+  internet para poder entrar desde fuera.
+- **Una sola base de datos para todo.** La misma información alimenta a la aplicación, a la
+  tienda y al agente: lo que se captura una vez no se vuelve a escribir.
+- **El agente dentro del sistema, no al lado.** Por MCP el agente usa la aplicación real, con
+  sus datos y sus permisos; no es un chatbot que adivina. Y la puerta es Telegram, donde el
+  taller ya está.
+- **La tienda se construye sobre lo que ya existe.** El catálogo sale de la operación, no de
+  una lista aparte que se desactualiza sola.
 
-**Qué cambió.** *(pendiente: los números del Patrón)*
+**Qué cambió.** Organización y rapidez: el taller dejó de llevar todo en papel y de memoria
+—cotizaciones, producción, materiales y archivos ahora viven en el sistema— y ganó un agente que
+avisa y contesta por Telegram. *Sin números: cualitativo por decisión del Patrón (6-oct-2026).*
 
 ---
 
@@ -197,9 +218,6 @@ clientes) organizada en capas:
   fotográfica desde el celular.
 - **Portal de cliente** — el proveedor administra a sus clientes directos y a los sub-clientes
   de estos, y cada uno ve únicamente lo suyo.
-
-**Cómo se aplicó.** Next.js · Express · Prisma + PostgreSQL · PWA instalable con precache por
-rutas · internacionalización · almacenamiento de evidencia en la nube · despliegue gestionado.
 
 **Por qué así.**
 
@@ -230,9 +248,6 @@ rastreable por los buscadores, no solo verse bien.
 en HTML desde el primer byte (la condición para competir en buscadores). Organizado por tipo de
 espacio, con la ubicación y un único llamado a la acción: cotizar.
 
-**Cómo se aplicó.** Next.js con renderizado en servidor · React · Tailwind CSS · publicación
-en el hosting del negocio.
-
 **Por qué así.**
 
 - **Renderizado en servidor en vez de una aplicación de una sola página.** Un negocio local
@@ -248,11 +263,12 @@ en el hosting del negocio.
 
 ## Datos por confirmar antes de publicar
 
-1. **LaserBox:** ¿el sistema de operación ya corre en el taller (va limpio) o también se marca
-   "en desarrollo"? — *El ecommerce todavía no está creado* (confirmado por el Patrón el
-   23-sep-2026): va marcado como "en desarrollo" y todavía no tiene repositorio.
+1. **LaserBox:** *resuelto (6-oct-2026).* El sistema **sí corre** (verificado: el servicio está
+   activo) y la **tienda en línea todavía no está construida**. El caso va con estado "En
+   desarrollo", aclarando que lo que falta es la tienda.
 2. **SysOp:** confirmar que la descripción multi-tenant puede publicarse así (sin nombre del
    cliente ni detalles de la operación real).
-3. **Bahía:** confirmar el stack exacto (el registrado proviene del portafolio de 2024).
-4. **Los 4:** los números de "Qué cambió".
-5. **Aprobación del tono** de este copy.
+3. **Los 4:** los números de "Qué cambió". En **LaserBox quedó cualitativo por decisión del
+   Patrón**, no por olvido.
+4. **Aprobación del tono.** **LaserBox ya está aprobado**; faltan Bidhara, SysOp y Bahía, que se
+   definen caso por caso con el Patrón.

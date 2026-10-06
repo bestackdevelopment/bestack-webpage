@@ -93,9 +93,11 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
   `bestackdevelopment.com` es placeholder y **no resuelve** (`lib/site.ts`).
 - **Fase 5 — Publicación:** sin configuración de deploy. **No se publica hasta que el Patrón
   lo autorice.**
-- **Del Patrón (contenido):** revisar en navegador; capturas de los ejemplos (hoy
-  placeholders); números de «Qué cambió» (no se estiman); aprobar el tono del copy; confirmar
-  si el sistema de LaserBox ya corre.
+- **Del Patrón (contenido):** revisar en navegador; capturas de los casos de uso (hoy
+  placeholders); números de «Qué cambió» — en **LaserBox quedó cualitativo por decisión suya**;
+  aprobar el tono del copy del resto, que sigue en borrador v1 (Bidhara, SysOp y Bahía).
+  *Resuelto (6-oct-2026):* **LaserBox ya tiene contenido aprobado e implementado**, y se
+  confirmó que **el sistema sí corre** en el taller — lo que falta es la tienda en línea.
 
 ## Cómo proceder
 
@@ -118,3 +120,7 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
 - **Publicar no es decisión del agente.**
 - **Capturas de pantalla:** las toma el Patrón; en el código se dejan placeholders con las
   medidas de `docs/casos-de-uso.md`.
+- **Los agentes no se nombran.** El nombre del agente es interno del cliente: no se publica en
+  las piezas ni en los diagramas de los casos de uso.
+- **La lista de stack no se publica** en «Cómo se aplicó»: la sección se sostiene con el
+  diagrama. El detalle técnico vive en el repo de cada proyecto.

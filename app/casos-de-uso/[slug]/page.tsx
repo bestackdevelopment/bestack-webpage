@@ -192,9 +192,6 @@ export default async function CasoDetallePage({ params }: Props) {
         <div className="max-w-5xl mx-auto">
           <SectionHeader title="Cómo se aplicó" />
           <Reveal direction="up">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
-              {caso.stack}
-            </p>
             {caso.arquitectura ? (
               <ArquitecturaFlow
                 nodos={caso.arquitectura.nodos}

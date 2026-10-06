@@ -32,6 +32,11 @@ export type ArquitecturaIcono =
   | "file"
   | "search"
   | "cloud"
+  | "app-window"
+  | "lock"
+  | "shopping-bag"
+  | "social"
+  | "telegram"
 
 export type ArquitecturaNodo = {
   id: string
@@ -64,14 +69,16 @@ export type Caso = {
   /** Copy de la sección "La solución" */
   solucion: {
     intro: string
-    /** Bidhara y LaserBox: 3 piezas como tarjetas */
+    /** Bidhara y LaserBox: las piezas como tarjetas */
     piezas?: PiezaSolucion[]
     /** SysOp y Bahía: descripción de la plataforma/sitio */
     descripcion?: string[]
   }
-  /** Copy de "Cómo se aplicó" */
-  stack: string
-  /** Diagrama de arquitectura para "Cómo se aplicó" (opcional). */
+  /**
+   * Diagrama de arquitectura para "Cómo se aplicó" (opcional).
+   * La sección NO publica una lista de stack: el cliente que contrata no la lee y el
+   * diagrama carga la sección (decisión del 6-oct-2026).
+   */
   arquitectura?: {
     nodos: ArquitecturaNodo[]
     aristas: ArquitecturaArista[]
@@ -108,7 +115,7 @@ const casos: Caso[] = [
             "Ventas multi-artículo, clientes, gastos por categoría y reportes en PDF. Mobile-first, porque el negocio se opera desde el celular.",
         },
         {
-          titulo: "Agente IA «Cortana»",
+          titulo: "Agente IA",
           descripcion:
             "El dueño le escribe por Telegram: registra ventas, consulta inventario, sube fotos y pide su reporte del día. Trabaja sobre la misma base de datos que la app, con permisos restringidos.",
         },
@@ -135,7 +142,7 @@ const casos: Caso[] = [
         },
         {
           id: "agente",
-          titulo: "Agente «Cortana»",
+          titulo: "Agente IA",
           descripcion: "Registra ventas y consulta inventario desde Telegram.",
           icono: "robot",
           x: 0,
@@ -174,8 +181,6 @@ const casos: Caso[] = [
         { from: "api", to: "pdf", etiqueta: "reportes" },
       ],
     },
-    stack:
-      "PostgreSQL + Prisma · Express + TypeScript · React + Vite + Tailwind + shadcn/ui · Recharts · JWT · reportes en PDF · Hermes Agent sobre Telegram.",
     decisiones: [
       {
         titulo: "Un agente, no otro dashboard",
@@ -213,82 +218,121 @@ const casos: Caso[] = [
     estado: "En desarrollo",
     tags: ["tienda", "mantenimiento", "agente-ia"],
     resumen:
-      "Sistema de operación, tienda en línea y agente IA para cotizar y llevar la producción del taller.",
+      "El taller completo en un sistema: cotizaciones, producción, materiales, archivos y venta en línea, con un agente de IA que responde por Telegram.",
     reto: [
-      "Un taller que cotiza a mano y lleva la producción y el inventario repartidos entre la memoria de quien atiende y hojas de cálculo. Cotizar un trabajo tomaba tiempo y el precio terminaba dependiendo de quién lo calculara.",
+      "La operación era la de un negocio de paso: se atendía lo que llegaba y todo se anotaba a lápiz y papel. Sin administración ni organización detrás, el control quedaba en la memoria de quien atendía.",
     ],
     solucion: {
-      intro: "Tres piezas:",
+      intro: "Seis piezas, una sola fuente de verdad:",
       piezas: [
         {
-          titulo: "Sistema de operación",
+          titulo: "Aplicación interna",
           descripcion:
-            "Clientes, cotizaciones, producción, inventario y usuarios. Cotizar deja de ser un cálculo a mano: el precio sale del sistema, no de la memoria.",
+            "Cotizaciones, órdenes de producción, materiales y proveedores en un solo lugar.",
+        },
+        {
+          titulo: "Base de datos centralizada",
+          descripcion:
+            "Toda la información del negocio en una sola fuente: es la que alimenta a la aplicación, a la tienda y al agente.",
+        },
+        {
+          titulo: "Agente IA",
+          descripcion:
+            "Corre en infraestructura propia, entra a la aplicación y responde por Telegram: consulta y registra sin abrir el sistema. También publica contenido en Facebook e Instagram y revisa los mensajes.",
         },
         {
           titulo: "Tienda en línea",
           descripcion:
-            "En desarrollo: el canal de venta en línea de los productos del taller.",
+            "En desarrollo: se construye con los productos que ya viven en la base de datos centralizada.",
         },
         {
-          titulo: "Agente IA «Aserrín»",
+          titulo: "Nube privada",
           descripcion:
-            "Opera sobre el mismo sistema: consulta y registra desde Telegram, sin abrir la aplicación.",
+            "Los archivos del negocio —planos, cotizaciones, evidencia— ordenados y accesibles desde la operación.",
+        },
+        {
+          titulo: "Red privada",
+          descripcion: "Se entra a la aplicación sin exponer nada a internet.",
         },
       ],
     },
     arquitectura: {
       nodos: [
         {
-          id: "operacion",
-          titulo: "Sistema de operación",
-          descripcion: "Clientes, cotizaciones, producción e inventario.",
-          icono: "settings",
+          id: "red",
+          titulo: "Red privada",
+          descripcion: "El acceso entra por aquí; la aplicación no está expuesta a internet.",
+          icono: "lock",
           x: 0,
-          y: 0,
+          y: 100,
         },
         {
-          id: "ecommerce",
-          titulo: "Tienda en línea",
-          descripcion: "En desarrollo: canal de venta en línea.",
-          icono: "react",
-          x: 0,
-          y: 170,
-        },
-        {
-          id: "agente",
-          titulo: "Agente «Aserrín»",
-          descripcion: "Consulta y registra desde Telegram.",
-          icono: "robot",
-          x: 0,
-          y: 340,
-        },
-        {
-          id: "api",
-          titulo: "API (Express)",
-          descripcion: "Autenticación y lógica de negocio.",
-          icono: "api",
-          x: 380,
-          y: 170,
+          id: "app",
+          titulo: "Aplicación interna",
+          descripcion: "Cotizaciones, órdenes de producción, materiales y proveedores.",
+          icono: "app-window",
+          x: 340,
+          y: 100,
         },
         {
           id: "db",
-          titulo: "SQLite + Prisma",
-          descripcion: "Un archivo respaldable; un solo punto de operación.",
+          titulo: "Base de datos centralizada",
+          descripcion: "Una sola fuente para la aplicación, la tienda y el agente.",
           icono: "database",
-          x: 760,
-          y: 170,
+          x: 680,
+          y: 0,
+        },
+        {
+          id: "agente",
+          titulo: "Agente IA",
+          descripcion: "Consulta y registra sin abrir la aplicación.",
+          icono: "robot",
+          x: 680,
+          y: 190,
+        },
+        {
+          id: "nube",
+          titulo: "Nube privada",
+          descripcion: "Los archivos del negocio, ordenados y accesibles.",
+          icono: "cloud",
+          x: 680,
+          y: 380,
+        },
+        {
+          id: "tienda",
+          titulo: "Tienda en línea",
+          descripcion: "En desarrollo: lee los productos de la base.",
+          icono: "shopping-bag",
+          x: 1020,
+          y: 0,
+        },
+        {
+          id: "telegram",
+          titulo: "Telegram",
+          descripcion: "Donde el taller habla con el agente.",
+          icono: "telegram",
+          x: 1020,
+          y: 190,
+        },
+        {
+          id: "social",
+          titulo: "Facebook e Instagram",
+          descripcion: "El agente publica contenido y revisa los mensajes.",
+          icono: "social",
+          x: 1020,
+          y: 380,
         },
       ],
       aristas: [
-        { from: "operacion", to: "api" },
-        { from: "ecommerce", to: "api" },
-        { from: "agente", to: "api" },
-        { from: "api", to: "db" },
+        { from: "red", to: "app", etiqueta: "acceso" },
+        { from: "app", to: "db" },
+        { from: "app", to: "agente", etiqueta: "MCP" },
+        { from: "app", to: "nube", etiqueta: "archivos" },
+        { from: "db", to: "tienda", etiqueta: "catálogo" },
+        { from: "agente", to: "telegram" },
+        { from: "agente", to: "social", etiqueta: "publica" },
       ],
     },
-    stack:
-      "Express + Prisma + SQLite · React + Vite + Tailwind CSS · Tabler Icons · monorepo pnpm · API con autenticación.",
     decisiones: [
       {
         titulo: "SQLite, no un motor grande",
@@ -310,9 +354,29 @@ const casos: Caso[] = [
         razon:
           "En un taller se consulta de pie, junto a la máquina, no sentado en un escritorio.",
       },
+      {
+        titulo: "Red privada en vez de exponer la aplicación",
+        razon:
+          "La operación no tiene por qué estar en internet para poder entrar desde fuera.",
+      },
+      {
+        titulo: "Una sola base de datos para todo",
+        razon:
+          "La misma información alimenta a la aplicación, a la tienda y al agente: lo que se captura una vez no se vuelve a escribir.",
+      },
+      {
+        titulo: "El agente dentro del sistema, no al lado",
+        razon:
+          "Por MCP el agente usa la aplicación real, con sus datos y sus permisos; no es un chatbot que adivina. Y la puerta es Telegram, donde el taller ya está.",
+      },
+      {
+        titulo: "La tienda se construye sobre lo que ya existe",
+        razon:
+          "El catálogo sale de la operación, no de una lista aparte que se desactualiza sola.",
+      },
     ],
     queCambio:
-      "La cotización dejó de ser un cálculo a mano y el precio sale del sistema. Producción e inventario se consultan con el agente desde el celular, sin abrir la aplicación.",
+      "Organización y rapidez: el taller dejó de llevar todo en papel y de memoria —cotizaciones, producción, materiales y archivos ahora viven en el sistema— y ganó un agente que avisa y contesta por Telegram.",
   },
   {
     slug: "sysop",
@@ -395,8 +459,6 @@ const casos: Caso[] = [
         { from: "api", to: "evidencia", etiqueta: "fotos" },
       ],
     },
-    stack:
-      "Next.js · Express · Prisma + PostgreSQL · PWA instalable con precache por rutas · internacionalización · almacenamiento de evidencia en la nube · despliegue gestionado.",
     decisiones: [
       {
         titulo: "Multi-tenant desde el modelo de datos, no desde la interfaz",
@@ -477,7 +539,6 @@ const casos: Caso[] = [
         { from: "ssr", to: "hosting", etiqueta: "publicado" },
       ],
     },
-    stack: "Next.js con renderizado en servidor · React · Tailwind CSS · publicación en el hosting del negocio.",
     decisiones: [
       {
         titulo: "Renderizado en servidor en vez de una aplicación de una sola página",
