@@ -213,7 +213,7 @@ const casos: Caso[] = [
     estado: "En desarrollo",
     tags: ["tienda", "mantenimiento", "agente-ia"],
     resumen:
-      "Sistema de operación, ecommerce y agente IA para cotizar y llevar la producción del taller.",
+      "Sistema de operación, tienda en línea y agente IA para cotizar y llevar la producción del taller.",
     reto: [
       "Un taller que cotiza a mano y lleva la producción y el inventario repartidos entre la memoria de quien atiende y hojas de cálculo. Cotizar un trabajo tomaba tiempo y el precio terminaba dependiendo de quién lo calculara.",
     ],
@@ -226,7 +226,7 @@ const casos: Caso[] = [
             "Clientes, cotizaciones, producción, inventario y usuarios. Cotizar deja de ser un cálculo a mano: el precio sale del sistema, no de la memoria.",
         },
         {
-          titulo: "Ecommerce",
+          titulo: "Tienda en línea",
           descripcion:
             "En desarrollo: el canal de venta en línea de los productos del taller.",
         },
@@ -249,7 +249,7 @@ const casos: Caso[] = [
         },
         {
           id: "ecommerce",
-          titulo: "Ecommerce",
+          titulo: "Tienda en línea",
           descripcion: "En desarrollo: canal de venta en línea.",
           icono: "react",
           x: 0,

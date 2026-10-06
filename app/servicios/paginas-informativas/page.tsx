@@ -119,7 +119,7 @@ const data: ServiceTemplateData = {
     {
       icon: IconTarget,
       accent: "accent",
-      title: "Páginas de Captura",
+      title: "Landing pages",
       description:
         "Convierte visitas en oportunidades reales con diseños enfocados en la conversión",
     },

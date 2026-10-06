@@ -9,7 +9,7 @@ import { getCasos } from "@/lib/casos-de-uso"
 export const metadata: Metadata = {
   title: "Casos de uso",
   description:
-    "Esto es lo que se puede hacer: sistemas a medida, agentes IA, ecommerce y sitios corporativos aplicados a distintos giros.",
+    "Esto es lo que se puede hacer: sistemas a medida, agentes IA, tienda en línea y sitios corporativos aplicados a distintos giros.",
 }
 
 export default function CasosPage() {

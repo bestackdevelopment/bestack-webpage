@@ -90,10 +90,10 @@ pnpm lint
 - **Iconos:** siempre `@tabler/icons-react`. No añadir `lucide-react` ni SVGs inline.
 - **Colores:** usar los tokens del tema (`primary`, `secondary`, `accent`…) definidos en
   `app/globals.css`, nunca hex sueltos.
-- **Páginas de servicio:** las seis landings de `/servicios/*` (`paginas-informativas`,
-  `paginas-corporativas`, `ecommerce`, `mantenimiento-web`, `finaliza-tu-web` y `agente-ia`)
-  comparten `components/service-template.tsx` y solo aportan su objeto de datos
-  (`ServiceTemplateData`).
+- **Páginas de servicio:** las siete landings de `/servicios/*` (`paginas-informativas`,
+  `paginas-corporativas`, `catalogos-en-linea`, `tienda-en-linea`, `mantenimiento-web`,
+  `finaliza-tu-web` y `agente-ia`) comparten `components/service-template.tsx` y solo
+  aportan su objeto de datos (`ServiceTemplateData`).
 - **Animaciones de entrada:** usar `components/reveal.tsx` (framer-motion). El componente
   envuelve contenido server-rendered.
   - Los **títulos de sección quedan siempre visibles**; se anima el contenido (tarjetas, bloques).

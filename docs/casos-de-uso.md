@@ -47,7 +47,7 @@ que el Patrón descartó (Titanes, Magone, SAI, Interurbana, Melba).
 - Rejilla de 4 tarjetas: imagen (placeholder), nombre, giro, tipo, estado, una línea de qué
   se hizo y enlace "Ver el caso".
 - **Filtros por tipo de solución** (idea traída del portafolio anterior, ya probada):
-  `Sistema a medida` · `Agente IA` · `Ecommerce` · `Sitio corporativo` · `SaaS`.
+  `Sistema a medida` · `Agente IA` · `Tienda en línea` · `Sitio corporativo` · `SaaS`.
 - Sección de cierre con CTA a `/contacto`.
 - Reemplaza a la página "Próximamente" actual en `/proyectos`.
 
@@ -58,7 +58,7 @@ Ocho secciones, en este orden:
 1. **Portada** — nombre, giro, una línea de qué es, etiquetas de tipo y estado, CTA.
 2. **El reto** — cómo operaba el negocio antes (2-3 párrafos).
 3. **La solución** — las piezas del sistema. En Bidhara y LaserBox son 3 tarjetas
-   (catálogo/ecommerce · sistema de operación · agente IA). En SysOp y Bahía, la descripción
+   (catálogo/tienda en línea · sistema de operación · agente IA). En SysOp y Bahía, la descripción
    de la plataforma/sitio.
 4. **Cómo se aplicó** — stack y arquitectura. Aquí va un diagrama de la arquitectura.
 5. **Por qué así** — las decisiones y **su razón**. *Es la sección que vende: demuestra
@@ -78,7 +78,7 @@ Ocho secciones, en este orden:
 - Navegación anterior/siguiente entre los 4 ejemplos.
 - Galería con lightbox y placeholders responsivos.
 - Enlaces desde las landings de servicio hacia el ejemplo correspondiente
-  (p. ej. `/servicios/ecommerce` → `laserbox`).
+  (p. ej. `/servicios/tienda-en-linea` → `laserbox`).
 
 ### Placeholders de imagen
 
@@ -155,7 +155,7 @@ terminaba dependiendo de quién lo calculara.
 
 1. **Sistema de operación** — clientes, cotizaciones, producción, inventario y usuarios.
    Cotizar deja de ser un cálculo a mano: el precio sale del sistema, no de la memoria.
-2. **Ecommerce** *(en desarrollo)* — el canal de venta en línea de los productos del taller.
+2. **Tienda en línea** *(en desarrollo)* — el canal de venta en línea de los productos del taller.
 3. **Agente IA "Aserrín"** — opera sobre el mismo sistema: consulta y registra desde Telegram,
    sin abrir la aplicación.
 

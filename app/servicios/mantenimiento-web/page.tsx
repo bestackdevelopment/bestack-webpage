@@ -67,7 +67,7 @@ const data: ServiceTemplateData = {
         accent: "primary",
         title: "Soporte y cambios de contenido",
         description:
-          "Atendemos incidencias y actualizamos el contenido que necesites: textos e imágenes, y también productos, precios y descripciones de tu catálogo en línea o ecommerce.",
+          "Atendemos incidencias y actualizamos el contenido que necesites: textos e imágenes, y también productos, precios y descripciones de tu catálogo o tienda en línea.",
       },
     ],
   },

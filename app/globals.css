@@ -67,6 +67,10 @@
   * {
     border-color: var(--color-border);
   }
+  /* El navbar es `fixed`: sin esto un ancla (#servicios) queda debajo del header. */
+  html {
+    scroll-padding-top: 5rem;
+  }
   body {
     background-color: var(--color-canvas);
     color: var(--color-foreground);

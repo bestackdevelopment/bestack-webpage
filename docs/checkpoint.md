@@ -9,7 +9,7 @@ Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con 
 > - Proyecto «BeStack — Sitio web» → https://app.notion.com/p/BeStack-Sitio-web-3f032530bf558183bce3d431032c9ca8
 > - Raíz de proyectos → https://app.notion.com/p/BeStack-Development-Proyectos-3f032530bf5581d5aa76c460d8c48460
 
-**Última verificación:** 5 de octubre de 2026 (agente, pasada de estilos + accesibilidad).
+**Última verificación:** 6 de octubre de 2026 (agente, revisión completa: build, rutas, links y móvil).
 
 ## Qué es
 
@@ -24,9 +24,9 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Último commit | `55735ce` — *fix(a11y): pasada de frescura (gris más suave, timeline con marca e iconos)* |
+| Última actualización | 6-oct-2026 (rename a «Casos de uso», tienda/catálogos en línea, docs sincronizados) |
 | Working tree | **limpio** |
-| vs `origin/main` | **Sincronizado** — push hecho el 5-oct-2026 |
+| vs `origin/main` | **1 commit local sin subir** (6-oct-2026) — el push se confirma |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 
 ## Stack
@@ -45,14 +45,17 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 | `/proyectos` | ❌ Eliminado — renombrado a `/casos-de-uso` |
 | `/servicios/paginas-informativas` | ✅ Funcional |
 | `/servicios/paginas-corporativas` | ✅ Funcional |
-| `/servicios/ecommerce` | ✅ Funcional + enlace al ejemplo laserbox |
+| `/servicios/catalogos-en-linea` | ✅ Funcional |
+| `/servicios/tienda-en-linea` | ✅ Funcional |
+| `/servicios/ecommerce` | ❌ Eliminado — se partió en `catalogos-en-linea` y `tienda-en-linea` |
 | `/servicios/mantenimiento-web` | ✅ Funcional |
 | `/servicios/finaliza-tu-web` | ✅ Funcional |
 | `/servicios/agente-ia` | ✅ Funcional |
 | Blog | ❌ **No existe** — Fase 3 |
 
-Las 6 landings de `/servicios/*` — `paginas-informativas`, `paginas-corporativas`,
-`ecommerce`, `mantenimiento-web`, `finaliza-tu-web` y `agente-ia` — comparten la plantilla
+Las 7 landings de `/servicios/*` — `paginas-informativas`, `paginas-corporativas`,
+`catalogos-en-linea`, `tienda-en-linea`, `mantenimiento-web`, `finaliza-tu-web` y
+`agente-ia` — comparten la plantilla
 `components/service-template.tsx` (unificadas el 5-oct-2026; la antigua `service-landing.tsx`
 se retiró).
 
