@@ -12,7 +12,6 @@ import {
 } from "@tabler/icons-react"
 
 import { ServiceTemplate, type ServiceTemplateData } from "@/components/service-template"
-import { incluyeGenerico } from "@/lib/servicios-incluye-generico"
 
 export const metadata: Metadata = {
   title: "Mantenimiento Web",
@@ -29,8 +28,8 @@ const data: ServiceTemplateData = {
     subtitle:
       "Actualizaciones, seguridad y soporte técnico continuo para tu sitio web",
     ctas: [
-      { label: "Ver Planes", href: "/contacto" },
-      { label: "Ver ejemplos", href: "/ejemplos", variant: "outline" },
+      { label: "Solicitar información", href: "/contacto" },
+      { label: "Ver casos de uso", href: "/casos-de-uso", variant: "outline" },
     ],
   },
   incluye: {
@@ -41,7 +40,36 @@ const data: ServiceTemplateData = {
         "Monitoreamos tu sitio 24/7, realizamos backups automáticos y aplicamos parches de seguridad de inmediato. Además, optimizamos el rendimiento y ofrecemos soporte técnico prioritario para resolver cualquier incidencia.",
       ],
     },
-    items: incluyeGenerico,
+    items: [
+      {
+        icon: IconRefresh,
+        accent: "primary",
+        title: "Actualizaciones y parches",
+        description:
+          "Mantenemos la plataforma y sus dependencias al día para evitar fallos y problemas de compatibilidad.",
+      },
+      {
+        icon: IconShieldLock,
+        accent: "secondary",
+        title: "Seguridad y copias de seguridad",
+        description:
+          "Aplicamos parches de seguridad y hacemos copias de seguridad automáticas.",
+      },
+      {
+        icon: IconActivityHeartbeat,
+        accent: "accent",
+        title: "Monitoreo y rendimiento",
+        description:
+          "Vigilamos tu sitio y optimizamos el rendimiento para que cargue rápido.",
+      },
+      {
+        icon: IconHeadset,
+        accent: "primary",
+        title: "Soporte y cambios de contenido",
+        description:
+          "Atendemos incidencias y actualizamos el contenido que necesites: textos e imágenes, y también productos, precios y descripciones de tu catálogo en línea o ecommerce.",
+      },
+    ],
   },
   beneficios: [
     { icon: IconShieldLock, accent: "primary", text: "Actualizaciones de seguridad" },
@@ -69,7 +97,8 @@ const data: ServiceTemplateData = {
       icon: IconFileText,
       accent: "accent",
       title: "Gestión de Contenido",
-      description: "Actualizaciones regulares de texto, imágenes y multimedia",
+      description:
+        "Actualizaciones de texto, imágenes, y también productos, precios y descripciones de tu catálogo o tienda en línea",
     },
     {
       icon: IconHeadset,
@@ -80,13 +109,19 @@ const data: ServiceTemplateData = {
   ],
   faqs: [
     {
+      question: "¿Cómo sé si este servicio es para mí?",
+      answer:
+        "Si tu sitio ya está publicado y quieres que siga funcionando bien, seguro y con el contenido al día, este servicio es para ti. Nos encargamos de las actualizaciones, la seguridad y los cambios de contenido para que tú no tengas que hacerlo.",
+    },
+    {
       question: "¿Qué incluye el servicio de mantenimiento?",
       answer:
-        "Actualizaciones técnicas, backups, monitoreo, optimización, soporte técnico y pequeños cambios de contenido.",
+        "Actualizaciones técnicas, backups, monitoreo, optimización, soporte técnico, pequeños cambios de contenido y documentación de lo que se hace y de las incidencias atendidas.",
     },
     {
       question: "¿Con qué frecuencia se realizan los backups?",
-      answer: "Realizamos backups diarios automáticos con retención de 30 días.",
+      answer:
+        "Depende del VPS contratado y de lo que ofrezca tu proveedor. Nos adaptamos a la frecuencia y la retención de backups que permita.",
     },
     {
       question: "¿Cuánto tiempo de respuesta tienen?",
@@ -102,7 +137,7 @@ const data: ServiceTemplateData = {
   final: {
     heading: "¿Necesitas mantenimiento web?",
     body: "Elige el plan que mejor se adapte a tus necesidades",
-    cta: "Ver Planes",
+    cta: "Solicitar información",
   },
 }
 

@@ -4,16 +4,14 @@ import {
   IconBrain,
   IconChartHistogram,
   IconClock24,
-  IconHeadset,
   IconLifebuoy,
   IconPlugConnected,
+  IconServer,
   IconSettingsAutomation,
   IconTrendingUp,
-  IconUsers,
 } from "@tabler/icons-react"
 
 import { ServiceTemplate, type ServiceTemplateData } from "@/components/service-template"
-import { incluyeGenerico } from "@/lib/servicios-incluye-generico"
 
 export const metadata: Metadata = {
   title: "Agente IA",
@@ -23,7 +21,7 @@ export const metadata: Metadata = {
 
 const data: ServiceTemplateData = {
   hero: {
-    badge: "Automatización con IA",
+    badge: "Automatización y gestión",
     titleLead: "Agente",
     titleAccent: "IA",
     accentGradient: "from-accent to-primary",
@@ -31,75 +29,100 @@ const data: ServiceTemplateData = {
       "Un agente de IA que aprende cómo funciona tu negocio y lo opera contigo.",
     ctas: [
       { label: "Solicitar Presupuesto", href: "/contacto" },
-      { label: "Ver ejemplos", href: "/ejemplos", variant: "outline" },
+      { label: "Ver casos de uso", href: "/casos-de-uso", variant: "outline" },
     ],
   },
   incluye: {
     lead: {
       heading: "Tu operación, con un agente que la conoce",
       body: [
-        "Un agente de IA no es un chatbot genérico: se entrena con la forma en que opera tu negocio (tus procesos, tu información y tu forma de atender) para trabajar como parte de tu equipo.",
-        "Tú defines qué hace y qué no. Se le enseña exactamente lo que tu operación necesite, y trabaja contigo en las tareas que elijas.",
+        "Trabajamos con Hermes Agent, un agente de IA open-source que corre en tu propia infraestructura o en un VPS dedicado. Está pensado para gestión y administración, no para atención a clientes.",
+        "Lo integramos con Telegram para que lo uses desde el chat, y lo dejamos funcionando. A partir de ahí, tú puedes seguir evolucionándolo y construyendo lo que necesites con tu agente.",
       ],
     },
-    items: incluyeGenerico,
+    items: [
+      {
+        icon: IconSettingsAutomation,
+        accent: "primary",
+        title: "Gestión y administración",
+        description:
+          "Te ayuda a operar y administrar tu negocio; no es un chatbot de atención a clientes.",
+      },
+      {
+        icon: IconPlugConnected,
+        accent: "secondary",
+        title: "Integrado con Telegram",
+        description: "Lo usas desde el chat, donde ya trabajas.",
+      },
+      {
+        icon: IconServer,
+        accent: "accent",
+        title: "En tu infraestructura o un VPS",
+        description: "Vive en tu propio servidor o en un VPS dedicado.",
+      },
+      {
+        icon: IconBrain,
+        accent: "primary",
+        title: "Crece contigo",
+        description:
+          "Memoria persistente y skills propias: sigue evolucionando y tú construyes más con él.",
+      },
+    ],
   },
   beneficios: [
-    { icon: IconBrain, accent: "primary", text: "Aprende cómo opera tu negocio" },
-    { icon: IconUsers, accent: "secondary", text: "Opera tareas junto a tu equipo" },
-    { icon: IconAdjustments, accent: "accent", text: "Tú defines qué hace y qué no" },
-    { icon: IconPlugConnected, accent: "primary", text: "Se integra a tus herramientas y canales" },
-    { icon: IconClock24, accent: "secondary", text: "Atiende a tus clientes sin horario" },
-    { icon: IconTrendingUp, accent: "accent", text: "Se ajusta y mejora con el uso" },
+    { icon: IconBrain, accent: "primary", text: "Aprende tu operación" },
+    { icon: IconAdjustments, accent: "secondary", text: "Tú defines qué hace y qué no" },
+    { icon: IconSettingsAutomation, accent: "accent", text: "Gestión y administración" },
+    { icon: IconClock24, accent: "primary", text: "Automatiza tareas programadas" },
+    { icon: IconServer, accent: "secondary", text: "En tu infraestructura o un VPS" },
+    { icon: IconTrendingUp, accent: "accent", text: "Crece contigo" },
   ],
   casosUso: [
     {
-      icon: IconHeadset,
-      accent: "primary",
-      title: "Atención al cliente",
-      description:
-        "Responde dudas y da seguimiento con la información y el tono de tu negocio.",
-    },
-    {
       icon: IconSettingsAutomation,
-      accent: "secondary",
-      title: "Procesos internos",
-      description:
-        "Se encarga de tareas repetitivas: cotizaciones, seguimiento, reportes.",
+      accent: "primary",
+      title: "Administración",
+      description: "Se encarga de tareas de gestión y administración de tu negocio.",
     },
     {
       icon: IconChartHistogram,
+      accent: "secondary",
+      title: "Reportes y seguimiento",
+      description: "Genera reportes y da seguimiento a tu operación.",
+    },
+    {
+      icon: IconClock24,
       accent: "accent",
-      title: "Ventas",
-      description:
-        "Apoya el seguimiento de prospectos para que ninguno se quede sin respuesta.",
+      title: "Tareas programadas",
+      description: "Ejecuta tareas recurrentes: respaldos, avisos o recordatorios.",
     },
     {
       icon: IconLifebuoy,
       accent: "primary",
-      title: "Soporte operativo",
-      description: "Organiza y responde lo del día a día de tu operación.",
+      title: "Apoyo operativo",
+      description: "Te acompaña en el día a día de tu operación.",
     },
   ],
   faqs: [
     {
-      question: "¿Qué necesito para empezar?",
+      question: "¿Con qué agente trabajan?",
       answer:
-        "Un diagnóstico de tu operación. De ahí sale qué tareas conviene que haga el agente.",
+        "Con Hermes Agent, un agente de IA open-source. Nosotros hacemos la implementación y te lo dejamos funcionando.",
     },
     {
-      question: "¿Puedo decidir qué hace y qué no?",
+      question: "¿Dónde vive el agente?",
       answer:
-        "Sí. El alcance lo defines tú; el agente se limita a lo que se le enseña.",
+        "En tu propia infraestructura o en un VPS dedicado; tú eliges.",
     },
     {
-      question: "¿Se integra con mis herramientas actuales?",
+      question: "¿Se integra con mis herramientas?",
       answer:
-        "Sí, se conecta a los canales y sistemas que ya usas, según cada caso.",
+        "Sí, lo integramos con Telegram y con los sistemas que ya uses.",
     },
     {
-      question: "¿Necesito saber de tecnología?",
-      answer: "No. Nosotros lo configuramos y tú lo usas de forma natural.",
+      question: "¿Puedo seguir construyendo con él?",
+      answer:
+        "Sí. Tiene memoria persistente y genera sus propias skills, así que puedes seguir evolucionándolo y construyendo cosas con él.",
     },
   ],
   final: {

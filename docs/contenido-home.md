@@ -40,17 +40,17 @@ cuando existan, con nombre y cargo reales** — ahí esta sección se vuelve a m
 - **Ubicación:** `app/page.tsx` (~línea 128), con el comentario `EN STANDBY: pendiente definir
   los proyectos reales`.
 - **Hoy:** dice "Estamos preparando nuestra selección de proyectos".
-- **Debe quedar:** **3 tarjetas** —las tres más fuertes— y un botón "Ver todos los ejemplos" que
-  lleve a `/ejemplos`.
+- **Debe quedar:** **3 tarjetas** —las tres más fuertes— y un botón "Ver todos los casos de uso" que
+  lleve a `/casos-de-uso`.
 
 | Tarjeta | Enlace |
 |---|---|
-| SysOp — Configuración operacional (SaaS · seguridad perimetral) | `/ejemplos/sysop` |
-| Bidhara — Flores comestibles y microgreens (implementación integral) | `/ejemplos/bidhara` |
-| LaserBox — Taller de corte láser (implementación integral) | `/ejemplos/laserbox` |
+| SysOp — Configuración operacional (SaaS · seguridad perimetral) | `/casos-de-uso/sysop` |
+| Bidhara — Flores comestibles y microgreens (implementación integral) | `/casos-de-uso/bidhara` |
+| LaserBox — Taller de corte láser (implementación integral) | `/casos-de-uso/laserbox` |
 
 - Cada tarjeta: imagen (placeholder), nombre, giro, una línea de qué se hizo y enlace
-  "Ver el ejemplo".
+  "Ver el caso".
 - La cuarta (**Bahía**) no entra en destacados: se ve en el índice completo. Es el único sitio
   web de los cuatro, así que sirve mejor como contraste dentro de la sección que como portada.
 
@@ -76,5 +76,5 @@ cuando existan, con nombre y cargo reales** — ahí esta sección se vuelve a m
 
 ## 4. Imágenes
 
-Placeholders con las medidas definidas en `docs/ejemplos.md`. **Las capturas las toma el Patrón**
+Placeholders con las medidas definidas en `docs/casos-de-uso.md`. **Las capturas las toma el Patrón**
 — el código solo deja el hueco.

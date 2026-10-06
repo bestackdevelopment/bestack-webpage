@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Logo width={40} height={32} />
-              <h3 className="text-xl font-bold text-foreground">BeStack Development</h3>
+              <h3 className="text-xl font-bold text-foreground font-[family-name:var(--font-jura)]">BeStack Development</h3>
             </div>
             <p className="text-muted-foreground text-sm">
               Desarrollo web profesional con tecnologías modernas
@@ -41,10 +41,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/servicios/ecommerce"
+                  href="/servicios/catalogos-en-linea"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Ecommerce
+                  Catálogos en línea
                 </Link>
               </li>
               <li>
@@ -71,6 +71,14 @@ export default function Footer() {
                   Agente IA
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/servicios/tienda-en-linea"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Tienda en línea
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -80,10 +88,10 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/ejemplos"
+                  href="/casos-de-uso"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Ejemplos
+                  Casos de uso
                 </Link>
               </li>
               <li>

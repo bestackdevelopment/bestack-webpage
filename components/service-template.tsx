@@ -1,5 +1,5 @@
 import Link from "next/link"
-import type { ComponentType } from "react"
+import type { ComponentType, ReactNode } from "react"
 import {
   IconDeviceDesktop,
   IconSparkles,
@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Reveal } from "@/components/reveal"
+import { SectionHeader } from "@/components/section-header"
 
 export type Accent = "primary" | "secondary" | "accent"
 
@@ -47,13 +48,13 @@ export type ServiceTemplateData = {
   }
   beneficios: { icon: TablerIcon; accent: Accent; text: string }[]
   casosUso: { icon: TablerIcon; accent: Accent; title: string; description: string }[]
-  faqs: { question: string; answer: string }[]
+  faqs: { question: string; answer: ReactNode }[]
   copy?: {
     beneficiosSubtitle?: string
     casosSubtitle?: string
     faqsSubtitle?: string
   }
-  ejemplo?: {
+  caso?: {
     href: string
     label: string
     description: string
@@ -98,23 +99,6 @@ const accentFade: Record<Accent, string> = {
   accent: "from-accent/10 to-accent/5",
 }
 
-function SectionHeader({
-  title,
-  subtitle,
-}: {
-  title: string
-  subtitle?: string
-}) {
-  return (
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold mb-4">{title}</h2>
-      {subtitle && (
-        <p className="text-muted-foreground text-lg">{subtitle}</p>
-      )}
-    </div>
-  )
-}
-
 function ServiceGraphic() {
   return (
     <div className="relative mx-auto w-full max-w-xs">
@@ -157,7 +141,7 @@ function ServiceGraphic() {
 
 export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
   return (
-    <main className="min-h-screen overflow-x-clip bg-surface">
+    <main className="min-h-screen overflow-x-clip">
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5" />
@@ -218,14 +202,14 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           </h2>
 
           {data.incluye.lead && (
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h3 className="text-2xl font-bold mb-4">
+            <div className="mb-12">
+              <h3 className="text-xl font-bold mb-3">
                 {data.incluye.lead.heading}
               </h3>
               {data.incluye.lead.body.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="text-muted-foreground leading-relaxed mb-4 last:mb-0"
+                  className="text-foreground/80 leading-relaxed mb-4 last:mb-0"
                 >
                   {paragraph}
                 </p>
@@ -380,17 +364,17 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         </div>
       </section>
 
-      {/* Ejemplo relacionado (opcional) */}
-      {data.ejemplo && (
+      {/* Caso relacionado (opcional) */}
+      {data.caso && (
         <section className="py-24 px-4 sm:px-6 lg:px-8">
           <Reveal direction="up" className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">{data.ejemplo.description}</h2>
+            <h2 className="text-3xl font-bold mb-4">{data.caso.description}</h2>
             <Button
               size="lg"
               asChild
               className="shadow-lg shadow-primary/25"
             >
-              <Link href={data.ejemplo.href}>{data.ejemplo.label}</Link>
+              <Link href={data.caso.href}>{data.caso.label}</Link>
             </Button>
           </Reveal>
         </section>

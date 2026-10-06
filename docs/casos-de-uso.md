@@ -1,4 +1,4 @@
-# Ejemplos — definición de la sección
+# Casos de uso — definición de la sección
 
 **Última actualización:** 23 de septiembre de 2026 (subfire).
 
@@ -9,14 +9,14 @@ inventa nada fuera de este documento.**
 > ⚠️ **Este repositorio es público.** No meter credenciales, datos de clientes, nombres de
 > personas ni información interna de las operaciones. Las capturas se publican con datos demo.
 
-## Qué es y por qué "Ejemplos"
+## Qué es y por qué "Casos de uso"
 
-La sección **no** se llama "Portafolio". Se llama **"Ejemplos"**, y su promesa es distinta:
+La sección **no** se llama "Portafolio". Se llama **"Casos de uso"**, y su promesa es distinta:
 
 > *"Esto es lo que se puede hacer"*, aplicado a distintos giros.
 
 La razón: un portafolio obliga a demostrar que fueron clientes de BeStack (no hay testimonios,
-y parte del trabajo real no se puede firmar). "Ejemplos" no carga esa prueba y deja que el
+y parte del trabajo real no se puede firmar). "Casos de uso" no carga esa prueba y deja que el
 prospecto se identifique por su giro.
 
 **Dos etiquetas por ejemplo:**
@@ -42,16 +42,16 @@ se presentan por cliente para que no se lean como relleno).
 **Fuera del sitio:** los 12 proyectos hechos para la agencia Lanzaweb, y los proyectos viejos
 que el Patrón descartó (Titanes, Magone, SAI, Interurbana, Melba).
 
-## Índice `/ejemplos`
+## Índice `/casos-de-uso`
 
 - Rejilla de 4 tarjetas: imagen (placeholder), nombre, giro, tipo, estado, una línea de qué
-  se hizo y enlace "Ver el ejemplo".
+  se hizo y enlace "Ver el caso".
 - **Filtros por tipo de solución** (idea traída del portafolio anterior, ya probada):
   `Sistema a medida` · `Agente IA` · `Ecommerce` · `Sitio corporativo` · `SaaS`.
 - Sección de cierre con CTA a `/contacto`.
 - Reemplaza a la página "Próximamente" actual en `/proyectos`.
 
-## Estructura de la página de ejemplo `/ejemplos/[slug]`
+## Estructura de la página de ejemplo `/casos-de-uso/[slug]`
 
 Ocho secciones, en este orden:
 
@@ -86,9 +86,9 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 | Uso | Proporción | Tamaño | Ruta sugerida |
 |---|---|---|---|
-| Portada del índice | 16:9 | 1280×720 | `/public/ejemplos/{slug}/cover.jpg` |
-| Galería | 16:10 | 1600×1000 | `/public/ejemplos/{slug}/01.jpg`, `02.jpg`… |
-| Open Graph | 1200×630 | 1200×630 | `/public/ejemplos/{slug}/og.jpg` |
+| Portada del índice | 16:9 | 1280×720 | `/public/casos-de-uso/{slug}/cover.jpg` |
+| Galería | 16:10 | 1600×1000 | `/public/casos-de-uso/{slug}/01.jpg`, `02.jpg`… |
+| Open Graph | 1200×630 | 1200×630 | `/public/casos-de-uso/{slug}/og.jpg` |
 
 ---
 

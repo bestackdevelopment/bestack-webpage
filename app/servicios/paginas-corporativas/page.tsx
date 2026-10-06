@@ -1,110 +1,161 @@
 import type { Metadata } from "next"
 import {
+  IconBriefcase,
   IconBuilding,
-  IconBuildingSkyscraper,
+  IconDeviceDesktop,
   IconFileText,
-  IconLayoutDashboard,
-  IconMapPin,
-  IconNetwork,
-  IconPlugConnected,
-  IconShieldCheck,
+  IconHeadset,
+  IconLanguage,
+  IconMail,
+  IconPalette,
+  IconRobot,
+  IconSparkles,
+  IconTarget,
+  IconTrendingUp,
   IconUsers,
   IconWorld,
 } from "@tabler/icons-react"
 
 import { ServiceTemplate, type ServiceTemplateData } from "@/components/service-template"
-import { incluyeGenerico } from "@/lib/servicios-incluye-generico"
 
 export const metadata: Metadata = {
   title: "Páginas Corporativas",
   description:
-    "Soluciones empresariales completas con diseño profesional y funcionalidad avanzada para tu negocio.",
+    "Sitios con una imagen formal y profesional para presentar tu empresa.",
 }
 
 const data: ServiceTemplateData = {
   hero: {
-    badge: "Presencia empresarial",
+    badge: "Imagen corporativa",
     titleLead: "Páginas",
     titleAccent: "Corporativas",
     accentGradient: "from-accent to-primary",
     subtitle:
-      "Soluciones empresariales completas con diseño profesional y funcionalidad avanzada",
+      "Sitios con una imagen formal y profesional para presentar tu empresa.",
     ctas: [
       { label: "Solicitar Presupuesto", href: "/contacto" },
-      { label: "Ver ejemplos", href: "/ejemplos", variant: "outline" },
+      { label: "Ver casos de uso", href: "/casos-de-uso", variant: "outline" },
     ],
   },
   incluye: {
     lead: {
-      heading: "Soluciones Empresariales a Medida",
+      heading: "Una presencia a la altura de tu empresa",
       body: [
-        "Desarrollamos sitios corporativos robustos y escalables. Nuestras soluciones incluyen gestión de contenido avanzada, formularios complejos con validación estricta y una arquitectura pensada para crecer contigo.",
-        "Cada proyecto corporativo se diseña pensando en la escalabilidad futura, la integración con sistemas existentes y la facilidad de mantenimiento. Implementamos las mejores prácticas de seguridad y rendimiento.",
+        "Diseñamos tu sitio con un estilo formal y profesional, pensado para transmitir la seriedad de tu empresa desde la primera visita. Cuidamos el tono, la estructura y la imagen para que tu empresa se presente con confianza y claridad.",
       ],
     },
-    items: incluyeGenerico,
+    items: [
+      {
+        icon: IconPalette,
+        accent: "primary",
+        title: "Diseño corporativo y adaptable",
+        description:
+          "Una estética formal y coherente con la identidad de tu empresa, que se ve bien en cualquier dispositivo.",
+      },
+      {
+        icon: IconFileText,
+        accent: "secondary",
+        title: "Estructura clara y estratégica",
+        description:
+          "Organizamos la información para que se entienda de inmediato cuál es tu negocio, qué ofreces y cómo contactarte.",
+      },
+      {
+        icon: IconWorld,
+        accent: "accent",
+        title: "Preparación para buscadores (SEO)",
+        description:
+          "Textos y títulos bien estructurados para que tu sitio sea visible en los motores de búsqueda.",
+      },
+      {
+        icon: IconRobot,
+        accent: "secondary",
+        title: "Optimización para agentes de IA (GEO)",
+        description:
+          "Preparamos el contenido para que los asistentes de IA lo entiendan, lo citen y lo recomienden.",
+      },
+      {
+        icon: IconTarget,
+        accent: "primary",
+        title: "Formulario de contacto",
+        description:
+          "Un formulario directo para que tus clientes te escriban sin fricción.",
+      },
+      {
+        icon: IconSparkles,
+        accent: "accent",
+        title: "Animaciones y contenido optimizado",
+        description:
+          "Transiciones sutiles y contenido optimizado para una carga rápida.",
+      },
+      {
+        icon: IconLanguage,
+        accent: "primary",
+        title: "Varios idiomas",
+        description:
+          "Si tu empresa atiende en más de un idioma, el sitio puede mostrarse en cada uno.",
+      },
+    ],
   },
   beneficios: [
-    { icon: IconBuilding, accent: "primary", text: "Diseño corporativo profesional" },
-    { icon: IconFileText, accent: "secondary", text: "Gestión de contenido avanzada" },
-    { icon: IconPlugConnected, accent: "accent", text: "Integración con sistemas empresariales" },
-    { icon: IconLayoutDashboard, accent: "primary", text: "Panel de administración personalizado" },
-    { icon: IconWorld, accent: "secondary", text: "Múltiples idiomas" },
-    { icon: IconShieldCheck, accent: "accent", text: "Alta seguridad y rendimiento" },
+    { icon: IconPalette, accent: "primary", text: "Diseño corporativo profesional" },
+    { icon: IconFileText, accent: "secondary", text: "Varias páginas y secciones" },
+    { icon: IconTrendingUp, accent: "accent", text: "Optimización SEO y GEO" },
+    { icon: IconLanguage, accent: "primary", text: "Sitio en varios idiomas" },
+    { icon: IconDeviceDesktop, accent: "primary", text: "Carga rápida en cualquier dispositivo" },
+    { icon: IconMail, accent: "secondary", text: "Formulario de contacto" },
+    { icon: IconHeadset, accent: "accent", text: "Soporte y actualizaciones" },
   ],
   casosUso: [
     {
-      icon: IconBuildingSkyscraper,
+      icon: IconBuilding,
       accent: "primary",
-      title: "Sitios Corporativos",
-      description:
-        "Presencia digital completa para empresas medianas y grandes",
+      title: "Sitios de empresa",
+      description: "Presencia digital formal para presentar tu empresa.",
     },
     {
-      icon: IconNetwork,
+      icon: IconBriefcase,
       accent: "secondary",
-      title: "Intranets Corporativas",
-      description: "Portales internos para comunicación y gestión empresarial",
+      title: "Presentación de servicios",
+      description: "Muestra lo que ofreces con una imagen profesional.",
     },
     {
       icon: IconUsers,
       accent: "accent",
-      title: "Portales de Clientes",
-      description:
-        "Áreas privadas con funcionalidades específicas para clientes",
+      title: "Equipo y trayectoria",
+      description: "Da a conocer a tu equipo y tu experiencia.",
     },
     {
-      icon: IconMapPin,
+      icon: IconFileText,
       accent: "primary",
-      title: "Sitios Multi-sucursal",
-      description: "Gestión centralizada de múltiples ubicaciones",
+      title: "Portafolio corporativo",
+      description: "Presenta tus proyectos y casos con seriedad.",
     },
   ],
   faqs: [
     {
+      question: "¿Qué secciones puede tener mi sitio?",
+      answer:
+        "Las que necesites: presentación, servicios, sobre la empresa, proyectos y contacto. Definimos el contenido contigo.",
+    },
+    {
       question: "¿Cuánto tiempo toma desarrollar una página corporativa?",
       answer:
-        "Entre 4-8 semanas dependiendo de la complejidad, integraciones y funcionalidades requeridas.",
+        "Depende del contenido y de las secciones que necesites. Te damos un tiempo estimado por escrito antes de empezar.",
     },
     {
-      question: "¿Incluye panel de administración?",
+      question: "¿Puedo modificar el contenido después?",
       answer:
-        "Sí, desarrollamos un CMS personalizado o integramos uno existente según tus necesidades.",
+        "El sitio se entrega estático y las actualizaciones las gestionamos con el servicio de mantenimiento. Si prefieres administrarlo tú, lo construimos sobre un gestor como WordPress.",
     },
     {
-      question: "¿Puedo integrar con mis sistemas actuales?",
+      question: "¿Funciona bien en móvil?",
       answer:
-        "Absolutamente. Podemos integrar con CRM, ERP, bases de datos y otros sistemas empresariales.",
-    },
-    {
-      question: "¿Ofrecen soporte post-lanzamiento?",
-      answer:
-        "Sí, ofrecemos planes de mantenimiento y soporte técnico continuo.",
+        "Sí, está optimizado para verse bien y cargar rápido en cualquier dispositivo.",
     },
   ],
   final: {
-    heading: "¿Necesitas una solución corporativa?",
-    body: "Hablemos sobre los requisitos específicos de tu empresa",
+    heading: "¿Necesitas un sitio corporativo?",
+    body: "Hablemos de tu empresa y de la imagen que quieres proyectar.",
     cta: "Contactar Ahora",
   },
 }

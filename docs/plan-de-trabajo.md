@@ -16,7 +16,7 @@ blog con lo que se aplica en los proyectos.
 | # | Fase | Estado |
 |---|---|---|
 | 1 | Base del sitio (home, 5 landings de servicio, contacto, SEO, navbar/footer) | ✅ Terminada (8-sep-2026) |
-| 2 | Sección de **Ejemplos** + limpieza del home | ✅ **Terminada (23-sep-2026)** — ver checkpoint |
+| 2 | Sección de **Casos de uso** + limpieza del home | ✅ **Terminada (23-sep-2026)** — ver checkpoint |
 | 3 | **Blog** (Notion como CMS, sin rebuild) | ⏳ **Siguiente** |
 | 4 | Formulario con **Resend** + dominio | ⏳ Al final |
 | 5 | **Publicación** | ⏳ Solo cuando el Patrón la autorice |
@@ -35,16 +35,16 @@ y SEO on-page (`sitemap.ts`, `robots.ts`, `icon.svg`, Open Graph).
 **Hueco conocido:** el contenido de proyectos quedó sin definir, por eso `/proyectos` se
 dejó en "Próximamente" a propósito.
 
-### Fase 2 — Contenido real: sección de Ejemplos + home ✅
+### Fase 2 — Contenido real: sección de Casos de uso + home ✅
 
 **Ejecutada el 23-sep-2026.** Ver el detalle completo en `docs/checkpoint.md`.
 
-**2.1 — Sección de Ejemplos** ✅
+**2.1 — Sección de Casos de uso** ✅
 
-- Renombrado **"Portfolio" → "Ejemplos"** y la ruta **`/proyectos` → `/ejemplos`** (8 puntos).
-- Índice `/ejemplos` con las 4 entradas y **filtros por tipo de solución**.
-- Páginas de detalle `/ejemplos/[slug]` (4), con la estructura de 8 secciones.
-- Contenido en `lib/ejemplos.ts` (tipa `docs/ejemplos.md`).
+- Renombrado **"Portfolio" → "Casos de uso"** y la ruta **`/proyectos` → `/casos-de-uso`** (8 puntos).
+- Índice `/casos-de-uso` con las 4 entradas y **filtros por tipo de solución**.
+- Páginas de detalle `/casos-de-uso/[slug]` (4), con la estructura de 8 secciones.
+- Contenido en `lib/casos-de-uso.ts` (tipa `docs/casos-de-uso.md`).
 
 **2.2 — Home: quitar el contenido de relleno** ✅
 
@@ -130,13 +130,13 @@ orden; y la publicación al final, **solo con la autorización del Patrón**.
 
 | Fecha | Decisión | Por qué |
 |---|---|---|
-| 23-sep | "Ejemplos" en vez de "Portafolio" | No obliga a probar relación con clientes (no hay testimonios) y permite organizar por giro: *"esto es lo que se puede hacer"*. |
+| 23-sep | "Casos de uso" en vez de "Portafolio" | No obliga a probar relación con clientes (no hay testimonios) y permite organizar por giro: *"esto es lo que se puede hacer"*. |
 | 23-sep | 8 desarrollos agrupados en **4 páginas** | 6 de los 8 son la misma fórmula (catálogo/ecommerce + sistema + agente) aplicada dos veces; sueltos se leen como relleno. |
 | 23-sep | **Sin testimonios** → sección "Cómo trabajamos" | No hay testimonios reales. Uno genérico resta más de lo que suma. La sección de proceso se pone en su lugar. |
 | 23-sep | **LaserBox se presenta como cliente** | El sitio habla como BeStack, empresa. No se menciona que el Patrón es socio del taller. |
 | 23-sep | Los 12 proyectos de **Lanzaweb quedan fuera** | Fueron trabajo como empleado, no de BeStack. |
 | 23-sep | Proyectos viejos descartados por el Patrón | "Ya están viejos o de plano no me gustan". |
-| 23-sep | **Capturas: las toma el Patrón** | En el código se dejan placeholders con las medidas indicadas en `docs/ejemplos.md`. |
+| 23-sep | **Capturas: las toma el Patrón** | En el código se dejan placeholders con las medidas indicadas en `docs/casos-de-uso.md`. |
 | 23-sep | Repo sigue **público** por ahora | El Patrón lo pasará a privado más adelante. No hay secretos en el repo. |
 | 23-sep | **El blog sube al 3.º lugar** | El Patrón quiere ver cómo funciona antes de construir el resto. |
 | 23-sep | **El formulario se hace con Resend, al final** | La integración es corta y necesita el dominio verificado. |
@@ -146,7 +146,7 @@ orden; y la publicación al final, **solo con la autorización del Patrón**.
 
 1. **Los números de resultados** de cada ejemplo (ventas al día, tiempo ahorrado, volumen).
    Sin número, la sección "Qué cambió" se deja sin métricas — **no se estiman**.
-2. **Aprobación del tono** del copy (la muestra de Bidhara está en `docs/ejemplos.md`).
+2. **Aprobación del tono** del copy (la muestra de Bidhara está en `docs/casos-de-uso.md`).
 3. **El dominio** que va a usar (lo necesita la Fase 4).
 4. Confirmar si el sistema de operación de **LaserBox ya corre** o también va marcado como
    en desarrollo.

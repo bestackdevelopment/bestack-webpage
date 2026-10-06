@@ -40,9 +40,9 @@ react-hook-form + zod · zustand · shadcn/ui (Button, Card, Accordion sobre Rad
 |---|---|
 | `/` | ✅ Home: hero, «¿Por qué elegirnos?» (cards con icono), «Nuestros Servicios», stack de tecnologías, «Proyectos Destacados», «Cómo trabajamos» (**línea de tiempo**) y CTA |
 | `/contacto` | Funcional, **pero el envío está simulado** (Fase 4) |
-| `/ejemplos` | ✅ Índice con filtros por tipo de solución + 4 tarjetas |
-| `/ejemplos/[slug]` | ✅ 4 páginas SSG (bidhara, laserbox, sysop, bahia), 8 secciones |
-| `/proyectos` | ❌ Eliminado — renombrado a `/ejemplos` |
+| `/casos-de-uso` | ✅ Índice con filtros por tipo de solución + 4 tarjetas |
+| `/casos-de-uso/[slug]` | ✅ 4 páginas SSG (bidhara, laserbox, sysop, bahia), 8 secciones |
+| `/proyectos` | ❌ Eliminado — renombrado a `/casos-de-uso` |
 | `/servicios/paginas-informativas` | ✅ Funcional |
 | `/servicios/paginas-corporativas` | ✅ Funcional |
 | `/servicios/ecommerce` | ✅ Funcional + enlace al ejemplo laserbox |
@@ -97,7 +97,7 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
 ## Cómo proceder
 
 1. Leer `docs/plan-de-trabajo.md` para el orden de las fases.
-2. Leer `docs/ejemplos.md` antes de tocar `/ejemplos` — ahí está el copy y la estructura.
+2. Leer `docs/casos-de-uso.md` antes de tocar `/casos-de-uso` — ahí está el copy y la estructura.
    **No inventar contenido de proyectos.**
 3. Respetar las convenciones de `AGENTS.md` (iconos Tabler, tokens del tema, **no tocar los
    colores de marca**).
@@ -114,4 +114,4 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
 - **LaserBox se presenta como cliente.** No mencionar la sociedad con el taller.
 - **Publicar no es decisión del agente.**
 - **Capturas de pantalla:** las toma el Patrón; en el código se dejan placeholders con las
-  medidas de `docs/ejemplos.md`.
+  medidas de `docs/casos-de-uso.md`.

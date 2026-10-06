@@ -3,14 +3,14 @@ import { IconPhoto } from "@tabler/icons-react"
 import { cn } from "@/lib/utils"
 
 /**
- * Placeholder de captura para las tarjetas de ejemplo.
+ * Placeholder de captura para las tarjetas de caso de uso.
  *
  * Las capturas las toma el Patrón; el código solo deja el hueco con las
- * medidas definidas en `docs/ejemplos.md` (portada 16:9 = 1280×720).
- * Cuando exista la imagen en `public/ejemplos/{slug}/cover.jpg`,
+ * medidas definidas en `docs/casos-de-uso.md` (portada 16:9 = 1280×720).
+ * Cuando exista la imagen en `public/casos-de-uso/{slug}/cover.jpg`,
  * sustituir este componente por `next/image`.
  */
-export function EjemploCover({
+export function CasoCover({
   slug,
   className,
 }: {

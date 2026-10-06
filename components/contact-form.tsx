@@ -11,6 +11,7 @@ import {
   IconMail,
   IconPaint,
   IconRobot,
+  IconShoppingBag,
   IconShoppingCartSearch,
 } from "@tabler/icons-react"
 
@@ -40,6 +41,7 @@ export function ContactForm() {
         catalog: false,
         finalize: false,
         aiAgent: false,
+        tiendaEnLinea: false,
       },
       contactMethods: {
         whatsApp: false,
@@ -289,6 +291,28 @@ export function ContactForm() {
                             stroke={1}
                           />
                           <span className="text-sm">Agente IA</span>
+                        </div>
+                      </label>
+                    )}
+                  />
+                  <Controller
+                    name="services.tiendaEnLinea"
+                    control={control}
+                    render={({ field }) => (
+                      <label className="flex items-center gap-3 cursor-pointer group">
+                        <input
+                          type="checkbox"
+                          checked={field.value}
+                          onChange={field.onChange}
+                          className="w-4 h-4 cursor-pointer accent-primary"
+                        />
+                        <div className="flex items-center gap-2">
+                          <IconShoppingBag
+                            className="text-primary group-hover:scale-110 transition-transform"
+                            size={28}
+                            stroke={1}
+                          />
+                          <span className="text-sm">Tienda en línea</span>
                         </div>
                       </label>
                     )}

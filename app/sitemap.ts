@@ -5,16 +5,17 @@ import { siteUrl } from "@/lib/site"
 const routes = [
   "",
   "/contacto",
-  "/ejemplos",
+  "/casos-de-uso",
   "/servicios/paginas-informativas",
   "/servicios/paginas-corporativas",
-  "/servicios/ecommerce",
+  "/servicios/catalogos-en-linea",
   "/servicios/mantenimiento-web",
   "/servicios/finaliza-tu-web",
   "/servicios/agente-ia",
+  "/servicios/tienda-en-linea",
 ]
 
-const ejemploSlugs = ["bidhara", "laserbox", "sysop", "bahia"]
+const casoSlugs = ["bidhara", "laserbox", "sysop", "bahia"]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
@@ -24,11 +25,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: route === "" ? 1 : 0.7,
   }))
-  const ejemplos = ejemploSlugs.map((slug) => ({
-    url: `${siteUrl}/ejemplos/${slug}`,
+  const casos = casoSlugs.map((slug) => ({
+    url: `${siteUrl}/casos-de-uso/${slug}`,
     lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }))
-  return [...pages, ...ejemplos]
+  return [...pages, ...casos]
 }

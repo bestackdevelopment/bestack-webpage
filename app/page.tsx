@@ -14,9 +14,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AllServices } from "@/components/all-services"
 import { Stack } from "@/components/stack"
-import { EjemploCard } from "@/components/ejemplo-card"
+import { CasoCard } from "@/components/caso-card"
 import { Reveal } from "@/components/reveal"
-import { getEjemplosDestacados } from "@/lib/ejemplos"
+import { getCasosDestacados } from "@/lib/casos-de-uso"
 
 export default function HomePage() {
   const beneficios = [
@@ -111,9 +111,9 @@ export default function HomePage() {
               size="lg"
               variant="outline"
               asChild
-              className="text-lg px-8 bg-transparent"
+              className="border-2 border-accent/50 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all text-lg px-8 bg-transparent"
             >
-              <Link href="/ejemplos">Ver Ejemplos</Link>
+              <Link href="/casos-de-uso">Ver casos de uso</Link>
             </Button>
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function HomePage() {
       {/* Services Section */}
       <section
         id="servicios"
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-background"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -193,7 +193,7 @@ export default function HomePage() {
       </section>
 
       {/* Proyectos Destacados */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Proyectos Destacados</h2>
@@ -202,13 +202,13 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getEjemplosDestacados().map((ejemplo, index) => (
+            {getCasosDestacados().map((caso, index) => (
               <Reveal
-                key={ejemplo.slug}
+                key={caso.slug}
                 direction="up"
                 delay={(index % 3) * 80}
               >
-                <EjemploCard ejemplo={ejemplo} />
+                <CasoCard caso={caso} />
               </Reveal>
             ))}
           </div>
@@ -219,7 +219,7 @@ export default function HomePage() {
               asChild
               className="text-base px-8"
             >
-              <Link href="/ejemplos">Ver todos los ejemplos</Link>
+              <Link href="/casos-de-uso">Ver todos los casos de uso</Link>
             </Button>
           </div>
         </div>

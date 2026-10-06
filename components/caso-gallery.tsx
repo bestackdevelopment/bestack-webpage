@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { IconPhoto, IconX } from "@tabler/icons-react"
 
 type Captura = {
-  /** Ruta de la captura en public/ejemplos/{slug}/N.jpg → se añade cuando exista */
+  /** Ruta de la captura en public/casos-de-uso/{slug}/N.jpg → se añade cuando exista */
   imagen?: string
   etiqueta: string
 }
@@ -12,9 +12,9 @@ type Captura = {
 /**
  * Galería con lightbox. Hoy los slides son placeholders (las capturas las toma
  * el Patrón); cuando exista el archivo, añadir `imagen` al slide y el lightbox
- * mostrará la captura real — docs/ejemplos.md. Cierra con Esc o clic fuera.
+ * mostrará la captura real — docs/casos-de-uso.md. Cierra con Esc o clic fuera.
  */
-export function EjemploGallery({ capturas }: { capturas: Captura[] }) {
+export function CasoGallery({ capturas }: { capturas: Captura[] }) {
   const [activa, setActiva] = useState<number | null>(null)
 
   useEffect(() => {

@@ -1,37 +1,62 @@
 /**
- * Datos de la sección de Ejemplos. FUENTE ÚNICA en código: el copy vive en
- * `docs/ejemplos.md`; este módulo lo tipa y lo comparte entre el home, el
- * índice `/ejemplos` y las páginas de detalle `/ejemplos/[slug]`.
+ * Datos de la sección de Casos de uso. FUENTE ÚNICA en código: el copy vive en
+ * `docs/casos-de-uso.md`; este módulo lo tipa y lo comparte entre el home, el
+ * índice `/casos-de-uso` y las páginas de detalle `/casos-de-uso/[slug]`.
  *
- * No inventar contenido aquí: cada texto sale de `docs/ejemplos.md`.
+ * No inventar contenido aquí: cada texto sale de `docs/casos-de-uso.md`.
  */
 
-export type EstadoEjemplo = "En operación" | "En desarrollo"
+import type { ServicioTagId } from "@/lib/servicios"
 
-/** Filtros por tipo de solución (docs/ejemplos.md → "Índice /ejemplos"). */
-export const FILTROS_SOLUCION = [
-  "Sistema a medida",
-  "Agente IA",
-  "Ecommerce",
-  "Sitio corporativo",
-  "SaaS",
-] as const
-
-export type FiltroSolucion = (typeof FILTROS_SOLUCION)[number]
+export type EstadoCaso = "En operación" | "En desarrollo"
 
 export type PiezaSolucion = {
   titulo: string
   descripcion: string
 }
 
-export type Ejemplo = {
+export type ArquitecturaIcono =
+  | "settings"
+  | "device-mobile"
+  | "users"
+  | "api"
+  | "database"
+  | "cloud-upload"
+  | "nextjs"
+  | "node"
+  | "prisma"
+  | "react"
+  | "tailwind"
+  | "typescript"
+  | "robot"
+  | "file"
+  | "search"
+  | "cloud"
+
+export type ArquitecturaNodo = {
+  id: string
+  titulo: string
+  descripcion?: string
+  /** Clave de icono (el componente cliente la mapea a un icono Tabler). */
+  icono?: ArquitecturaIcono
+  /** Posición en el lienzo (React Flow). */
+  x: number
+  y: number
+}
+
+export type ArquitecturaArista = {
+  from: string
+  to: string
+  etiqueta?: string
+}
+
+export type Caso = {
   slug: string
   nombre: string
   giro: string
-  tipo: string
-  estado: EstadoEjemplo
-  /** Etiquetas de tipo de solución para el filtro del índice */
-  filtros: FiltroSolucion[]
+  estado: EstadoCaso
+  /** Tags de servicio para el filtro del índice (1 o más) */
+  tags: ServicioTagId[]
   /** Una línea de qué se hizo, para tarjetas (home e índice) */
   resumen: string
   /** Copy de la sección "El reto" */
@@ -46,20 +71,24 @@ export type Ejemplo = {
   }
   /** Copy de "Cómo se aplicó" */
   stack: string
+  /** Diagrama de arquitectura para "Cómo se aplicó" (opcional). */
+  arquitectura?: {
+    nodos: ArquitecturaNodo[]
+    aristas: ArquitecturaArista[]
+  }
   /** Copy de "Por qué así": decisiones y su razón */
   decisiones: { titulo: string; razon: string }[]
   /** "Qué cambió" — sin métricas: si el Patrón no da el número, queda cualitativo */
   queCambio: string
 }
 
-const ejemplos: Ejemplo[] = [
+const casos: Caso[] = [
   {
     slug: "bidhara",
     nombre: "Bidhara: Flores comestibles y microgreens",
     giro: "Agroalimentario",
-    tipo: "Implementación integral",
     estado: "En operación",
-    filtros: ["Sistema a medida", "Agente IA", "Ecommerce"],
+    tags: ["informativas", "catalogos", "mantenimiento", "agente-ia"],
     resumen:
       "Catálogo en línea, sistema de operación y agente IA que registra ventas desde Telegram.",
     reto: [
@@ -83,6 +112,66 @@ const ejemplos: Ejemplo[] = [
           descripcion:
             "El dueño le escribe por Telegram: registra ventas, consulta inventario, sube fotos y pide su reporte del día. Trabaja sobre la misma base de datos que la app, con permisos restringidos.",
         },
+      ],
+    },
+    arquitectura: {
+      nodos: [
+        {
+          id: "catalogo",
+          titulo: "Catálogo en línea",
+          descripcion:
+            "Escaparate de 45 productos; el pedido se cierra por WhatsApp.",
+          icono: "react",
+          x: 0,
+          y: 0,
+        },
+        {
+          id: "operacion",
+          titulo: "App de operación",
+          descripcion: "Ventas, clientes, gastos y reportes. Mobile-first.",
+          icono: "device-mobile",
+          x: 0,
+          y: 170,
+        },
+        {
+          id: "agente",
+          titulo: "Agente «Cortana»",
+          descripcion: "Registra ventas y consulta inventario desde Telegram.",
+          icono: "robot",
+          x: 0,
+          y: 340,
+        },
+        {
+          id: "api",
+          titulo: "API (Express)",
+          descripcion: "Autenticación (JWT) y lógica de negocio.",
+          icono: "api",
+          x: 380,
+          y: 170,
+        },
+        {
+          id: "db",
+          titulo: "PostgreSQL + Prisma",
+          descripcion: "Una sola base de datos para la app y el agente.",
+          icono: "database",
+          x: 760,
+          y: 80,
+        },
+        {
+          id: "pdf",
+          titulo: "Reportes en PDF",
+          descripcion: "El negocio los manda e imprime.",
+          icono: "file",
+          x: 760,
+          y: 280,
+        },
+      ],
+      aristas: [
+        { from: "catalogo", to: "api" },
+        { from: "operacion", to: "api" },
+        { from: "agente", to: "api" },
+        { from: "api", to: "db" },
+        { from: "api", to: "pdf", etiqueta: "reportes" },
       ],
     },
     stack:
@@ -121,9 +210,8 @@ const ejemplos: Ejemplo[] = [
     slug: "laserbox",
     nombre: "LaserBox: Taller de corte láser",
     giro: "Manufactura / taller",
-    tipo: "Implementación integral",
     estado: "En desarrollo",
-    filtros: ["Sistema a medida", "Ecommerce", "Agente IA"],
+    tags: ["tienda", "mantenimiento", "agente-ia"],
     resumen:
       "Sistema de operación, ecommerce y agente IA para cotizar y llevar la producción del taller.",
     reto: [
@@ -147,6 +235,56 @@ const ejemplos: Ejemplo[] = [
           descripcion:
             "Opera sobre el mismo sistema: consulta y registra desde Telegram, sin abrir la aplicación.",
         },
+      ],
+    },
+    arquitectura: {
+      nodos: [
+        {
+          id: "operacion",
+          titulo: "Sistema de operación",
+          descripcion: "Clientes, cotizaciones, producción e inventario.",
+          icono: "settings",
+          x: 0,
+          y: 0,
+        },
+        {
+          id: "ecommerce",
+          titulo: "Ecommerce",
+          descripcion: "En desarrollo: canal de venta en línea.",
+          icono: "react",
+          x: 0,
+          y: 170,
+        },
+        {
+          id: "agente",
+          titulo: "Agente «Aserrín»",
+          descripcion: "Consulta y registra desde Telegram.",
+          icono: "robot",
+          x: 0,
+          y: 340,
+        },
+        {
+          id: "api",
+          titulo: "API (Express)",
+          descripcion: "Autenticación y lógica de negocio.",
+          icono: "api",
+          x: 380,
+          y: 170,
+        },
+        {
+          id: "db",
+          titulo: "SQLite + Prisma",
+          descripcion: "Un archivo respaldable; un solo punto de operación.",
+          icono: "database",
+          x: 760,
+          y: 170,
+        },
+      ],
+      aristas: [
+        { from: "operacion", to: "api" },
+        { from: "ecommerce", to: "api" },
+        { from: "agente", to: "api" },
+        { from: "api", to: "db" },
       ],
     },
     stack:
@@ -180,9 +318,8 @@ const ejemplos: Ejemplo[] = [
     slug: "sysop",
     nombre: "SysOp: Configuración operacional",
     giro: "Seguridad perimetral",
-    tipo: "SaaS",
     estado: "En desarrollo",
-    filtros: ["SaaS", "Sistema a medida"],
+    tags: ["saas"],
     resumen:
       "Plataforma SaaS multi-tenant para operar protocolos, turnos y evidencia de seguridad perimetral.",
     reto: [
@@ -195,6 +332,67 @@ const ejemplos: Ejemplo[] = [
         "Configuración: el nivel de plataforma administra instalaciones, clientes y módulos.",
         "Operación: el personal ejecuta protocolos y levanta incidencias con evidencia fotográfica desde el celular.",
         "Portal de cliente: el proveedor administra a sus clientes directos y a los sub-clientes de estos, y cada uno ve únicamente lo suyo.",
+      ],
+    },
+    arquitectura: {
+      nodos: [
+        {
+          id: "config",
+          titulo: "Configuración",
+          descripcion: "Administra instalaciones, clientes y módulos.",
+          icono: "settings",
+          x: 0,
+          y: 0,
+        },
+        {
+          id: "operacion",
+          titulo: "Operación (PWA)",
+          descripcion:
+            "El personal ejecuta protocolos y levanta incidencias con evidencia fotográfica.",
+          icono: "device-mobile",
+          x: 0,
+          y: 170,
+        },
+        {
+          id: "portal",
+          titulo: "Portal de cliente",
+          descripcion:
+            "El proveedor administra clientes y sub-clientes; cada uno ve solo lo suyo.",
+          icono: "users",
+          x: 0,
+          y: 340,
+        },
+        {
+          id: "api",
+          titulo: "API (Express)",
+          descripcion: "Autenticación, permisos por rol y lógica de negocio.",
+          icono: "api",
+          x: 360,
+          y: 170,
+        },
+        {
+          id: "db",
+          titulo: "PostgreSQL (Prisma)",
+          descripcion: "Multi-tenant: cada recurso tiene dueño en la base de datos.",
+          icono: "database",
+          x: 720,
+          y: 80,
+        },
+        {
+          id: "evidencia",
+          titulo: "Evidencia en la nube",
+          descripcion: "Las fotos de las incidencias se guardan en la nube.",
+          icono: "cloud-upload",
+          x: 720,
+          y: 260,
+        },
+      ],
+      aristas: [
+        { from: "config", to: "api" },
+        { from: "operacion", to: "api" },
+        { from: "portal", to: "api" },
+        { from: "api", to: "db" },
+        { from: "api", to: "evidencia", etiqueta: "fotos" },
       ],
     },
     stack:
@@ -227,9 +425,8 @@ const ejemplos: Ejemplo[] = [
     slug: "bahia",
     nombre: "Bahía Business Center",
     giro: "Renta de espacios",
-    tipo: "Sitio corporativo",
     estado: "En operación",
-    filtros: ["Sitio corporativo"],
+    tags: ["corporativas"],
     resumen:
       "Sitio corporativo con renderizado en servidor para competir en búsqueda local.",
     reto: [
@@ -238,6 +435,47 @@ const ejemplos: Ejemplo[] = [
     solucion: {
       intro:
         "Un sitio corporativo con renderizado en servidor, para que el contenido exista en HTML desde el primer byte (la condición para competir en buscadores). Organizado por tipo de espacio, con la ubicación y un único llamado a la acción: cotizar.",
+    },
+    arquitectura: {
+      nodos: [
+        {
+          id: "busqueda",
+          titulo: "Búsqueda local",
+          descripcion: "«Oficina», «coworking», «sala de juntas».",
+          icono: "search",
+          x: 0,
+          y: 0,
+        },
+        {
+          id: "visitante",
+          titulo: "Visitante",
+          descripcion: "Llega y encuentra el espacio; cotiza.",
+          icono: "users",
+          x: 0,
+          y: 200,
+        },
+        {
+          id: "ssr",
+          titulo: "Sitio en servidor (Next.js)",
+          descripcion: "Contenido en HTML desde el primer byte.",
+          icono: "nextjs",
+          x: 400,
+          y: 100,
+        },
+        {
+          id: "hosting",
+          titulo: "Hosting del negocio",
+          descripcion: "Publicado en su propio hosting.",
+          icono: "cloud",
+          x: 800,
+          y: 100,
+        },
+      ],
+      aristas: [
+        { from: "busqueda", to: "ssr", etiqueta: "rastreo" },
+        { from: "visitante", to: "ssr" },
+        { from: "ssr", to: "hosting", etiqueta: "publicado" },
+      ],
     },
     stack: "Next.js con renderizado en servidor · React · Tailwind CSS · publicación en el hosting del negocio.",
     decisiones: [
@@ -262,18 +500,18 @@ const ejemplos: Ejemplo[] = [
   },
 ]
 
-export function getEjemplos(): Ejemplo[] {
-  return ejemplos
+export function getCasos(): Caso[] {
+  return casos
 }
 
-export function getEjemplo(slug: string): Ejemplo | undefined {
-  return ejemplos.find((ejemplo) => ejemplo.slug === slug)
+export function getCaso(slug: string): Caso | undefined {
+  return casos.find((caso) => caso.slug === slug)
 }
 
-/** Ejemplos destacados para el home (docs/contenido-home.md: las 3 más fuertes) */
-export function getEjemplosDestacados(): Ejemplo[] {
+/** Casos destacados para el home (docs/contenido-home.md: las 3 más fuertes) */
+export function getCasosDestacados(): Caso[] {
   const slugs = ["sysop", "bidhara", "laserbox"]
   return slugs
-    .map((slug) => getEjemplo(slug))
-    .filter((ejemplo): ejemplo is Ejemplo => Boolean(ejemplo))
+    .map((slug) => getCaso(slug))
+    .filter((caso): caso is Caso => Boolean(caso))
 }

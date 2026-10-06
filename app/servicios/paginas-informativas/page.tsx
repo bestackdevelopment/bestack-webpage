@@ -30,7 +30,7 @@ const data: ServiceTemplateData = {
       "Sitios informativos modernos diseñados para destacar tu proyecto con tecnología de vanguardia",
     ctas: [
       { label: "Empieza tu sitio", href: "/contacto" },
-      { label: "Ver ejemplos", href: "/ejemplos", variant: "outline" },
+      { label: "Ver casos de uso", href: "/casos-de-uso", variant: "outline" },
     ],
   },
   incluye: {

@@ -39,7 +39,7 @@ export default function ContactoPage() {
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center font-[family-name:var(--font-jura)]">
             Información de Contacto

@@ -21,10 +21,8 @@
   --color-input: oklch(0.922 0 0);
   --color-ring: oklch(0.68 0.21 15);
 
-  /* Fondo general de la página (ligeramente distinto del blanco de las cards) */
-  --color-canvas: oklch(0.976 0 0);
-  /* Fondo de las landings de servicio (prueba: #F8FAFC en vez del gris) */
-  --color-surface: #f8fafc;
+  /* Fondo general de la página */
+  --color-canvas: #f8fafc;
   /* Verde de marca de WhatsApp (no es un color de BeStack) */
   --color-whatsapp: #25d366;
 
