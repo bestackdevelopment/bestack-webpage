@@ -22,9 +22,9 @@ Guía para agentes de IA que trabajan en este repositorio. Léela antes de tocar
 
 | Qué | Dónde |
 |---|---|
-| Raíz de proyectos | https://app.notion.com/p/BeStack-Development-Proyectos-3f032530bf5581d5aa76c460d8c48460 |
-| Proyecto «BeStack — Sitio web» | https://app.notion.com/p/BeStack-Sitio-web-3f032530bf558183bce3d431032c9ca8 |
-| Blog (aparte — es contenido, no gestión) | https://app.notion.com/p/Blog-BeStack-Development-3f032530bf5581ee9fcce88248da1974 |
+| Raíz de proyectos | https://app.notion.com/p/BeStack-Development-Proyectos-9977e60df5698249b6b2814224f5ad09 |
+| Proyecto «BeStack — Sitio web» | https://app.notion.com/p/BeStack-Sitio-web-c527e60df569827daae1012fb845f05e |
+| Blog (aparte — es contenido, no gestión) | https://app.notion.com/p/Blog-BeStack-Development-5337e60df56983b6997481bbab84b500 |
 
 Dentro de la página del proyecto viven tres bases de datos: **Fases**, **Pendientes** y
 **Decisiones**. Cada fila se abre como página propia — **el detalle va en la fila, no en
