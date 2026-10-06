@@ -97,88 +97,110 @@ const casos: Caso[] = [
     estado: "En operación",
     tags: ["informativas", "catalogos", "mantenimiento", "agente-ia"],
     resumen:
-      "Catálogo en línea, sistema de operación y agente IA que registra ventas desde Telegram.",
+      "El negocio completo en un sistema: catálogo en línea, ventas y gastos centralizados, con un agente de IA que responde por Telegram.",
     reto: [
       "Catálogo de 45 productos perecederos, pedidos que entran por WhatsApp y el control repartido entre hojas de cálculo y la memoria del dueño: qué se vendió, a quién, cuánto se gastó, qué queda disponible.",
     ],
     solucion: {
-      intro: "Tres piezas, una sola fuente de verdad:",
+      intro: "Seis piezas, una sola fuente de verdad:",
       piezas: [
         {
-          titulo: "Catálogo en línea",
+          titulo: "Aplicación interna",
           descripcion:
-            "El escaparate: 45 productos con foto, descripción y disponibilidad; el pedido se cierra por WhatsApp, sin carrito ni pasarela que nadie iba a usar.",
+            "Ventas multi-artículo, clientes, gastos por categoría e inventario en un solo lugar; mobile-first, porque el negocio se opera desde el celular.",
         },
         {
-          titulo: "Sistema de operación",
+          titulo: "Base de datos centralizada",
           descripcion:
-            "Ventas multi-artículo, clientes, gastos por categoría y reportes en PDF. Mobile-first, porque el negocio se opera desde el celular.",
+            "Toda la información del negocio en una sola fuente: es la que alimenta a la aplicación, al catálogo en línea y al agente.",
         },
         {
           titulo: "Agente IA",
           descripcion:
-            "El dueño le escribe por Telegram: registra ventas, consulta inventario, sube fotos y pide su reporte del día. Trabaja sobre la misma base de datos que la app, con permisos restringidos.",
+            "Corre en infraestructura propia, entra a la aplicación y responde por Telegram: registra y consulta pedidos, ventas e inventario sin abrir el sistema.",
+        },
+        {
+          titulo: "Catálogo en línea",
+          descripcion:
+            "Los productos con foto, descripción y disponibilidad; el cliente arma su pedido en el carrito y lo cierra por WhatsApp.",
+        },
+        {
+          titulo: "Nube privada",
+          descripcion:
+            "Los archivos del negocio —fotos de producto, evidencia— ordenados y accesibles desde la operación.",
+        },
+        {
+          titulo: "Red privada",
+          descripcion: "Se entra a la aplicación sin exponer nada a internet.",
         },
       ],
     },
     arquitectura: {
       nodos: [
         {
-          id: "catalogo",
-          titulo: "Catálogo en línea",
-          descripcion:
-            "Escaparate de 45 productos; el pedido se cierra por WhatsApp.",
-          icono: "react",
+          id: "red",
+          titulo: "Red privada",
+          descripcion: "El acceso entra por aquí; la aplicación no está expuesta a internet.",
+          icono: "lock",
           x: 0,
-          y: 0,
+          y: 100,
         },
         {
-          id: "operacion",
-          titulo: "App de operación",
-          descripcion: "Ventas, clientes, gastos y reportes. Mobile-first.",
-          icono: "device-mobile",
-          x: 0,
-          y: 170,
+          id: "app",
+          titulo: "Aplicación interna",
+          descripcion: "Ventas, clientes, gastos e inventario.",
+          icono: "app-window",
+          x: 340,
+          y: 100,
+        },
+        {
+          id: "db",
+          titulo: "Base de datos centralizada",
+          descripcion: "Una sola fuente para la aplicación, el catálogo y el agente.",
+          icono: "database",
+          x: 680,
+          y: 0,
         },
         {
           id: "agente",
           titulo: "Agente IA",
-          descripcion: "Registra ventas y consulta inventario desde Telegram.",
+          descripcion: "Gestiona pedidos y consulta sin abrir la aplicación.",
           icono: "robot",
-          x: 0,
-          y: 340,
+          x: 680,
+          y: 190,
         },
         {
-          id: "api",
-          titulo: "API (Express)",
-          descripcion: "Autenticación (JWT) y lógica de negocio.",
-          icono: "api",
-          x: 380,
-          y: 170,
+          id: "nube",
+          titulo: "Nube privada",
+          descripcion: "Los archivos del negocio, ordenados y accesibles.",
+          icono: "cloud",
+          x: 680,
+          y: 380,
         },
         {
-          id: "db",
-          titulo: "PostgreSQL + Prisma",
-          descripcion: "Una sola base de datos para la app y el agente.",
-          icono: "database",
-          x: 760,
-          y: 80,
+          id: "catalogo",
+          titulo: "Catálogo en línea",
+          descripcion: "En operación: lee los productos de la base.",
+          icono: "shopping-bag",
+          x: 1020,
+          y: 0,
         },
         {
-          id: "pdf",
-          titulo: "Reportes en PDF",
-          descripcion: "El negocio los manda e imprime.",
-          icono: "file",
-          x: 760,
-          y: 280,
+          id: "telegram",
+          titulo: "Telegram",
+          descripcion: "Donde el negocio habla con el agente.",
+          icono: "telegram",
+          x: 1020,
+          y: 190,
         },
       ],
       aristas: [
-        { from: "catalogo", to: "api" },
-        { from: "operacion", to: "api" },
-        { from: "agente", to: "api" },
-        { from: "api", to: "db" },
-        { from: "api", to: "pdf", etiqueta: "reportes" },
+        { from: "red", to: "app", etiqueta: "acceso" },
+        { from: "app", to: "db" },
+        { from: "app", to: "agente", etiqueta: "MCP" },
+        { from: "app", to: "nube", etiqueta: "archivos" },
+        { from: "db", to: "catalogo", etiqueta: "catálogo" },
+        { from: "agente", to: "telegram" },
       ],
     },
     decisiones: [
@@ -194,8 +216,7 @@ const casos: Caso[] = [
       },
       {
         titulo: "Permisos mínimos",
-        razon:
-          "El agente solo puede leer y dar de alta: no borra, no modifica.",
+        razon: "El agente solo puede leer y dar de alta: no borra, no modifica.",
       },
       {
         titulo: "PostgreSQL nativo, sin contenedores",
@@ -204,12 +225,26 @@ const casos: Caso[] = [
       },
       {
         titulo: "Reportes en PDF",
+        razon: "El negocio los manda y los imprime; un tablero no reemplaza eso.",
+      },
+      {
+        titulo: "Red privada en vez de exponer la aplicación",
         razon:
-          "El negocio los manda y los imprime; un tablero no reemplaza eso.",
+          "La operación no tiene por qué estar en internet para poder entrar desde fuera.",
+      },
+      {
+        titulo: "El catálogo se construye sobre lo que ya existe",
+        razon:
+          "El catálogo en línea sale de la operación, no de una lista aparte que se desactualiza sola.",
+      },
+      {
+        titulo: "El agente dentro del sistema, no al lado",
+        razon:
+          "Por MCP el agente usa la aplicación real, con sus datos y sus permisos; no es un chatbot que adivina.",
       },
     ],
     queCambio:
-      "La operación dejó de depender de hojas de cálculo y memoria: catálogo, ventas, gastos e inventario viven en una sola base de datos, consultable desde el celular y Telegram.",
+      "Se digitalizó y se organizó: el negocio dejó los papeles y las hojas de cálculo, y ahora se administra de mejor manera —catálogo, ventas y gastos en un mismo sistema, con un agente que responde por Telegram.",
   },
   {
     slug: "laserbox",

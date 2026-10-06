@@ -1,6 +1,6 @@
 # Casos de uso — definición de la sección
 
-**Última actualización:** 23 de septiembre de 2026 (subfire).
+**Última actualización:** 6 de octubre de 2026 (subfire).
 
 Especificación completa de la sección que reemplaza a "Portfolio": qué se muestra, cómo se
 estructura cada página y el copy de los 4 ejemplos. **Todo el contenido sale de aquí — no se
@@ -57,10 +57,10 @@ Ocho secciones, en este orden:
 
 1. **Portada** — nombre, giro, una línea de qué es, etiquetas de tipo y estado, CTA.
 2. **El reto** — cómo operaba el negocio antes (2-3 párrafos).
-3. **La solución** — una tarjeta por pieza. LaserBox lleva 6 (aplicación interna · base de
-   datos centralizada · agente IA · tienda en línea · nube privada · red privada) y Bidhara 3
-   (catálogo en línea · sistema de operación · agente IA). En SysOp y Bahía, la descripción de
-   la plataforma/sitio.
+3. **La solución** — una tarjeta por pieza. LaserBox y Bidhara llevan 6 (aplicación interna ·
+   base de datos centralizada · agente IA · el canal de venta —tienda en LaserBox, catálogo en
+   Bidhara— · nube privada · red privada); en LaserBox el agente además toca redes sociales. En
+   SysOp y Bahía, la descripción de la plataforma/sitio.
 4. **Cómo se aplicó** — **solo el diagrama** de cómo se conectan las piezas. **No se publica la
    lista de stack:** el cliente que contrata no la lee y la sección se sostiene con el diagrama
    (decisión del Patrón, 6-oct-2026).
@@ -97,10 +97,10 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 # Copy
 
-> **Estado del copy:** **LaserBox ya está definido y aprobado por el Patrón** (6-oct-2026). Los
-> otros tres siguen como **borrador v1**, pendientes de definir caso por caso. El detalle de
-> cada caso se trabaja en Notion (base «Casos de uso — contenido»); este doc guarda el copy
-> que el código consume.
+> **Estado del copy:** **LaserBox y Bidhara ya están definidos y aprobados por el Patrón**
+> (6-oct-2026). SysOp y Bahía siguen como **borrador v1**, pendientes de definir caso por caso.
+> El detalle de cada caso se trabaja en Notion (base «Casos de uso — contenido»); este doc
+> guarda el copy que el código consume.
 >
 > **"Qué cambió" va sin métricas** hasta que el Patrón aporte los números. No estimarlos.
 
@@ -109,25 +109,33 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 **Bidhara: Flores comestibles y microgreens**
 *Giro:* agroalimentario · *Tipo:* implementación integral · *Estado:* En operación
 
+> **Definido y aprobado por el Patrón el 6-oct-2026.** El agente no se nombra y **no toca redes
+> sociales**: eso es exclusivo del caso de LaserBox. **El carrito sí va en el catálogo en
+> línea** — lo que distingue al catálogo de la tienda es la pasarela de pago, no el carrito.
+
 **El reto.** Catálogo de 45 productos perecederos, pedidos que entran por WhatsApp y el
 control repartido entre hojas de cálculo y la memoria del dueño: qué se vendió, a quién,
 cuánto se gastó, qué queda disponible.
 
-**La solución — tres piezas, una sola fuente de verdad:**
+**La solución — seis piezas, una sola fuente de verdad:**
 
-1. **Catálogo en línea** — el escaparate: 45 productos con foto, descripción y
-   disponibilidad; el pedido se cierra por WhatsApp, sin carrito ni pasarela que nadie iba
-   a usar.
-2. **Sistema de operación** — ventas multi-artículo, clientes, gastos por categoría y
-   reportes en PDF. Mobile-first, porque el negocio se opera desde el celular.
-3. **Agente IA** — el dueño le escribe por Telegram: registra ventas, consulta
-   inventario, sube fotos y pide su reporte del día. Trabaja sobre **la misma base de datos**
-   que la app, con permisos restringidos.
+1. **Aplicación interna** — ventas multi-artículo, clientes, gastos por categoría e inventario
+   en un solo lugar; mobile-first, porque el negocio se opera desde el celular.
+2. **Base de datos centralizada** — toda la información del negocio en una sola fuente: es la
+   que alimenta a la aplicación, al catálogo en línea y al agente.
+3. **Agente IA** — corre en infraestructura propia, entra a la aplicación y responde por
+   Telegram: registra y consulta pedidos, ventas e inventario sin abrir el sistema.
+4. **Catálogo en línea** *(en operación)* — los productos con foto, descripción y
+   disponibilidad; el cliente arma su pedido en el carrito y lo cierra por WhatsApp.
+5. **Nube privada** — los archivos del negocio (fotos de producto, evidencia), ordenados y
+   accesibles desde la operación.
+6. **Red privada** — se entra a la aplicación sin exponer nada a internet.
 
 > **Los agentes no se nombran.** El nombre del agente es interno del cliente y no se publica
 > (decisión del 6-oct-2026). Aplica a los dos casos que traían agente con nombre.
 
-**Por qué así.**
+**Por qué así.** La razón de fondo: organizar y administrar el negocio — tener todo
+centralizado y un agente 24/7 que sabe de qué va el negocio y en qué estado está todo.
 
 - **Un agente, no otro dashboard.** El dueño no iba a abrir un panel para registrar una
   venta; le escribe al agente. No tuvo que cambiar su forma de trabajar.
@@ -137,8 +145,16 @@ cuánto se gastó, qué queda disponible.
 - **PostgreSQL nativo, sin contenedores.** Lo va a mantener alguien que no es desarrollador.
   Menos piezas, menos fallas.
 - **Reportes en PDF.** El negocio los manda y los imprime; un tablero no reemplaza eso.
+- **Red privada en vez de exponer la aplicación.** La operación no tiene por qué estar en
+  internet para poder entrar desde fuera.
+- **El catálogo se construye sobre lo que ya existe.** El catálogo en línea sale de la
+  operación, no de una lista aparte que se desactualiza sola.
+- **El agente dentro del sistema, no al lado.** Por MCP usa la aplicación real, con sus datos
+  y sus permisos; no es un chatbot que adivina.
 
-**Qué cambió.** *(pendiente: los números del Patrón)*
+**Qué cambió.** Se digitalizó y se organizó: el negocio dejó los papeles y las hojas de
+cálculo, y ahora se administra de mejor manera —catálogo, ventas y gastos en un mismo sistema,
+con un agente que responde por Telegram. *Sin números: cualitativo por decisión del Patrón.*
 
 ---
 
@@ -270,5 +286,5 @@ espacio, con la ubicación y un único llamado a la acción: cotizar.
    cliente ni detalles de la operación real).
 3. **Los 4:** los números de "Qué cambió". En **LaserBox quedó cualitativo por decisión del
    Patrón**, no por olvido.
-4. **Aprobación del tono.** **LaserBox ya está aprobado**; faltan Bidhara, SysOp y Bahía, que se
-   definen caso por caso con el Patrón.
+4. **Aprobación del tono.** **LaserBox y Bidhara ya están aprobados**; faltan **SysOp y
+   Bahía**, que se definen caso por caso con el Patrón.
