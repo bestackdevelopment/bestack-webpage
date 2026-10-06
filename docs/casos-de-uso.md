@@ -67,7 +67,8 @@ Ocho secciones, en este orden:
 5. **Por qué así** — las decisiones y **su razón**. *Es la sección que vende: demuestra
    criterio, no herramientas.* Mínimo 4 decisiones, cada una con su porqué.
 6. **Qué cambió** — el efecto en la operación. **Sin métricas inventadas**: si el Patrón no
-   da el número, la sección queda cualitativa.
+   da el número, la sección queda cualitativa. **Es opcional:** un sistema que no reemplazó una
+   operación anterior (SysOp) no la lleva, y la sección no se pinta.
 7. **Galería** — capturas (placeholders).
 8. **CTA + navegación** — "¿Tienes un negocio como este?" → `/contacto`, y enlace al
    siguiente ejemplo.
@@ -219,34 +220,62 @@ avisa y contesta por Telegram. *Sin números: cualitativo por decisión del Patr
 **SysOp: Configuración operacional**
 *Giro:* seguridad perimetral · *Tipo:* SaaS · *Estado:* En desarrollo
 
-> **Se muestra sin el nombre del cliente.** Las capturas van con datos demo, nunca con
-> información real de la operación.
+> **Definido y aprobado por el Patrón el 6-oct-2026.** El contenido se escribió desde el repo y
+> la documentación del proyecto.
+>
+> **Se muestra sin el nombre del cliente.** Nada privado: ni el nombre, ni datos reales, ni URLs
+> de despliegue.
+>
+> ⚠️ **Los datos demo actuales usan el nombre de una institución real** (el tenant de demo se
+> llama «Instituto Nacional de Pediatría», y también hay «Hospital Demo Directo» y «CUSAEM»).
+> **Hay que renombrarlos antes de tomar las capturas:** publicados se leen como clientes de
+> BeStack.
+>
+> **Este caso no lleva «Qué cambió»:** el sistema no reemplazó una operación anterior, no
+> existía nada antes.
+>
+> **Tampoco lleva lista de stack** (solo el diagrama), pero el diagrama **sí conserva los
+> nombres técnicos de sus nodos** (API, PostgreSQL, evidencia en la nube) — indicación expresa
+> del Patrón.
 
 **El reto.** Las empresas de seguridad perimetral operan con protocolos, turnos, roles y
 evidencia repartidos entre papel, mensajería y hojas de cálculo. Cuando un proveedor atiende
 varias instalaciones a la vez, ese desorden se multiplica por cada cliente.
 
-**La solución.** Una plataforma multi-tenant (se construye una vez y se opera para muchos
-clientes) organizada en capas:
+**La solución.** Un motor operativo configurable —se construye una vez y se opera para muchos
+clientes— organizado en tres capas:
 
-- **Configuración** — el nivel de plataforma administra instalaciones, clientes y módulos.
-- **Operación** — el personal ejecuta protocolos y levanta incidencias con evidencia
-  fotográfica desde el celular.
+- **Configuración** — define qué se puede ejecutar: clientes, instalaciones, ubicaciones,
+  protocolos y las operaciones de cada ubicación. Sin esta capa no hay nada que ejecutar.
+- **Operación** — el personal ejecuta paso a paso lo que ya está configurado, desde el celular:
+  turnos, captura de datos, evidencia e incidencias. La supervisión ve la cobertura por
+  ubicación, las asignaciones y las emergencias pendientes de aprobar.
 - **Portal de cliente** — el proveedor administra a sus clientes directos y a los sub-clientes
-  de estos, y cada uno ve únicamente lo suyo.
+  de estos, y cada uno ve únicamente lo suyo. No tiene configuración profunda: es visibilidad y
+  acciones acotadas.
 
 **Por qué así.**
 
-- **Multi-tenant desde el modelo de datos, no desde la interfaz.** Los permisos no se resuelven
-  escondiendo botones: cada recurso tiene dueño en la base de datos.
-- **PWA en vez de aplicación nativa.** La operación ocurre en instalaciones con señal
-  irregular; una app web instalable no depende de una tienda y se actualiza sola.
+- **Un motor configurable, no una app a medida.** No es una aplicación fija para un cliente:
+  cada uno adapta sus protocolos, sus ubicaciones y su personal sin tocar código.
+- **Multi-tenant desde el modelo de datos, no desde la interfaz.** El aislamiento no se resuelve
+  escondiendo botones: ninguna entidad alcanza los datos de otra.
+- **Nada se ejecuta que no haya sido configurado.** La capa de configuración es el techo de lo
+  que se puede hacer en campo: no hay operaciones improvisadas.
+- **El acceso siempre explícito, nunca inferido.** Los permisos se conceden; no se suponen. Sin
+  asignación vigente no hay contexto operativo.
+- **PWA en vez de aplicación nativa.** La operación ocurre en instalaciones con señal irregular;
+  una app web instalable no depende de una tienda y se actualiza sola.
 - **Evidencia fotográfica obligatoria en las incidencias.** Es lo que convierte un reporte en
   algo verificable.
 - **Capas separadas por rol.** Quien opera en campo no ve la configuración, y un cliente nunca
   ve a otro.
 
-**Qué cambió.** *(pendiente: los números del Patrón)*
+> **Cómo leer el diagrama (interno, no se publica como texto):** el backend es la única fuente
+> de verdad y el frontend solo renderiza estado validado; la estructura nace del protocolo; la
+> asignación (usuario ↔ ubicación ↔ turno ↔ vigencia) es el vínculo operativo real; cada
+> ejecución guarda sus pasos, sus valores y su evidencia; las evidencias viven en almacenamiento
+> externo.
 
 ---
 
@@ -286,5 +315,5 @@ espacio, con la ubicación y un único llamado a la acción: cotizar.
    cliente ni detalles de la operación real).
 3. **Los 4:** los números de "Qué cambió". En **LaserBox quedó cualitativo por decisión del
    Patrón**, no por olvido.
-4. **Aprobación del tono.** **LaserBox y Bidhara ya están aprobados**; faltan **SysOp y
-   Bahía**, que se definen caso por caso con el Patrón.
+4. **Aprobación del tono.** **LaserBox, Bidhara y SysOp ya están aprobados**; falta **Bahía**,
+   que se define caso por caso con el Patrón.

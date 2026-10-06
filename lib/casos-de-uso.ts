@@ -85,8 +85,12 @@ export type Caso = {
   }
   /** Copy de "Por qué así": decisiones y su razón */
   decisiones: { titulo: string; razon: string }[]
-  /** "Qué cambió" — sin métricas: si el Patrón no da el número, queda cualitativo */
-  queCambio: string
+  /**
+   * "Qué cambió" — sin métricas: si el Patrón no da el número, queda cualitativo.
+   * Opcional: un sistema que no reemplazó una operación anterior (SysOp) no la lleva, y
+   * entonces la sección no se pinta.
+   */
+  queCambio?: string
 }
 
 const casos: Caso[] = [
@@ -420,17 +424,17 @@ const casos: Caso[] = [
     estado: "En desarrollo",
     tags: ["saas"],
     resumen:
-      "Plataforma SaaS multi-tenant para operar protocolos, turnos y evidencia de seguridad perimetral.",
+      "Un motor operativo configurable: cada cliente define sus protocolos, sus ubicaciones y su personal, y el sistema los ejecuta en campo con evidencia trazable.",
     reto: [
       "Las empresas de seguridad perimetral operan con protocolos, turnos, roles y evidencia repartidos entre papel, mensajería y hojas de cálculo. Cuando un proveedor atiende varias instalaciones a la vez, ese desorden se multiplica por cada cliente.",
     ],
     solucion: {
       intro:
-        "Una plataforma multi-tenant (se construye una vez y se opera para muchos clientes) organizada en capas:",
+        "Un motor operativo configurable —se construye una vez y se opera para muchos clientes— organizado en tres capas:",
       descripcion: [
-        "Configuración: el nivel de plataforma administra instalaciones, clientes y módulos.",
-        "Operación: el personal ejecuta protocolos y levanta incidencias con evidencia fotográfica desde el celular.",
-        "Portal de cliente: el proveedor administra a sus clientes directos y a los sub-clientes de estos, y cada uno ve únicamente lo suyo.",
+        "Configuración: define qué se puede ejecutar. El nivel de plataforma administra clientes, instalaciones, ubicaciones, protocolos y las operaciones de cada ubicación.",
+        "Operación: el personal ejecuta paso a paso lo que ya está configurado, desde el celular: turnos, captura de datos, evidencia e incidencias. La supervisión ve la cobertura por ubicación, las asignaciones y las emergencias pendientes de aprobar.",
+        "Portal de cliente: el proveedor administra a sus clientes directos y a los sub-clientes de estos, y cada uno ve únicamente lo suyo. No tiene configuración profunda: es visibilidad y acciones acotadas.",
       ],
     },
     arquitectura: {
@@ -496,9 +500,24 @@ const casos: Caso[] = [
     },
     decisiones: [
       {
+        titulo: "Un motor configurable, no una app a medida",
+        razon:
+          "No es una aplicación fija para un cliente: cada uno adapta sus protocolos, sus ubicaciones y su personal sin tocar código.",
+      },
+      {
         titulo: "Multi-tenant desde el modelo de datos, no desde la interfaz",
         razon:
-          "Los permisos no se resuelven escondiendo botones: cada recurso tiene dueño en la base de datos.",
+          "El aislamiento no se resuelve escondiendo botones: ninguna entidad alcanza los datos de otra.",
+      },
+      {
+        titulo: "Nada se ejecuta que no haya sido configurado",
+        razon:
+          "La capa de configuración es el techo de lo que se puede hacer en campo: no hay operaciones improvisadas.",
+      },
+      {
+        titulo: "El acceso siempre explícito, nunca inferido",
+        razon:
+          "Los permisos se conceden; no se suponen. Sin asignación vigente no hay contexto operativo.",
       },
       {
         titulo: "PWA en vez de aplicación nativa",
@@ -515,8 +534,6 @@ const casos: Caso[] = [
           "Quien opera en campo no ve la configuración, y un cliente nunca ve a otro.",
       },
     ],
-    queCambio:
-      "Protocolos, turnos y evidencia dejan de viajar en papel y mensajería: cada instalación opera con sus procedimientos en una sola plataforma, con evidencia verificable.",
   },
   {
     slug: "bahia",

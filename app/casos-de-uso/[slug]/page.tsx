@@ -241,17 +241,19 @@ export default async function CasoDetallePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 7. Qué cambió */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-3xl mx-auto">
-          <SectionHeader title="Qué cambió" />
-          <Reveal direction="up">
-            <p className="text-xl text-foreground/80 leading-relaxed">
-              {caso.queCambio}
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      {/* 7. Qué cambió — opcional: un sistema que no reemplazó una operación anterior no la lleva */}
+      {caso.queCambio && (
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+          <div className="max-w-3xl mx-auto">
+            <SectionHeader title="Qué cambió" />
+            <Reveal direction="up">
+              <p className="text-xl text-foreground/80 leading-relaxed">
+                {caso.queCambio}
+              </p>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* 8. CTA + navegación */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
