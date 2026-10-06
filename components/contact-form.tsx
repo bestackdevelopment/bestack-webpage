@@ -364,7 +364,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-lg py-3 bg-primary hover:bg-primary/90 transition-all duration-200 ease-in-out text-white font-bold text-[19px] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full rounded-lg py-3 border-2 border-primary bg-primary text-primary-foreground hover:bg-transparent hover:text-primary transition-all duration-200 ease-in-out font-bold text-[19px] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Enviando..." : "Cotizar mi desarrollo"}
             </button>

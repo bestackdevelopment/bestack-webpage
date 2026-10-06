@@ -15,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Reveal } from "@/components/reveal"
 
 export type Accent = "primary" | "secondary" | "accent"
 
@@ -156,7 +157,7 @@ function ServiceGraphic() {
 
 export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-clip bg-surface">
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5" />
@@ -190,7 +191,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-2 border-secondary/50 hover:bg-secondary hover:text-foreground hover:border-secondary transition-all bg-transparent"
+                  className="border-2 border-secondary/50 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all bg-transparent"
                 >
                   <Link href={cta.href}>{cta.label}</Link>
                 </Button>
@@ -199,7 +200,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                   key={cta.label}
                   size="lg"
                   asChild
-                  className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+                  className="shadow-lg shadow-primary/25"
                 >
                   <Link href={cta.href}>{cta.label}</Link>
                 </Button>
@@ -236,27 +237,32 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
             {data.incluye.items.map((item, index) => {
               const Icon = item.icon
               return (
-                <div
+                <Reveal
                   key={item.title}
-                  className={`flex items-start gap-4 p-6 bg-card rounded-xl border border-border ${accentHoverBorder[item.accent]} transition-colors group`}
+                  direction={index % 2 === 0 ? "left" : "right"}
+                  delay={(index % 2) * 100}
                 >
                   <div
-                    className={`w-12 h-12 rounded-lg ${accentIconBox[item.accent]} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}
+                    className={`flex items-start gap-4 p-6 h-full bg-card rounded-xl border border-border ${accentHoverBorder[item.accent]} transition-colors group`}
                   >
-                    <Icon
-                      className={`w-6 h-6 ${accentText[item.accent]}`}
-                      stroke={1.5}
-                    />
+                    <div
+                      className={`w-12 h-12 rounded-lg ${accentIconBox[item.accent]} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}
+                    >
+                      <Icon
+                        className={`w-6 h-6 ${accentText[item.accent]}`}
+                        stroke={1.5}
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2">
+                        {index + 1}. {item.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">
-                      {index + 1}. {item.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+                </Reveal>
               )
             })}
           </div>
@@ -264,36 +270,39 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       </section>
 
       {/* Beneficios Principales */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-6xl mx-auto">
           <SectionHeader
             title="Beneficios Principales"
             subtitle={data.copy?.beneficiosSubtitle}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.beneficios.map((beneficio) => {
+            {data.beneficios.map((beneficio, index) => {
               const Icon = beneficio.icon
               return (
-                <div
+                <Reveal
                   key={beneficio.text}
-                  className="group relative bg-card p-6 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1"
+                  direction="up"
+                  delay={(index % 3) * 80}
                 >
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`w-12 h-12 rounded-lg bg-gradient-to-br ${accentSolid[beneficio.accent]} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon
-                        className={`w-6 h-6 ${accentOn[beneficio.accent]}`}
-                        stroke={2}
-                      />
-                    </div>
-                    <div className="flex-1 pt-1">
-                      <span className="font-semibold text-base leading-snug">
-                        {beneficio.text}
-                      </span>
+                  <div className="group relative h-full bg-card p-6 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1">
+                    <div className="flex items-start gap-4">
+                      <div
+                        className={`w-12 h-12 rounded-lg bg-gradient-to-br ${accentSolid[beneficio.accent]} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <Icon
+                          className={`w-6 h-6 ${accentOn[beneficio.accent]}`}
+                          stroke={2}
+                        />
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <span className="font-semibold text-base leading-snug">
+                          {beneficio.text}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               )
             })}
           </div>
@@ -305,35 +314,38 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         <div className="max-w-6xl mx-auto">
           <SectionHeader title="Casos de Uso" subtitle={data.copy?.casosSubtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {data.casosUso.map((caso) => {
+            {data.casosUso.map((caso, index) => {
               const Icon = caso.icon
               return (
-                <Card
+                <Reveal
                   key={caso.title}
-                  className="relative border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-xl group overflow-hidden"
+                  direction={index % 2 === 0 ? "left" : "right"}
+                  delay={(index % 2) * 100}
                 >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${accentFade[caso.accent]} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                  />
-                  <CardHeader className="relative">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`w-14 h-14 rounded-xl ${accentIconBox[caso.accent]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <Icon
-                          className={`w-7 h-7 ${accentText[caso.accent]}`}
-                          stroke={1.5}
-                        />
+                  <Card className="relative h-full border-border hover:border-secondary/50 transition-all duration-300 hover:shadow-xl group overflow-hidden">
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${accentFade[caso.accent]} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                    />
+                    <CardHeader className="relative">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-14 h-14 rounded-xl ${accentIconBox[caso.accent]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          <Icon
+                            className={`w-7 h-7 ${accentText[caso.accent]}`}
+                            stroke={1.5}
+                          />
+                        </div>
+                        <CardTitle className="text-xl">{caso.title}</CardTitle>
                       </div>
-                      <CardTitle className="text-xl">{caso.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="relative">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {caso.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="relative">
+                      <p className="text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground">
+                        {caso.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Reveal>
               )
             })}
           </div>
@@ -341,50 +353,52 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       </section>
 
       {/* Preguntas Frecuentes */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-4xl mx-auto">
           <SectionHeader
             title="Preguntas Frecuentes"
             subtitle={data.copy?.faqsSubtitle}
           />
-          <Accordion type="single" collapsible className="space-y-4">
-            {data.faqs.map((faq, index) => (
-              <AccordionItem
-                key={faq.question}
-                value={`item-${index}`}
-                className="bg-card px-6 rounded-xl border border-border hover:border-accent/50 transition-colors"
-              >
-                <AccordionTrigger className="text-left font-semibold hover:text-accent hover:no-underline data-[state=open]:text-accent transition-colors">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <Reveal direction="up">
+            <Accordion type="single" collapsible className="space-y-4">
+              {data.faqs.map((faq, index) => (
+                <AccordionItem
+                  key={faq.question}
+                  value={`item-${index}`}
+                  className="bg-card px-6 rounded-xl border border-border last:border-b hover:border-accent/50 transition-colors"
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:text-accent hover:no-underline data-[state=open]:text-accent transition-colors">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Reveal>
         </div>
       </section>
 
       {/* Ejemplo relacionado (opcional) */}
       {data.ejemplo && (
         <section className="py-24 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <Reveal direction="up" className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">{data.ejemplo.description}</h2>
             <Button
               size="lg"
               asChild
-              className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+              className="shadow-lg shadow-primary/25"
             >
               <Link href={data.ejemplo.href}>{data.ejemplo.label}</Link>
             </Button>
-          </div>
+          </Reveal>
         </section>
       )}
 
       {/* Gráfico + CTA final */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <Reveal direction="up" className="max-w-4xl mx-auto text-center">
           <ServiceGraphic />
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 mt-12">
             {data.final.heading}
@@ -395,11 +409,11 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           <Button
             size="lg"
             asChild
-            className="bg-primary hover:bg-primary/90 shadow-xl shadow-primary/30"
+            className="shadow-xl shadow-primary/30"
           >
             <Link href="/contacto">{data.final.cta}</Link>
           </Button>
-        </div>
+        </Reveal>
       </section>
     </main>
   )

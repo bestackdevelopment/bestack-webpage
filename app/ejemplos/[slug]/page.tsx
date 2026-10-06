@@ -6,6 +6,7 @@ import { IconArrowLeft, IconArrowRight, IconCheck } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { EjemploGallery } from "@/components/ejemplo-gallery"
+import { Reveal } from "@/components/reveal"
 import { getEjemplo, getEjemplos } from "@/lib/ejemplos"
 import { siteUrl } from "@/lib/site"
 
@@ -49,7 +50,7 @@ export default async function EjemploDetallePage({ params }: Props) {
   const siguiente = ejemplos[(index + 1) % ejemplos.length]
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-clip">
       {/* 1. Portada */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
         <div className="max-w-4xl mx-auto text-center">
@@ -76,7 +77,7 @@ export default async function EjemploDetallePage({ params }: Props) {
               {ejemplo.estado}
             </span>
           </div>
-          <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+          <Button size="lg" asChild>
             <Link href="/contacto">¿Quieres algo así?</Link>
           </Button>
         </div>
@@ -86,14 +87,16 @@ export default async function EjemploDetallePage({ params }: Props) {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-balance">El reto</h2>
-          {ejemplo.reto.map((parrafo, index) => (
-            <p
-              key={index}
-              className="text-lg text-muted-foreground leading-relaxed mb-6 last:mb-0"
-            >
-              {parrafo}
-            </p>
-          ))}
+          <Reveal direction="up">
+            {ejemplo.reto.map((parrafo, index) => (
+              <p
+                key={index}
+                className="text-lg text-muted-foreground leading-relaxed mb-6 last:mb-0"
+              >
+                {parrafo}
+              </p>
+            ))}
+          </Reveal>
         </div>
       </section>
 
@@ -107,27 +110,31 @@ export default async function EjemploDetallePage({ params }: Props) {
           {ejemplo.solucion.piezas ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {ejemplo.solucion.piezas.map((pieza, index) => (
-                <Card key={index} className="border-border">
-                  <CardHeader>
-                    <CardTitle className="text-xl">{pieza.titulo}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{pieza.descripcion}</p>
-                  </CardContent>
-                </Card>
+                <Reveal key={index} direction="up" delay={(index % 3) * 80}>
+                  <Card className="border-border h-full">
+                    <CardHeader>
+                      <CardTitle className="text-xl">{pieza.titulo}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{pieza.descripcion}</p>
+                    </CardContent>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           ) : (
-            <div className="space-y-4">
-              {ejemplo.solucion.descripcion?.map((parrafo, index) => (
-                <p
-                  key={index}
-                  className="text-lg text-muted-foreground leading-relaxed"
-                >
-                  {parrafo}
-                </p>
-              ))}
-            </div>
+            <Reveal direction="up">
+              <div className="space-y-4">
+                {ejemplo.solucion.descripcion?.map((parrafo, index) => (
+                  <p
+                    key={index}
+                    className="text-lg text-muted-foreground leading-relaxed"
+                  >
+                    {parrafo}
+                  </p>
+                ))}
+              </div>
+            </Reveal>
           )}
         </div>
       </section>
@@ -138,18 +145,20 @@ export default async function EjemploDetallePage({ params }: Props) {
           <h2 className="text-3xl font-bold mb-8 text-balance">
             Cómo se aplicó
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            {ejemplo.stack}
-          </p>
-          {/* Diagrama de arquitectura: hueco pendiente */}
-          <div
-            aria-hidden
-            className="w-full aspect-[16/7] rounded-xl border border-dashed border-border/60 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 flex items-center justify-center"
-          >
-            <span className="text-sm text-muted-foreground">
-              Diagrama de arquitectura
-            </span>
-          </div>
+          <Reveal direction="up">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              {ejemplo.stack}
+            </p>
+            {/* Diagrama de arquitectura: hueco pendiente */}
+            <div
+              aria-hidden
+              className="w-full aspect-[16/7] rounded-xl border border-dashed border-border/60 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 flex items-center justify-center"
+            >
+              <span className="text-sm text-muted-foreground">
+                Diagrama de arquitectura
+              </span>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -160,23 +169,25 @@ export default async function EjemploDetallePage({ params }: Props) {
           <p className="text-lg text-muted-foreground mb-12">
             Cada decisión tiene una razón: criterio, no herramientas.
           </p>
-          <div className="space-y-6">
-            {ejemplo.decisiones.map((decision, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <IconCheck className="w-4 h-4 text-primary" stroke={2} />
+          <Reveal direction="up">
+            <div className="space-y-6">
+              {ejemplo.decisiones.map((decision, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <IconCheck className="w-4 h-4 text-primary" stroke={2} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-1">
+                      {decision.titulo}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {decision.razon}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">
-                    {decision.titulo}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {decision.razon}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -184,9 +195,11 @@ export default async function EjemploDetallePage({ params }: Props) {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-balance">Qué cambió</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {ejemplo.queCambio}
-          </p>
+          <Reveal direction="up">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {ejemplo.queCambio}
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -197,25 +210,27 @@ export default async function EjemploDetallePage({ params }: Props) {
           <p className="text-lg text-muted-foreground mb-12">
             Así se ve el sistema funcionando.
           </p>
-          <EjemploGallery
-            capturas={[1, 2, 3].map((n) => ({
-              etiqueta: `Captura ${n}`,
-              // imagen: `/ejemplos/${ejemplo.slug}/${n}.jpg`, — cuando exista
-            }))}
-          />
+          <Reveal direction="up">
+            <EjemploGallery
+              capturas={[1, 2, 3].map((n) => ({
+                etiqueta: `Captura ${n}`,
+                // imagen: `/ejemplos/${ejemplo.slug}/${n}.jpg`, — cuando exista
+              }))}
+            />
+          </Reveal>
         </div>
       </section>
 
       {/* 8. CTA + navegación */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <Reveal direction="up" className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-4 text-balance">
             ¿Tienes un negocio como este?
           </h2>
           <p className="text-xl text-muted-foreground mb-10">
             Hablemos de lo que necesitas construir
           </p>
-          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 mb-16">
+          <Button size="lg" asChild className="mb-16">
             <Link href="/contacto">Comenzar Proyecto</Link>
           </Button>
 
@@ -245,7 +260,7 @@ export default async function EjemploDetallePage({ params }: Props) {
               <IconArrowRight className="w-5 h-5" stroke={2} />
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </main>
   )

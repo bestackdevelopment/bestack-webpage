@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { IconClock, IconMail } from "@tabler/icons-react"
 
 import { ContactForm } from "@/components/contact-form"
+import { Reveal } from "@/components/reveal"
 import { contactEmail } from "@/lib/site"
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-clip">
       {/* Hero */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
         <div className="max-w-4xl mx-auto text-center">
@@ -31,7 +32,9 @@ export default function ContactoPage() {
       {/* Contact Form Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <ContactForm />
+          <Reveal direction="up">
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
 
@@ -45,36 +48,38 @@ export default function ContactoPage() {
             También puedes contactarnos directamente a través de estos medios:
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center">
-                <IconMail className="w-8 h-8 text-primary" stroke={1.5} />
+          <Reveal direction="up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <IconMail className="w-8 h-8 text-primary" stroke={1.5} />
+                </div>
+                <div>
+                  <h3 className="font-bold mb-2 font-[family-name:var(--font-jura)]">
+                    Email
+                  </h3>
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {contactEmail}
+                  </a>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold mb-2 font-[family-name:var(--font-jura)]">
-                  Email
-                </h3>
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {contactEmail}
-                </a>
-              </div>
-            </div>
 
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center">
-                <IconClock className="w-8 h-8 text-accent" stroke={1.5} />
-              </div>
-              <div>
-                <h3 className="font-bold mb-2 font-[family-name:var(--font-jura)]">
-                  Horario
-                </h3>
-                <p className="text-muted-foreground">Lun - Vie: 9:00 - 18:00</p>
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center">
+                  <IconClock className="w-8 h-8 text-accent" stroke={1.5} />
+                </div>
+                <div>
+                  <h3 className="font-bold mb-2 font-[family-name:var(--font-jura)]">
+                    Horario
+                  </h3>
+                  <p className="text-muted-foreground">Lun - Vie: 9:00 - 18:00</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </main>

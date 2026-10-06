@@ -38,7 +38,7 @@ const data: ServiceTemplateData = {
     lead: {
       heading: "Tu operación, con un agente que la conoce",
       body: [
-        "Un agente de IA no es un chatbot genérico: se entrena con la forma en que opera tu negocio —tus procesos, tu información y tu forma de atender— para trabajar como parte de tu equipo.",
+        "Un agente de IA no es un chatbot genérico: se entrena con la forma en que opera tu negocio (tus procesos, tu información y tu forma de atender) para trabajar como parte de tu equipo.",
         "Tú defines qué hace y qué no. Se le enseña exactamente lo que tu operación necesite, y trabaja contigo en las tareas que elijas.",
       ],
     },

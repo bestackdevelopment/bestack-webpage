@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AllServices } from "@/components/all-services"
 import { Stack } from "@/components/stack"
 import { EjemploCard } from "@/components/ejemplo-card"
+import { Reveal } from "@/components/reveal"
 import { getEjemplosDestacados } from "@/lib/ejemplos"
 
 export default function HomePage() {
@@ -79,7 +80,7 @@ export default function HomePage() {
   ]
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-clip">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Gradient Background */}
@@ -102,7 +103,7 @@ export default function HomePage() {
             <Button
               size="lg"
               asChild
-              className="bg-primary hover:bg-primary/90 text-[19px] px-8"
+              className="px-8"
             >
               <Link href="/contacto">Comenzar Proyecto</Link>
             </Button>
@@ -132,29 +133,32 @@ export default function HomePage() {
               const Icon = beneficio.icon
 
               return (
-                <Card
-                  key={index}
-                  className="border-border hover:shadow-lg transition-shadow h-full"
+                <Reveal
+                  key={beneficio.title}
+                  direction="up"
+                  delay={(index % 4) * 80}
                 >
-                  <CardHeader>
-                    <div className="w-fit p-2 rounded-lg bg-primary/10">
-                      <Icon
-                        className="text-primary"
-                        size={40}
-                        stroke={1.5}
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <CardTitle className="text-xl">
-                      {beneficio.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {beneficio.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                  <Card className="border-border hover:shadow-lg transition-shadow h-full">
+                    <CardHeader>
+                      <div className="w-fit p-2 rounded-lg bg-primary/10">
+                        <Icon
+                          className="text-primary"
+                          size={40}
+                          stroke={1.5}
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <CardTitle className="text-xl">
+                        {beneficio.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {beneficio.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Reveal>
               )
             })}
           </div>
@@ -173,14 +177,18 @@ export default function HomePage() {
               Soluciones completas para tu presencia digital
             </p>
           </div>
-          <AllServices />
+          <Reveal direction="up">
+            <AllServices />
+          </Reveal>
         </div>
       </section>
 
       {/* Tech Stack Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <Stack />
+          <Reveal direction="up">
+            <Stack />
+          </Reveal>
         </div>
       </section>
 
@@ -194,8 +202,14 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getEjemplosDestacados().map((ejemplo) => (
-              <EjemploCard key={ejemplo.slug} ejemplo={ejemplo} />
+            {getEjemplosDestacados().map((ejemplo, index) => (
+              <Reveal
+                key={ejemplo.slug}
+                direction="up"
+                delay={(index % 3) * 80}
+              >
+                <EjemploCard ejemplo={ejemplo} />
+              </Reveal>
             ))}
           </div>
           <div className="text-center mt-12">
@@ -220,6 +234,7 @@ export default function HomePage() {
               Sin sorpresas: así se lleva un proyecto con BeStack.
             </p>
           </div>
+          <Reveal direction="up">
           <ol className="relative">
             {pasos.map((paso, index) => {
               const Icon = paso.icon
@@ -255,12 +270,13 @@ export default function HomePage() {
               )
             })}
           </ol>
+          </Reveal>
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
-        <div className="max-w-4xl mx-auto text-center">
+        <Reveal direction="up" className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance">
             ¿Listo para comenzar tu proyecto?
           </h2>
@@ -270,11 +286,11 @@ export default function HomePage() {
           <Button
             size="lg"
             asChild
-            className="bg-primary hover:bg-primary/90 text-[19px] px-12"
+            className="px-12"
           >
             <Link href="/contacto">Contactar Ahora</Link>
           </Button>
-        </div>
+        </Reveal>
       </section>
     </main>
   )

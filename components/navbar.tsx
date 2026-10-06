@@ -35,7 +35,7 @@ export default function Navbar() {
             >
               Ejemplos
             </Link>
-            <Button asChild className="bg-primary hover:bg-primary/90">
+            <Button asChild>
               <Link href="/contacto">Comenzar Proyecto</Link>
             </Button>
           </div>
@@ -76,7 +76,7 @@ export default function Navbar() {
             >
               Ejemplos
             </Link>
-            <Button asChild className="w-full bg-primary hover:bg-primary/90">
+            <Button asChild className="w-full">
               <Link href="/contacto">Comenzar Proyecto</Link>
             </Button>
           </div>

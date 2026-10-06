@@ -13,7 +13,7 @@ inventa nada fuera de este documento.**
 
 La sección **no** se llama "Portafolio". Se llama **"Ejemplos"**, y su promesa es distinta:
 
-> *"Esto es lo que se puede hacer"* — aplicado a distintos giros.
+> *"Esto es lo que se puede hacer"*, aplicado a distintos giros.
 
 La razón: un portafolio obliga a demostrar que fueron clientes de BeStack (no hay testimonios,
 y parte del trabajo real no se puede firmar). "Ejemplos" no carga esa prueba y deja que el
@@ -34,9 +34,9 @@ se presentan por cliente para que no se lean como relleno).
 
 | slug | Nombre | Giro | Tipo | Estado |
 |---|---|---|---|---|
-| `bidhara` | Bidhara — Flores comestibles y microgreens | Agroalimentario | Implementación integral | En operación |
-| `laserbox` | LaserBox — Taller de corte láser | Manufactura / taller | Implementación integral | En desarrollo |
-| `sysop` | SysOp — Configuración operacional | Seguridad perimetral | SaaS | En desarrollo |
+| `bidhara` | Bidhara: Flores comestibles y microgreens | Agroalimentario | Implementación integral | En operación |
+| `laserbox` | LaserBox: Taller de corte láser | Manufactura / taller | Implementación integral | En desarrollo |
+| `sysop` | SysOp: Configuración operacional | Seguridad perimetral | SaaS | En desarrollo |
 | `bahia` | Bahía Business Center | Renta de espacios | Sitio corporativo | En operación |
 
 **Fuera del sitio:** los 12 proyectos hechos para la agencia Lanzaweb, y los proyectos viejos
@@ -102,7 +102,7 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 ## Ejemplo 1 — Bidhara
 
-**Bidhara — Flores comestibles y microgreens**
+**Bidhara: Flores comestibles y microgreens**
 *Giro:* agroalimentario · *Tipo:* implementación integral · *Estado:* En operación
 
 **El reto.** Catálogo de 45 productos perecederos, pedidos que entran por WhatsApp y el
@@ -140,7 +140,7 @@ shadcn/ui · Recharts · JWT · reportes en PDF · Hermes Agent sobre Telegram.
 
 ## Ejemplo 2 — LaserBox
 
-**LaserBox — Taller de corte láser**
+**LaserBox: Taller de corte láser**
 *Giro:* manufactura / taller de corte láser · *Tipo:* implementación integral · *Estado:* En desarrollo
 
 > **Se presenta como cliente.** No mencionar que el Patrón es socio del taller, ni la relación
@@ -179,7 +179,7 @@ monorepo pnpm · API con autenticación.
 
 ## Ejemplo 3 — SysOp
 
-**SysOp — Configuración operacional**
+**SysOp: Configuración operacional**
 *Giro:* seguridad perimetral · *Tipo:* SaaS · *Estado:* En desarrollo
 
 > **Se muestra sin el nombre del cliente.** Las capturas van con datos demo, nunca con
@@ -189,8 +189,8 @@ monorepo pnpm · API con autenticación.
 evidencia repartidos entre papel, mensajería y hojas de cálculo. Cuando un proveedor atiende
 varias instalaciones a la vez, ese desorden se multiplica por cada cliente.
 
-**La solución.** Una plataforma multi-tenant —se construye una vez y se opera para muchos
-clientes— organizada en capas:
+**La solución.** Una plataforma multi-tenant (se construye una vez y se opera para muchos
+clientes) organizada en capas:
 
 - **Configuración** — el nivel de plataforma administra instalaciones, clientes y módulos.
 - **Operación** — el personal ejecuta protocolos y levanta incidencias con evidencia
@@ -227,7 +227,7 @@ locales de "oficina", "coworking" y "sala de juntas". En ese terreno el sitio ti
 rastreable por los buscadores, no solo verse bien.
 
 **La solución.** Un sitio corporativo con renderizado en servidor, para que el contenido exista
-en HTML desde el primer byte — la condición para competir en buscadores. Organizado por tipo de
+en HTML desde el primer byte (la condición para competir en buscadores). Organizado por tipo de
 espacio, con la ubicación y un único llamado a la acción: cotizar.
 
 **Cómo se aplicó.** Next.js con renderizado en servidor · React · Tailwind CSS · publicación

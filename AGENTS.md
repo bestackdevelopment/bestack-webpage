@@ -68,6 +68,7 @@ operaciones. Las capturas de los ejemplos se publican **con datos demo**.
 - **react-hook-form** + **zod** (`@hookform/resolvers/zod`) para formularios
 - **zustand** — disponible para estado global (crear stores en `store/`)
 - **shadcn/ui** para `Button`, `Card` y `Accordion` (sobre Radix UI)
+- **motion** (framer-motion) — animaciones de entrada; se usan vía `components/reveal.tsx`
 
 ## Comandos
 
@@ -93,6 +94,17 @@ pnpm lint
   `paginas-corporativas`, `ecommerce`, `mantenimiento-web`, `finaliza-tu-web` y `agente-ia`)
   comparten `components/service-template.tsx` y solo aportan su objeto de datos
   (`ServiceTemplateData`).
+- **Animaciones de entrada:** usar `components/reveal.tsx` (framer-motion). El componente
+  envuelve contenido server-rendered.
+  - Los **títulos de sección quedan siempre visibles**; se anima el contenido (tarjetas, bloques).
+  - Props: `direction` (`"up" | "down" | "left" | "right"`, por defecto `"up"`) y `delay`
+    (ms, para escalonar hermanos).
+  - Rejillas: **2 columnas** → `direction={index % 2 === 0 ? "left" : "right"}` (izquierda/derecha
+    por columna); **3–4 columnas** → `"up"` con `delay={(index % cols) * 80}`.
+  - **Responsivo:** en `< lg` las entradas laterales caen a `"up"` (evita desbordes). El `<main>`
+    de cada página lleva `overflow-x-clip`.
+  - Respeta `prefers-reduced-motion` y muestra el bloque si al cargar ya quedó por encima del
+    viewport (no deja contenido oculto).
 - **Estado global:** crear stores en `store/` solo cuando el estado sea compartido entre
   componentes. El menú móvil del navbar usa `useState` local a propósito.
 - **Logo:** componente `components/logo.tsx`.

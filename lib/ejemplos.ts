@@ -55,7 +55,7 @@ export type Ejemplo = {
 const ejemplos: Ejemplo[] = [
   {
     slug: "bidhara",
-    nombre: "Bidhara — Flores comestibles y microgreens",
+    nombre: "Bidhara: Flores comestibles y microgreens",
     giro: "Agroalimentario",
     tipo: "Implementación integral",
     estado: "En operación",
@@ -119,7 +119,7 @@ const ejemplos: Ejemplo[] = [
   },
   {
     slug: "laserbox",
-    nombre: "LaserBox — Taller de corte láser",
+    nombre: "LaserBox: Taller de corte láser",
     giro: "Manufactura / taller",
     tipo: "Implementación integral",
     estado: "En desarrollo",
@@ -178,7 +178,7 @@ const ejemplos: Ejemplo[] = [
   },
   {
     slug: "sysop",
-    nombre: "SysOp — Configuración operacional",
+    nombre: "SysOp: Configuración operacional",
     giro: "Seguridad perimetral",
     tipo: "SaaS",
     estado: "En desarrollo",
@@ -190,7 +190,7 @@ const ejemplos: Ejemplo[] = [
     ],
     solucion: {
       intro:
-        "Una plataforma multi-tenant —se construye una vez y se opera para muchos clientes— organizada en capas:",
+        "Una plataforma multi-tenant (se construye una vez y se opera para muchos clientes) organizada en capas:",
       descripcion: [
         "Configuración: el nivel de plataforma administra instalaciones, clientes y módulos.",
         "Operación: el personal ejecuta protocolos y levanta incidencias con evidencia fotográfica desde el celular.",
@@ -237,7 +237,7 @@ const ejemplos: Ejemplo[] = [
     ],
     solucion: {
       intro:
-        "Un sitio corporativo con renderizado en servidor, para que el contenido exista en HTML desde el primer byte —la condición para competir en buscadores—. Organizado por tipo de espacio, con la ubicación y un único llamado a la acción: cotizar.",
+        "Un sitio corporativo con renderizado en servidor, para que el contenido exista en HTML desde el primer byte (la condición para competir en buscadores). Organizado por tipo de espacio, con la ubicación y un único llamado a la acción: cotizar.",
     },
     stack: "Next.js con renderizado en servidor · React · Tailwind CSS · publicación en el hosting del negocio.",
     decisiones: [

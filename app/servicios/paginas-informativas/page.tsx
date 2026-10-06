@@ -4,6 +4,7 @@ import {
   IconFileText,
   IconPalette,
   IconPresentation,
+  IconRobot,
   IconRocket,
   IconSparkles,
   IconTarget,
@@ -46,7 +47,7 @@ const data: ServiceTemplateData = {
         accent: "secondary",
         title: "Estructura de contenido clara y estratégica",
         description:
-          "Organizamos la información de forma que sus visitantes comprendan de inmediato quién es usted, qué ofrece y cómo pueden avanzar al siguiente paso.",
+          "Organizamos la información de forma que sus visitantes comprendan de inmediato cuál es su negocio, qué ofrece y cómo pueden avanzar al siguiente paso.",
       },
       {
         icon: IconWorld,
@@ -54,6 +55,13 @@ const data: ServiceTemplateData = {
         title: "Preparación para buscadores (SEO)",
         description:
           "Incluimos configuraciones que ayudan a que su proyecto sea más visible en motores de búsqueda mediante textos bien estructurados, títulos adecuados y contenido optimizado.",
+      },
+      {
+        icon: IconRobot,
+        accent: "secondary",
+        title: "Optimización para agentes de IA (GEO)",
+        description:
+          "Preparamos su contenido para que los asistentes de IA (ChatGPT, Gemini, Perplexity o los resúmenes de Google) lo entiendan, lo citen y lo recomienden cuando alguien busca su servicio.",
       },
       {
         icon: IconTarget,
@@ -142,7 +150,7 @@ const data: ServiceTemplateData = {
     {
       question: "¿Puedo modificar el contenido después?",
       answer:
-        "Por defecto, el contenido es estático. Sin embargo, si deseas gestionar tu contenido de forma autónoma, podemos integrar un sistema de gestión de contenidos (CMS) como servicio adicional, o bien, puedes contratar nuestro servicio de Administración web y soporte para que nosotros manejemos las actualizaciones por ti.",
+        "Por defecto, el sitio se entrega estático (rápido y seguro) y las actualizaciones las gestionamos nosotros con el servicio de mantenimiento. Si necesitas administrar el contenido tú mismo, lo construimos sobre un gestor de contenidos como WordPress, para que puedas editar textos e imágenes sin depender de un desarrollador.",
     },
     {
       question: "¿Cuántas propuestas de diseño recibiré?",

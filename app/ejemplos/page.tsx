@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 
 import { Button } from "@/components/ui/button"
 import { EjemplosExplorador } from "@/components/ejemplos-explorador"
+import { Reveal } from "@/components/reveal"
 import { getEjemplos } from "@/lib/ejemplos"
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function EjemplosPage() {
   const ejemplos = getEjemplos()
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-clip">
       {/* Hero */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
         <div className="max-w-4xl mx-auto text-center">
@@ -25,7 +26,7 @@ export default function EjemplosPage() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground text-balance">
-            Esto es lo que se puede hacer — aplicado a distintos giros. Si tu
+            Esto es lo que se puede hacer, aplicado a distintos giros. Si tu
             negocio se parece a alguno, escríbenos.
           </p>
         </div>
@@ -34,7 +35,9 @@ export default function EjemplosPage() {
       {/* Índice con filtros */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <EjemplosExplorador ejemplos={ejemplos} />
+          <Reveal direction="up">
+            <EjemplosExplorador ejemplos={ejemplos} />
+          </Reveal>
         </div>
       </section>
 
@@ -47,7 +50,7 @@ export default function EjemplosPage() {
           <p className="text-xl text-muted-foreground mb-10">
             Hablemos de lo que necesitas construir
           </p>
-          <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+          <Button size="lg" asChild>
             <Link href="/contacto">Comenzar Proyecto</Link>
           </Button>
         </div>
