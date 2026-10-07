@@ -9,9 +9,10 @@ Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con 
 > - Proyecto «BeStack — Sitio web» → https://app.notion.com/p/BeStack-Sitio-web-c527e60df569827daae1012fb845f05e
 > - Raíz de proyectos → https://app.notion.com/p/BeStack-Development-Proyectos-9977e60df5698249b6b2814224f5ad09
 
-**Última verificación:** 7 de octubre de 2026 (agente: icono propio por tarjeta en «La solución»
-y copy publicado sin guion largo — typecheck, ESLint y build limpios, y verificado en el HTML
-que sirve el servidor, no solo en el código).
+**Última verificación:** 7 de octubre de 2026 (agente: **diagramas de Bidhara y LaserBox con
+zonas y actores** — typecheck, ESLint y build limpios, y verificado **en el navegador** contra el
+servidor levantado: 2 zonas y 8 nodos en Bidhara / 9 en LaserBox, aristas y handles correctos,
+0 errores de JS. Ver la fila del 7-oct en `docs/plan-de-trabajo.md`.)
 
 ## Qué es
 
@@ -26,7 +27,7 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Última actualización | 7-oct-2026 (icono propio por tarjeta en «La solución»; copy publicado sin guion largo) |
+| Última actualización | 7-oct-2026 (diagramas de los casos con zonas y actores; icono propio por tarjeta en «La solución»; copy publicado sin guion largo) |
 | Working tree | **limpio** |
 | vs `origin/main` | **Sincronizado** — push hecho el 7-oct-2026 |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
@@ -129,3 +130,7 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
   las piezas ni en los diagramas de los casos de uso.
 - **La lista de stack no se publica** en «Cómo se aplicó»: la sección se sostiene con el
   diagrama. El detalle técnico vive en el repo de cada proyecto.
+- **El diagrama muestra quién entra y qué es público.** Zonas con nombre (red privada / internet)
+  y los actores como nodo propio (el celular del dueño, el cliente). Los nodos del diagrama sí
+  conservan el nombre técnico. Aplica a todos los casos con la misma estructura: Bidhara y
+  LaserBox (decisión del Patrón, 7-oct-2026).

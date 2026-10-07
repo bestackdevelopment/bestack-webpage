@@ -66,6 +66,18 @@ Ocho secciones, en este orden:
 4. **Cómo se aplicó** — **solo el diagrama** de cómo se conectan las piezas. **No se publica la
    lista de stack:** el cliente que contrata no la lee y la sección se sostiene con el diagrama
    (decisión del Patrón, 6-oct-2026).
+   - **El diagrama muestra quién entra y qué es público**, no solo las piezas (decisión del
+     Patrón, 7-oct-2026). Lleva **zonas con nombre** (marco punteado: «Red privada» e
+     «Internet») y los **actores como nodo propio**: el celular del dueño adentro de la red
+     privada, y el cliente al otro lado del catálogo, en internet. Los nodos del diagrama **sí
+     conservan el nombre técnico** (`Base de datos centralizada`, `Agente IA`): la regla de no
+     publicar stack aplica al texto, no al dibujo.
+   - En el código: el campo `zonas` del tipo `arquitectura` (`ArquitecturaZona`, en
+     `lib/casos-de-uso.ts`), pintado por `components/arquitectura-flow.tsx` como un nodo `zona`
+     detrás de las tarjetas. Las aristas verticales declaran su lado (`desde` / `hasta`) y los
+     handles de cada nodo **se derivan de las aristas**, no se pintan a mano.
+   - Aplica a **todos los casos con la misma estructura** (Bidhara y LaserBox). SysOp y Bahía
+     conservan su diagrama: no tienen frontera entre lo privado y lo público.
 5. **Por qué así** — las decisiones y **su razón**. *Es la sección que vende: demuestra
    criterio, no herramientas.* Mínimo 4 decisiones, cada una con su porqué.
 6. **Qué cambió** — el efecto en la operación. **Sin métricas inventadas**: si el Patrón no
@@ -115,6 +127,11 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 > **Definido y aprobado por el Patrón el 6-oct-2026.** El agente no se nombra y **no toca redes
 > sociales**: eso es exclusivo del caso de LaserBox. **El carrito sí va en el catálogo en
 > línea** — lo que distingue al catálogo de la tienda es la pasarela de pago, no el carrito.
+>
+> **Diagrama (7-oct-2026):** dos zonas (Red privada / Internet), el **Celular del dueño** como
+> actor dentro de la privada (de ahí sale el acceso a la aplicación y a sus archivos en la nube)
+> y el **Cliente** del otro lado del catálogo, en internet. «Red privada» dejó de ser una pieza
+> suelta para ser el marco que agrupa la operación.
 
 **El reto.** Catálogo de 45 productos perecederos, pedidos que entran por WhatsApp y el
 control repartido entre hojas de cálculo y la memoria del dueño: qué se vendió, a quién,
@@ -171,6 +188,10 @@ con un agente que responde por Telegram. *Sin números: cualitativo por decisió
 > el trabajo que son.
 
 > **Definido y aprobado por el Patrón el 6-oct-2026.** El agente no se nombra.
+>
+> **Diagrama (7-oct-2026):** mismo tratamiento que Bidhara (zonas y actores), con la **Tienda en
+> línea** en lugar del catálogo, el **Cliente** comprándole a la tienda y **Facebook e
+> Instagram** del lado de internet, fuera de la red privada.
 
 **El reto.** La operación era la de un negocio de paso: se atendía lo que llegaba y todo se
 anotaba a lápiz y papel. Sin administración ni organización detrás, el control quedaba en la

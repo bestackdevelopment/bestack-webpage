@@ -1,6 +1,6 @@
 # Plan de trabajo — bestack-webpage
 
-**Última actualización:** 23 de septiembre de 2026 (subfire).
+**Última actualización:** 7 de octubre de 2026 (subfire).
 
 Roadmap del sitio corporativo de BeStack Development: qué sigue, en qué orden y cómo
 se da por terminado cada tramo.
@@ -141,6 +141,8 @@ orden; y la publicación al final, **solo con la autorización del Patrón**.
 | 23-sep | **El blog sube al 3.º lugar** | El Patrón quiere ver cómo funciona antes de construir el resto. |
 | 23-sep | **El formulario se hace con Resend, al final** | La integración es corta y necesita el dominio verificado. |
 | 23-sep | **La publicación la autoriza el Patrón** | No se publica hasta que él diga que el sitio está completo. |
+| 7-oct | El diagrama de cada caso lleva **zonas** (lo privado, lo público) y los **actores** como nodo propio | Un dibujo que solo lista piezas no dice dónde queda el negocio ni dónde su cliente. El Patrón lo pidió así: *«no está bien representado que el catálogo va hacia internet y el cliente, y que la nube privada es accesible desde el dueño y su celular»*. Regla de la sección: aplica a los casos con la misma estructura (Bidhara y LaserBox). |
+| 7-oct | El diagrama **no lleva el paso de WhatsApp** | El cierre del pedido vive en el copy; el diagrama se sostiene con la zona y los actores. |
 
 ## Datos que faltan (los aporta el Patrón)
 

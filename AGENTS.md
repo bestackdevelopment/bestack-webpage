@@ -88,6 +88,13 @@ pnpm lint
 ## Convenciones (respetar)
 
 - **Iconos:** siempre `@tabler/icons-react`. No añadir `lucide-react` ni SVGs inline.
+- **Diagramas de arquitectura (`components/arquitectura-flow.tsx`):** muestran **quién entra y
+  qué es público**, no solo las piezas. Cada caso declara `zonas` (marcos punteados con nombre:
+  «Red privada», «Internet») y los actores son **nodo propio** (el celular del dueño, el cliente).
+  Las zonas se pintan detrás de las tarjetas y las aristas verticales declaran su lado
+  (`desde` / `hasta`); los handles de cada nodo **se derivan de las aristas**, no se pintan a mano.
+  Los nodos del diagrama **sí conservan el nombre técnico** (el detalle de stack vive ahí, no en el
+  texto). Aplica a todos los casos con la misma estructura.
 - **Clave de icono → icono Tabler:** el mapa vive en `components/icono-tabler.tsx` (`ICONOS`),
   tipado por `IconoClave` en `lib/casos-de-uso.ts`. Lo comparten el diagrama de arquitectura y
   las tarjetas de «La solución»: cada pieza lleva **su propio** icono en el campo `icono` — no se

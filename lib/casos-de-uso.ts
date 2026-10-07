@@ -51,10 +51,36 @@ export type ArquitecturaNodo = {
   y: number
 }
 
+/** Lado de un nodo por el que entra o sale una arista. */
+export type LadoArista = "left" | "right" | "top" | "bottom"
+
+/**
+ * Marco punteado del diagrama. Agrupa nodos bajo un nombre («Red privada»,
+ * «Internet») para que se lea dónde está el negocio y qué queda público: el
+ * diagrama muestra quién entra, no solo las piezas.
+ */
+export type ArquitecturaZona = {
+  id: string
+  titulo: string
+  /** Nota corta al pie de la zona (una línea). */
+  nota?: string
+  x: number
+  y: number
+  /** Ancho y alto del marco. */
+  w: number
+  h: number
+}
+
 export type ArquitecturaArista = {
   from: string
   to: string
   etiqueta?: string
+  /**
+   * Lados por los que sale y entra la arista. Por defecto derecha -> izquierda.
+   * Se declaran solo cuando la arista es vertical (`desde: "bottom"`, `hasta: "top"`).
+   */
+  desde?: LadoArista
+  hasta?: LadoArista
 }
 
 export type Caso = {
@@ -82,6 +108,8 @@ export type Caso = {
    * diagrama carga la sección (decisión del 6-oct-2026).
    */
   arquitectura?: {
+    /** Marcos punteados (lo privado y lo público); se pintan detrás de los nodos. */
+    zonas?: ArquitecturaZona[]
     nodos: ArquitecturaNodo[]
     aristas: ArquitecturaArista[]
   }
@@ -148,71 +176,106 @@ const casos: Caso[] = [
       ],
     },
     arquitectura: {
+      zonas: [
+        {
+          id: "privada",
+          titulo: "Red privada",
+          nota: "El acceso entra por aquí: nada de la operación está expuesto a internet.",
+          x: 8,
+          y: 8,
+          w: 984,
+          h: 505,
+        },
+        {
+          id: "internet",
+          titulo: "Internet",
+          nota: "Lo único público del negocio.",
+          x: 1028,
+          y: 8,
+          w: 302,
+          h: 505,
+        },
+      ],
       nodos: [
         {
-          id: "red",
-          titulo: "Red privada",
-          descripcion: "El acceso entra por aquí; la aplicación no está expuesta a internet.",
-          icono: "lock",
-          x: 0,
-          y: 100,
+          id: "celular",
+          titulo: "Celular del dueño",
+          descripcion: "Aquí se opera el negocio: es con lo que entra al sistema.",
+          icono: "device-mobile",
+          x: 40,
+          y: 200,
         },
         {
           id: "app",
           titulo: "Aplicación interna",
           descripcion: "Ventas, clientes, gastos e inventario.",
           icono: "app-window",
-          x: 340,
-          y: 100,
-        },
-        {
-          id: "db",
-          titulo: "Base de datos centralizada",
-          descripcion: "Una sola fuente para la aplicación, el catálogo y el agente.",
-          icono: "database",
-          x: 680,
-          y: 0,
-        },
-        {
-          id: "agente",
-          titulo: "Agente IA",
-          descripcion: "Gestiona pedidos y consulta sin abrir la aplicación.",
-          icono: "robot",
-          x: 680,
-          y: 190,
+          x: 380,
+          y: 40,
         },
         {
           id: "nube",
           titulo: "Nube privada",
           descripcion: "Los archivos del negocio, ordenados y accesibles.",
           icono: "cloud",
-          x: 680,
-          y: 380,
+          x: 380,
+          y: 330,
+        },
+        {
+          id: "db",
+          titulo: "Base de datos centralizada",
+          descripcion: "Una sola fuente para la aplicación, el catálogo y el agente.",
+          icono: "database",
+          x: 720,
+          y: 10,
+        },
+        {
+          id: "agente",
+          titulo: "Agente IA",
+          descripcion: "Gestiona pedidos y consulta sin abrir la aplicación.",
+          icono: "robot",
+          x: 720,
+          y: 200,
         },
         {
           id: "catalogo",
           titulo: "Catálogo en línea",
           descripcion: "En operación: lee los productos de la base.",
           icono: "shopping-bag",
-          x: 1020,
-          y: 0,
+          x: 1060,
+          y: 40,
+        },
+        {
+          id: "cliente",
+          titulo: "Cliente",
+          descripcion: "Consulta el catálogo y arma su pedido.",
+          icono: "users",
+          x: 1060,
+          y: 230,
         },
         {
           id: "telegram",
           titulo: "Telegram",
           descripcion: "Donde el negocio habla con el agente.",
           icono: "telegram",
-          x: 1020,
-          y: 190,
+          x: 1060,
+          y: 370,
         },
       ],
       aristas: [
-        { from: "red", to: "app", etiqueta: "acceso" },
+        { from: "celular", to: "app", etiqueta: "acceso" },
+        { from: "celular", to: "nube", etiqueta: "sus archivos" },
         { from: "app", to: "db" },
         { from: "app", to: "agente", etiqueta: "MCP" },
-        { from: "app", to: "nube", etiqueta: "archivos" },
-        { from: "db", to: "catalogo", etiqueta: "catálogo" },
-        { from: "agente", to: "telegram" },
+        { from: "db", to: "catalogo", etiqueta: "publica" },
+        {
+          from: "catalogo",
+          to: "cliente",
+          etiqueta: "consulta",
+          desde: "bottom",
+          hasta: "top",
+        },
+        { from: "agente", to: "telegram", etiqueta: "responde" },
       ],
     },
     decisiones: [
@@ -310,79 +373,114 @@ const casos: Caso[] = [
       ],
     },
     arquitectura: {
+      zonas: [
+        {
+          id: "privada",
+          titulo: "Red privada",
+          nota: "El acceso entra por aquí: nada de la operación está expuesto a internet.",
+          x: 8,
+          y: 8,
+          w: 984,
+          h: 505,
+        },
+        {
+          id: "internet",
+          titulo: "Internet",
+          nota: "Lo único público del negocio.",
+          x: 1028,
+          y: 8,
+          w: 302,
+          h: 632,
+        },
+      ],
       nodos: [
         {
-          id: "red",
-          titulo: "Red privada",
-          descripcion: "El acceso entra por aquí; la aplicación no está expuesta a internet.",
-          icono: "lock",
-          x: 0,
-          y: 100,
+          id: "celular",
+          titulo: "Celular del dueño",
+          descripcion: "Aquí se opera el taller: es con lo que entra al sistema.",
+          icono: "device-mobile",
+          x: 40,
+          y: 200,
         },
         {
           id: "app",
           titulo: "Aplicación interna",
           descripcion: "Cotizaciones, órdenes de producción, materiales y proveedores.",
           icono: "app-window",
-          x: 340,
-          y: 100,
-        },
-        {
-          id: "db",
-          titulo: "Base de datos centralizada",
-          descripcion: "Una sola fuente para la aplicación, la tienda y el agente.",
-          icono: "database",
-          x: 680,
-          y: 0,
-        },
-        {
-          id: "agente",
-          titulo: "Agente IA",
-          descripcion: "Consulta y registra sin abrir la aplicación.",
-          icono: "robot",
-          x: 680,
-          y: 190,
+          x: 380,
+          y: 40,
         },
         {
           id: "nube",
           titulo: "Nube privada",
           descripcion: "Los archivos del negocio, ordenados y accesibles.",
           icono: "cloud",
-          x: 680,
-          y: 380,
+          x: 380,
+          y: 330,
+        },
+        {
+          id: "db",
+          titulo: "Base de datos centralizada",
+          descripcion: "Una sola fuente para la aplicación, la tienda y el agente.",
+          icono: "database",
+          x: 720,
+          y: 10,
+        },
+        {
+          id: "agente",
+          titulo: "Agente IA",
+          descripcion: "Consulta y registra sin abrir la aplicación.",
+          icono: "robot",
+          x: 720,
+          y: 200,
         },
         {
           id: "tienda",
           titulo: "Tienda en línea",
           descripcion: "En desarrollo: lee los productos de la base.",
           icono: "shopping-bag",
-          x: 1020,
-          y: 0,
+          x: 1060,
+          y: 40,
+        },
+        {
+          id: "cliente",
+          titulo: "Cliente",
+          descripcion: "Consulta la tienda y compra en línea.",
+          icono: "users",
+          x: 1060,
+          y: 200,
         },
         {
           id: "telegram",
           titulo: "Telegram",
           descripcion: "Donde el taller habla con el agente.",
           icono: "telegram",
-          x: 1020,
-          y: 190,
+          x: 1060,
+          y: 360,
         },
         {
           id: "social",
           titulo: "Facebook e Instagram",
           descripcion: "El agente publica contenido y revisa los mensajes.",
           icono: "social",
-          x: 1020,
-          y: 380,
+          x: 1060,
+          y: 520,
         },
       ],
       aristas: [
-        { from: "red", to: "app", etiqueta: "acceso" },
+        { from: "celular", to: "app", etiqueta: "acceso" },
+        { from: "celular", to: "nube", etiqueta: "sus archivos" },
         { from: "app", to: "db" },
         { from: "app", to: "agente", etiqueta: "MCP" },
-        { from: "app", to: "nube", etiqueta: "archivos" },
-        { from: "db", to: "tienda", etiqueta: "catálogo" },
-        { from: "agente", to: "telegram" },
+        { from: "db", to: "tienda", etiqueta: "publica" },
+        {
+          from: "tienda",
+          to: "cliente",
+          etiqueta: "compra",
+          desde: "bottom",
+          hasta: "top",
+        },
+        { from: "agente", to: "telegram", etiqueta: "responde" },
         { from: "agente", to: "social", etiqueta: "publica" },
       ],
     },

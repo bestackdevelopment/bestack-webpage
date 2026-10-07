@@ -191,11 +191,12 @@ export default async function CasoDetallePage({ params }: Props) {
 
       {/* 5. Cómo se aplicó */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <SectionHeader title="Cómo se aplicó" />
           <Reveal direction="up">
             {caso.arquitectura ? (
               <ArquitecturaFlow
+                zonas={caso.arquitectura.zonas}
                 nodos={caso.arquitectura.nodos}
                 aristas={caso.arquitectura.aristas}
               />
