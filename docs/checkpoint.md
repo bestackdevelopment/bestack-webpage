@@ -9,11 +9,14 @@ Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con 
 > - Proyecto «BeStack — Sitio web» → https://app.notion.com/p/BeStack-Sitio-web-c527e60df569827daae1012fb845f05e
 > - Raíz de proyectos → https://app.notion.com/p/BeStack-Development-Proyectos-9977e60df5698249b6b2814224f5ad09
 
-**Última verificación:** 7 de octubre de 2026 (agente: **contenido de Bahía aprobado e
-implementado** — copy de las 8 secciones contra el producto vivo, nodo «Contacto» en el diagrama
-e icono nuevo; typecheck, ESLint y build limpios, y verificado en el navegador contra el servidor
-levantado. Antes el mismo día: diagramas de Bidhara y LaserBox con zonas y actores. **Con esto
-los 4 casos quedan aprobados.**)
+**Última verificación:** 7 de octubre de 2026 (agente: **diagramas afinados y SysOp con la
+jerarquía de clientes** — SysOp pasó de 6 a 8 nodos: la jerarquía proveedor → cliente directo →
+sub-cliente en tres tarjetas encadenadas, zona «Portal del cliente» con la nota del subdominio y
+la marca, «Super administración» como pieza propia y la capa operativa aparte; se quitaron las
+dos etiquetas «su cliente» que salían repetidas y a 6px de las tarjetas. En LaserBox y Bidhara se
+corrigió que la nota al pie de la zona quedaba tapada por la última tarjeta. Todo medido en el
+navegador (cero encimados), typecheck y build limpios y push hecho. Antes el mismo día: contenido
+de Bahía aprobado e implementado. **Los 4 casos quedan aprobados.**)
 
 ## Qué es
 
@@ -141,3 +144,10 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
   y los actores como nodo propio (el celular del dueño, el cliente). Los nodos del diagrama sí
   conservan el nombre técnico. Aplica a todos los casos con la misma estructura: Bidhara y
   LaserBox (decisión del Patrón, 7-oct-2026).
+- **La zona del diagrama deja aire abajo.** El alto de las tarjetas depende de cuántas líneas
+  ocupe su descripción con la tipografía real, así que la zona termina ~55px debajo de la última
+  tarjeta y **se verifica midiendo en el navegador**: si no, la nota al pie queda tapada (pasó en
+  LaserBox y estaba a punto en Bidhara).
+- **Una etiqueta de flecha solo va si el hueco da para el texto.** El hueco entre tarjetas es de
+  70px; si la relación se repetiría («su cliente» dos veces en SysOp), se dice en la tarjeta
+  (250px de ancho), no en la flecha.
