@@ -326,8 +326,7 @@ pero no existía en internet: quien buscaba un espacio así en la ciudad no lo e
 En ese terreno no basta con verse bien. Cada espacio se busca con su propio término, y el sitio
 tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.
 
-**La solución — un sitio corporativo con renderizado en servidor, organizado por tipo de
-espacio:**
+**La solución — un sitio web corporativo organizado por tipo de espacio:**
 
 1. **Cinco espacios, cada uno con su página** — coworking, oficina privada, oficina virtual, sala
    de juntas y sala de capacitación. Cada página responde a la búsqueda de ese espacio, no a un
@@ -340,8 +339,8 @@ espacio:**
 
 **Por qué así.**
 
-- **Renderizado en servidor en vez de una aplicación de una sola página.** Un negocio local vive
-  de búsqueda: si el contenido no llega en el HTML, no existe para Google.
+- **El contenido tiene que existir para el buscador, no solo verse.** Un negocio local vive de
+  búsqueda: lo que el buscador no puede leer, no lo muestra.
 - **Una página por tipo de espacio, no una sola con todo.** Cada espacio se busca con su propio
   término. Una página por término es lo que se puede posicionar; una página con todo compite por
   nada.
@@ -354,6 +353,12 @@ espacio:**
 > visitante escribe desde el sitio y el mensaje llega al correo del negocio), con la arista
 > «escribe» saliendo del sitio. No se maneja como «solicitud de cotización» — indicación del
 > Patrón. El icono de sobre es la clave `mail` del mapa compartido (`components/icono-tabler.tsx`).
+>
+> **El diagrama va en lenguaje llano:** el nodo del sitio se llama **«Sitio en línea»** (no
+> «Sitio en servidor (Next.js)») y su descripción habla de **aparecer en las búsquedas locales**,
+> no de HTML ni de renderizado «desde el primer byte». Indicación del Patrón (7-oct-2026): este
+> caso vende búsqueda local, no stack. SysOp conserva sus nombres técnicos (indicación del
+> Patrón del 6-oct-2026).
 
 **Qué cambió.** Ahora tienen presencia en internet a través de su página web: quien busca
 oficina, coworking o sala de juntas en la ciudad ya puede encontrarlos y cotizar en línea.

@@ -655,14 +655,14 @@ const casos: Caso[] = [
     estado: "En operación",
     tags: ["corporativas"],
     resumen:
-      "Sitio corporativo con renderizado en servidor para competir en búsqueda local.",
+      "Sitio web corporativo hecho para aparecer en las búsquedas locales.",
     reto: [
       "Bahía renta cinco tipos de espacio bajo un mismo techo en Chetumal: coworking, oficina privada, oficina virtual, sala de juntas y sala de capacitación. El negocio ya operaba, pero no existía en internet: quien buscaba un espacio así en la ciudad no lo encontraba.",
       "En ese terreno no basta con verse bien. Cada espacio se busca con su propio término, y el sitio tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.",
     ],
     solucion: {
       intro:
-        "Un sitio corporativo con renderizado en servidor, organizado por tipo de espacio:",
+        "Un sitio web corporativo organizado por tipo de espacio:",
       descripcion: [
         "Cinco espacios, cada uno con su página: coworking, oficina privada, oficina virtual, sala de juntas y sala de capacitación. Cada página responde a la búsqueda de ese espacio, no a un catálogo genérico.",
         "La ubicación: con su propia página y acceso desde el inicio del sitio.",
@@ -690,9 +690,10 @@ const casos: Caso[] = [
         },
         {
           id: "ssr",
-          titulo: "Sitio en servidor (Next.js)",
-          descripcion: "Contenido en HTML desde el primer byte.",
-          icono: "nextjs",
+          titulo: "Sitio en línea",
+          descripcion:
+            "Organizado por tipo de espacio, hecho para aparecer en las búsquedas locales.",
+          icono: "app-window",
           x: 400,
           y: 100,
         },
@@ -723,9 +724,9 @@ const casos: Caso[] = [
     },
     decisiones: [
       {
-        titulo: "Renderizado en servidor en vez de una aplicación de una sola página",
+        titulo: "El contenido tiene que existir para el buscador, no solo verse",
         razon:
-          "Un negocio local vive de búsqueda: si el contenido no llega en el HTML, no existe para Google.",
+          "Un negocio local vive de búsqueda: lo que el buscador no puede leer, no lo muestra.",
       },
       {
         titulo: "Una página por tipo de espacio, no una sola con todo",
