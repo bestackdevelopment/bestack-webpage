@@ -112,8 +112,8 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 # Copy
 
-> **Estado del copy:** **LaserBox y Bidhara ya están definidos y aprobados por el Patrón**
-> (6-oct-2026). SysOp y Bahía siguen como **borrador v1**, pendientes de definir caso por caso.
+> **Estado del copy:** **LaserBox, Bidhara y SysOp ya están aprobados por el Patrón**
+> (6-oct-2026). **Bahía sigue como borrador v1**, pendiente de definir caso por caso.
 > El detalle de cada caso se trabaja en Notion (base «Casos de uso — contenido»); este doc
 > guarda el copy que el código consume.
 >
