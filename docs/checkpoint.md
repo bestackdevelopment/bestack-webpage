@@ -9,10 +9,11 @@ Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con 
 > - Proyecto «BeStack — Sitio web» → https://app.notion.com/p/BeStack-Sitio-web-c527e60df569827daae1012fb845f05e
 > - Raíz de proyectos → https://app.notion.com/p/BeStack-Development-Proyectos-9977e60df5698249b6b2814224f5ad09
 
-**Última verificación:** 7 de octubre de 2026 (agente: **diagramas de Bidhara y LaserBox con
-zonas y actores** — typecheck, ESLint y build limpios, y verificado **en el navegador** contra el
-servidor levantado: 2 zonas y 8 nodos en Bidhara / 9 en LaserBox, aristas y handles correctos,
-0 errores de JS. Ver la fila del 7-oct en `docs/plan-de-trabajo.md`.)
+**Última verificación:** 7 de octubre de 2026 (agente: **contenido de Bahía aprobado e
+implementado** — copy de las 8 secciones contra el producto vivo, nodo «Contacto» en el diagrama
+e icono nuevo; typecheck, ESLint y build limpios, y verificado en el navegador contra el servidor
+levantado. Antes el mismo día: diagramas de Bidhara y LaserBox con zonas y actores. **Con esto
+los 4 casos quedan aprobados.**)
 
 ## Qué es
 
@@ -27,7 +28,7 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Última actualización | 7-oct-2026 (diagramas de los casos con zonas y actores; icono propio por tarjeta en «La solución»; copy publicado sin guion largo) |
+| Última actualización | 7-oct-2026 (contenido de Bahía aprobado e implementado; diagramas con zonas y actores; icono propio por tarjeta; copy sin guion largo) |
 | Working tree | **limpio** |
 | vs `origin/main` | **Sincronizado** — push hecho el 7-oct-2026 |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
@@ -97,8 +98,10 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
 - **Fase 5 — Publicación:** sin configuración de deploy. **No se publica hasta que el Patrón
   lo autorice.**
 - **Del Patrón (contenido):** revisar en navegador; capturas de los casos de uso (hoy
-  placeholders); números de «Qué cambió» — en **LaserBox quedó cualitativo por decisión suya**;
-  aprobar el tono del copy del resto, que sigue en borrador v1 (Bidhara, SysOp y Bahía).
+  placeholders); números de «Qué cambió» — en **LaserBox y Bahía quedó cualitativo por decisión
+  suya**; y **"Finaliza tu Web" es el único servicio sin un caso que lo respalde** (decisión
+  suya). *Resuelto:* el tono del copy **ya está aprobado en los cuatro casos** (Bahía el
+  7-oct-2026).
   *Resuelto (6-oct-2026):* **LaserBox ya tiene contenido aprobado e implementado**, y se
   confirmó que **el sistema sí corre** en el taller — lo que falta es la tienda en línea.
 

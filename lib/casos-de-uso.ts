@@ -36,6 +36,7 @@ export type IconoClave =
   | "cloud"
   | "app-window"
   | "lock"
+  | "mail"
   | "shopping-bag"
   | "social"
   | "telegram"
@@ -656,11 +657,18 @@ const casos: Caso[] = [
     resumen:
       "Sitio corporativo con renderizado en servidor para competir en búsqueda local.",
     reto: [
-      "Un negocio de renta de espacios en una plaza turística compite por las búsquedas locales de «oficina», «coworking» y «sala de juntas». En ese terreno el sitio tiene que ser rastreable por los buscadores, no solo verse bien.",
+      "Bahía renta cinco tipos de espacio bajo un mismo techo en Chetumal: coworking, oficina privada, oficina virtual, sala de juntas y sala de capacitación. El negocio ya operaba, pero no existía en internet: quien buscaba un espacio así en la ciudad no lo encontraba.",
+      "En ese terreno no basta con verse bien. Cada espacio se busca con su propio término, y el sitio tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.",
     ],
     solucion: {
       intro:
-        "Un sitio corporativo con renderizado en servidor, para que el contenido exista en HTML desde el primer byte (la condición para competir en buscadores). Organizado por tipo de espacio, con la ubicación y un único llamado a la acción: cotizar.",
+        "Un sitio corporativo con renderizado en servidor, organizado por tipo de espacio:",
+      descripcion: [
+        "Cinco espacios, cada uno con su página: coworking, oficina privada, oficina virtual, sala de juntas y sala de capacitación. Cada página responde a la búsqueda de ese espacio, no a un catálogo genérico.",
+        "La ubicación: con su propia página y acceso desde el inicio del sitio.",
+        "Un solo llamado a la acción, cotizar: el formulario llega al correo del negocio.",
+        "Fotos y video del espacio real: lo que se renta es el lugar, y se muestra como es.",
+      ],
     },
     arquitectura: {
       nodos: [
@@ -696,11 +704,21 @@ const casos: Caso[] = [
           x: 800,
           y: 100,
         },
+        {
+          id: "contacto",
+          titulo: "Contacto",
+          descripcion:
+            "El visitante escribe desde el sitio; el mensaje llega al correo del negocio.",
+          icono: "mail",
+          x: 800,
+          y: 300,
+        },
       ],
       aristas: [
         { from: "busqueda", to: "ssr", etiqueta: "rastreo" },
         { from: "visitante", to: "ssr" },
         { from: "ssr", to: "hosting", etiqueta: "publicado" },
+        { from: "ssr", to: "contacto", etiqueta: "escribe" },
       ],
     },
     decisiones: [
@@ -708,6 +726,11 @@ const casos: Caso[] = [
         titulo: "Renderizado en servidor en vez de una aplicación de una sola página",
         razon:
           "Un negocio local vive de búsqueda: si el contenido no llega en el HTML, no existe para Google.",
+      },
+      {
+        titulo: "Una página por tipo de espacio, no una sola con todo",
+        razon:
+          "Cada espacio se busca con su propio término. Una página por término es lo que se puede posicionar; una página con todo compite por nada.",
       },
       {
         titulo: "Un solo llamado a la acción",
@@ -721,8 +744,8 @@ const casos: Caso[] = [
       },
     ],
     queCambio:
-      "El sitio existe en HTML desde el primer byte, organizado por tipo de espacio y con un único camino: cotizar.",
-  },
+      "Ahora tienen presencia en internet a través de su página web: quien busca oficina, coworking o sala de juntas en la ciudad ya puede encontrarlos y cotizar en línea.",
+  }
 ]
 
 export function getCasos(): Caso[] {

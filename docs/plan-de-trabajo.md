@@ -143,12 +143,17 @@ orden; y la publicación al final, **solo con la autorización del Patrón**.
 | 23-sep | **La publicación la autoriza el Patrón** | No se publica hasta que él diga que el sitio está completo. |
 | 7-oct | El diagrama de cada caso lleva **zonas** (lo privado, lo público) y los **actores** como nodo propio | Un dibujo que solo lista piezas no dice dónde queda el negocio ni dónde su cliente. El Patrón lo pidió así: *«no está bien representado que el catálogo va hacia internet y el cliente, y que la nube privada es accesible desde el dueño y su celular»*. Regla de la sección: aplica a los casos con la misma estructura (Bidhara y LaserBox). |
 | 7-oct | El diagrama **no lleva el paso de WhatsApp** | El cierre del pedido vive en el copy; el diagrama se sostiene con la zona y los actores. |
+| 7-oct | **Bahía: una página por tipo de espacio** es la cuarta decisión de «Por qué así» | Elegida por el Patrón entre dos candidatas. Cada espacio se busca con su propio término («coworking», «sala de juntas»), y cada `/espacios/<tipo>` trae su propio `title` y `description`: una página por término es lo que se puede posicionar. |
+| 7-oct | **Bahía: la cuarta pieza del diagrama es «Contacto», no «Solicitud de cotización»** | Indicación del Patrón: representa la **comunicación** (el visitante escribe y el mensaje llega al correo del negocio). El formulario envía de verdad (Resend, verificado). |
+| 7-oct | **Bahía: «plaza turística» estaba mal; es Chetumal, Quintana Roo** | El borrador v1 describía mal dónde está el negocio. Se verificó contra el sitio publicado antes de publicar un dato falso. |
+| 7-oct | **Bahía sí lleva «Qué cambió»** aunque no tenía sitio antes | El cambio existe: pasa de no tener presencia en internet a tenerla. Distinto de SysOp, donde no había operación anterior que medir. |
 
 ## Datos que faltan (los aporta el Patrón)
 
 1. **Los números de resultados** de cada ejemplo (ventas al día, tiempo ahorrado, volumen).
    Sin número, la sección "Qué cambió" se deja sin métricas — **no se estiman**.
-2. **Aprobación del tono** del copy (la muestra de Bidhara está en `docs/casos-de-uso.md`).
+2. **Aprobación del tono** del copy: ✅ **los cuatro casos aprobados** (Bahía el 7-oct-2026).
+   Queda la **cobertura**: "Finaliza tu Web" es el único servicio sin un caso que lo respalde.
 3. **El dominio** que va a usar (lo necesita la Fase 4).
 4. Confirmar si el sistema de operación de **LaserBox ya corre** o también va marcado como
    en desarrollo.

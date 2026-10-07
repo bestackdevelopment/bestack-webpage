@@ -112,8 +112,8 @@ Las capturas las toma el Patrón. En el código se dejan los huecos con estas me
 
 # Copy
 
-> **Estado del copy:** **LaserBox, Bidhara y SysOp ya están aprobados por el Patrón**
-> (6-oct-2026). **Bahía sigue como borrador v1**, pendiente de definir caso por caso.
+> **Estado del copy:** **los cuatro casos están aprobados por el Patrón** (LaserBox, Bidhara y
+> SysOp el 6-oct-2026; **Bahía el 7-oct-2026**).
 > El detalle de cada caso se trabaja en Notion (base «Casos de uso — contenido»); este doc
 > guarda el copy que el código consume.
 >
@@ -308,24 +308,56 @@ muchos clientes, organizado en tres capas:
 *Giro:* renta de espacios (coworking, oficinas privadas y virtuales, salas) · *Tipo:* sitio
 corporativo · *Estado:* En operación
 
-**El reto.** Un negocio de renta de espacios en una plaza turística compite por las búsquedas
-locales de "oficina", "coworking" y "sala de juntas". En ese terreno el sitio tiene que ser
-rastreable por los buscadores, no solo verse bien.
+> **Definido y aprobado por el Patrón el 7-oct-2026**, revisando el caso contra el producto vivo
+> (`https://bahiabusinesscenter.com.mx`, verificado en 200). El borrador v1 decía «una plaza
+> turística» y el negocio está en **Chetumal, Quintana Roo**: se corrigió.
+>
+> **No tenía sitio antes.** Por eso este caso **sí** lleva «Qué cambió»: el cambio es pasar de no
+> tener presencia en internet a tenerla. No es el caso de SysOp, donde no había una operación
+> anterior que medir.
+>
+> **El diagrama no lleva zonas:** no hay frontera entre lo privado y lo público; el sitio es
+> público de punta a punta.
 
-**La solución.** Un sitio corporativo con renderizado en servidor, para que el contenido exista
-en HTML desde el primer byte (la condición para competir en buscadores). Organizado por tipo de
-espacio, con la ubicación y un único llamado a la acción: cotizar.
+**El reto.** Bahía renta cinco tipos de espacio bajo un mismo techo en Chetumal: coworking,
+oficina privada, oficina virtual, sala de juntas y sala de capacitación. El negocio ya operaba,
+pero no existía en internet: quien buscaba un espacio así en la ciudad no lo encontraba.
+
+En ese terreno no basta con verse bien. Cada espacio se busca con su propio término, y el sitio
+tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.
+
+**La solución — un sitio corporativo con renderizado en servidor, organizado por tipo de
+espacio:**
+
+1. **Cinco espacios, cada uno con su página** — coworking, oficina privada, oficina virtual, sala
+   de juntas y sala de capacitación. Cada página responde a la búsqueda de ese espacio, no a un
+   catálogo genérico. *(Verificado: cada `/espacios/<tipo>` trae su propio `title` y `description`
+   para su término.)*
+2. **La ubicación** — con su propia página y acceso desde el inicio del sitio.
+3. **Un solo llamado a la acción, cotizar** — el formulario llega al correo del negocio.
+   *(Verificado: el envío es real, entra por Resend. Este sitio no simula el formulario.)*
+4. **Fotos y video del espacio real** — lo que se renta es el lugar, y se muestra como es.
 
 **Por qué así.**
 
-- **Renderizado en servidor en vez de una aplicación de una sola página.** Un negocio local
-  vive de búsqueda: si el contenido no llega en el HTML, no existe para Google.
+- **Renderizado en servidor en vez de una aplicación de una sola página.** Un negocio local vive
+  de búsqueda: si el contenido no llega en el HTML, no existe para Google.
+- **Una página por tipo de espacio, no una sola con todo.** Cada espacio se busca con su propio
+  término. Una página por término es lo que se puede posicionar; una página con todo compite por
+  nada.
 - **Un solo llamado a la acción.** Los cinco tipos de espacio compiten entre sí por la misma
   atención; el objetivo del sitio es que el visitante cotice.
 - **El producto es el lugar.** Fotos y video del espacio real venden una oficina; las imágenes
   genéricas, no.
 
-**Qué cambió.** *(pendiente: los números del Patrón)*
+> **Diagrama (7-oct-2026):** suma el nodo **Contacto**, que representa la **comunicación** (el
+> visitante escribe desde el sitio y el mensaje llega al correo del negocio), con la arista
+> «escribe» saliendo del sitio. No se maneja como «solicitud de cotización» — indicación del
+> Patrón. El icono de sobre es la clave `mail` del mapa compartido (`components/icono-tabler.tsx`).
+
+**Qué cambió.** Ahora tienen presencia en internet a través de su página web: quien busca
+oficina, coworking o sala de juntas en la ciudad ya puede encontrarlos y cotizar en línea.
+*Sin números: cualitativo por decisión del Patrón (7-oct-2026).*
 
 ---
 
@@ -338,5 +370,7 @@ espacio, con la ubicación y un único llamado a la acción: cotizar.
    cliente ni detalles de la operación real).
 3. **Los 4:** los números de "Qué cambió". En **LaserBox quedó cualitativo por decisión del
    Patrón**, no por olvido.
-4. **Aprobación del tono.** **LaserBox, Bidhara y SysOp ya están aprobados**; falta **Bahía**,
-   que se define caso por caso con el Patrón.
+4. **Aprobación del tono:** ✅ **los cuatro aprobados** (Bahía el 7-oct-2026). Queda lo de
+   siempre antes de publicar: capturas, dominio y los números de «Qué cambió». El **único
+   servicio sin caso que lo respalde es "Finaliza tu Web"**: es decisión del Patrón, no un
+   olvido.
