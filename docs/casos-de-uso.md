@@ -319,7 +319,8 @@ corporativo · *Estado:* En operación
 > **El diagrama no lleva zonas:** no hay frontera entre lo privado y lo público; el sitio es
 > público de punta a punta.
 
-**El reto.** Bahía renta cinco tipos de espacio bajo un mismo techo en Chetumal: coworking,
+**El reto.** Bahía Business Center renta cinco tipos de espacio bajo un mismo techo en
+Chetumal: coworking,
 oficina privada, oficina virtual, sala de juntas y sala de capacitación. El negocio ya operaba,
 pero no existía en internet: quien buscaba un espacio así en la ciudad no lo encontraba.
 

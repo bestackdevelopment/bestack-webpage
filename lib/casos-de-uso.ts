@@ -657,7 +657,7 @@ const casos: Caso[] = [
     resumen:
       "Sitio web corporativo hecho para aparecer en las búsquedas locales.",
     reto: [
-      "Bahía renta cinco tipos de espacio bajo un mismo techo en Chetumal: coworking, oficina privada, oficina virtual, sala de juntas y sala de capacitación. El negocio ya operaba, pero no existía en internet: quien buscaba un espacio así en la ciudad no lo encontraba.",
+      "Bahía Business Center renta cinco tipos de espacio bajo un mismo techo en Chetumal: coworking, oficina privada, oficina virtual, sala de juntas y sala de capacitación. El negocio ya operaba, pero no existía en internet: quien buscaba un espacio así en la ciudad no lo encontraba.",
       "En ese terreno no basta con verse bien. Cada espacio se busca con su propio término, y el sitio tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.",
     ],
     solucion: {
