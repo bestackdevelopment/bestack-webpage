@@ -194,7 +194,7 @@ const casos: Caso[] = [
           x: 1028,
           y: 8,
           w: 302,
-          h: 505,
+          h: 515,
         },
       ],
       nodos: [
@@ -391,7 +391,7 @@ const casos: Caso[] = [
           x: 1028,
           y: 8,
           w: 302,
-          h: 632,
+          h: 625,
         },
       ],
       nodos: [
@@ -449,7 +449,7 @@ const casos: Caso[] = [
           descripcion: "Consulta la tienda y compra en línea.",
           icono: "users",
           x: 1060,
-          y: 200,
+          y: 180,
         },
         {
           id: "telegram",
@@ -457,7 +457,7 @@ const casos: Caso[] = [
           descripcion: "Donde el taller habla con el agente.",
           icono: "telegram",
           x: 1060,
-          y: 360,
+          y: 320,
         },
         {
           id: "social",
@@ -465,7 +465,7 @@ const casos: Caso[] = [
           descripcion: "El agente publica contenido y revisa los mensajes.",
           icono: "social",
           x: 1060,
-          y: 520,
+          y: 460,
         },
       ],
       aristas: [
