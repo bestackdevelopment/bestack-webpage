@@ -117,10 +117,6 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
    ese proceso arriba, **reiniciarlo en el mismo puerto**: el proceso viejo sirve HTML que apunta a
    una hoja de estilos que ya no existe y la página se ve **sin CSS** (la hoja contesta 500, no 404).
    Se ve como un bug de estilos y no lo es.
-7. **Vista previa:** el sitio se revisa con `next start` en el Dev Server. Si se rehace el build con
-   ese proceso arriba, **reiniciarlo en el mismo puerto**: el proceso viejo sirve HTML que apunta a
-   una hoja de estilos que ya no existe y la página se ve **sin CSS** (la hoja contesta 500, no 404).
-   Se ve como un bug de estilos y no lo es.
 
 ## Reglas de contenido
 
