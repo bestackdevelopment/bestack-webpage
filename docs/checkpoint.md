@@ -9,7 +9,9 @@ Estado del proyecto. Sirve para retomar el trabajo rápido en otra sesión, con 
 > - Proyecto «BeStack — Sitio web» → https://app.notion.com/p/BeStack-Sitio-web-c527e60df569827daae1012fb845f05e
 > - Raíz de proyectos → https://app.notion.com/p/BeStack-Development-Proyectos-9977e60df5698249b6b2814224f5ad09
 
-**Última verificación:** 6 de octubre de 2026 (agente, revisión completa: build, rutas, links y móvil).
+**Última verificación:** 7 de octubre de 2026 (agente: icono propio por tarjeta en «La solución»
+y copy publicado sin guion largo — typecheck, ESLint y build limpios, y verificado en el HTML
+que sirve el servidor, no solo en el código).
 
 ## Qué es
 
@@ -24,9 +26,9 @@ formulario. Más adelante incluye un blog.
 | Ruta | `~/proyects/bestackdevelopment/webpage` (Dev Server, usuario `dev`) |
 | Remoto | `github.com/bestackdevelopment/bestack-webpage` (alias SSH `github-bot`) |
 | Rama | `main` |
-| Última actualización | 6-oct-2026 (rename a «Casos de uso», tienda/catálogos en línea, docs sincronizados) |
+| Última actualización | 7-oct-2026 (icono propio por tarjeta en «La solución»; copy publicado sin guion largo) |
 | Working tree | **limpio** |
-| vs `origin/main` | **Sincronizado** — push hecho el 6-oct-2026 |
+| vs `origin/main` | **Sincronizado** — push hecho el 7-oct-2026 |
 | Visibilidad | público (el Patrón lo pasará a privado; no es urgente, no hay secretos) |
 
 ## Stack
@@ -118,6 +120,9 @@ Ordenados según las fases de `docs/plan-de-trabajo.md`.
 - **No mencionar clientes que no se pueden firmar.** Los proyectos de Lanzaweb quedan fuera.
 - **LaserBox se presenta como cliente.** No mencionar la sociedad con el taller.
 - **Publicar no es decisión del agente.**
+- **El copy publicado no lleva guion largo** (`—`): en el texto que ve el visitante se usan coma,
+  dos puntos o paréntesis. Aplica a `lib/casos-de-uso.ts` y a los docs de copy; los separadores
+  de formato de los `.md` internos no cuentan (decisión del Patrón, 7-oct-2026).
 - **Capturas de pantalla:** las toma el Patrón; en el código se dejan placeholders con las
   medidas de `docs/casos-de-uso.md`.
 - **Los agentes no se nombran.** El nombre del agente es interno del cliente: no se publica en

@@ -1,6 +1,6 @@
 # Casos de uso — definición de la sección
 
-**Última actualización:** 6 de octubre de 2026 (subfire).
+**Última actualización:** 7 de octubre de 2026 (subfire).
 
 Especificación completa de la sección que reemplaza a "Portfolio": qué se muestra, cómo se
 estructura cada página y el copy de los 4 ejemplos. **Todo el contenido sale de aquí — no se
@@ -57,7 +57,9 @@ Ocho secciones, en este orden:
 
 1. **Portada** — nombre, giro, una línea de qué es, etiquetas de tipo y estado, CTA.
 2. **El reto** — cómo operaba el negocio antes (2-3 párrafos).
-3. **La solución** — una tarjeta por pieza. LaserBox y Bidhara llevan 6 (aplicación interna ·
+3. **La solución** — una tarjeta por pieza, **cada una con su propio icono** (campo `icono` de
+   `PiezaSolucion`; el mapa clave → icono Tabler está en `components/icono-tabler.tsx`, el mismo
+   que usan los nodos del diagrama). LaserBox y Bidhara llevan 6 (aplicación interna ·
    base de datos centralizada · agente IA · el canal de venta —tienda en LaserBox, catálogo en
    Bidhara— · nube privada · red privada); en LaserBox el agente además toca redes sociales. En
    SysOp y Bahía, la descripción de la plataforma/sitio.
@@ -154,7 +156,7 @@ centralizado y un agente 24/7 que sabe de qué va el negocio y en qué estado es
   y sus permisos; no es un chatbot que adivina.
 
 **Qué cambió.** Se digitalizó y se organizó: el negocio dejó los papeles y las hojas de
-cálculo, y ahora se administra de mejor manera —catálogo, ventas y gastos en un mismo sistema,
+cálculo, y ahora se administra de mejor manera: catálogo, ventas y gastos en un mismo sistema,
 con un agente que responde por Telegram. *Sin números: cualitativo por decisión del Patrón.*
 
 ---
@@ -210,7 +212,7 @@ memoria de quien atendía.
   una lista aparte que se desactualiza sola.
 
 **Qué cambió.** Organización y rapidez: el taller dejó de llevar todo en papel y de memoria
-—cotizaciones, producción, materiales y archivos ahora viven en el sistema— y ganó un agente que
+(cotizaciones, producción, materiales y archivos ahora viven en el sistema) y ganó un agente que
 avisa y contesta por Telegram. *Sin números: cualitativo por decisión del Patrón (6-oct-2026).*
 
 ---
@@ -242,8 +244,8 @@ avisa y contesta por Telegram. *Sin números: cualitativo por decisión del Patr
 evidencia repartidos entre papel, mensajería y hojas de cálculo. Cuando un proveedor atiende
 varias instalaciones a la vez, ese desorden se multiplica por cada cliente.
 
-**La solución.** Un motor operativo configurable —se construye una vez y se opera para muchos
-clientes— organizado en tres capas:
+**La solución.** Un motor operativo configurable, que se construye una vez y se opera para
+muchos clientes, organizado en tres capas:
 
 - **Configuración** — define qué se puede ejecutar: clientes, instalaciones, ubicaciones,
   protocolos y las operaciones de cada ubicación. Sin esta capa no hay nada que ejecutar.

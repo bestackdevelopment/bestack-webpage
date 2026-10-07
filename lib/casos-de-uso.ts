@@ -13,9 +13,11 @@ export type EstadoCaso = "En operación" | "En desarrollo"
 export type PiezaSolucion = {
   titulo: string
   descripcion: string
+  /** Clave de icono propia de la pieza (el componente cliente la mapea a un icono Tabler). */
+  icono?: IconoClave
 }
 
-export type ArquitecturaIcono =
+export type IconoClave =
   | "settings"
   | "device-mobile"
   | "users"
@@ -43,7 +45,7 @@ export type ArquitecturaNodo = {
   titulo: string
   descripcion?: string
   /** Clave de icono (el componente cliente la mapea a un icono Tabler). */
-  icono?: ArquitecturaIcono
+  icono?: IconoClave
   /** Posición en el lienzo (React Flow). */
   x: number
   y: number
@@ -86,7 +88,7 @@ export type Caso = {
   /** Copy de "Por qué así": decisiones y su razón */
   decisiones: { titulo: string; razon: string }[]
   /**
-   * "Qué cambió" — sin métricas: si el Patrón no da el número, queda cualitativo.
+   * "Qué cambió" sin métricas: si el Patrón no da el número, queda cualitativo.
    * Opcional: un sistema que no reemplazó una operación anterior (SysOp) no la lleva, y
    * entonces la sección no se pinta.
    */
@@ -112,30 +114,36 @@ const casos: Caso[] = [
           titulo: "Aplicación interna",
           descripcion:
             "Ventas multi-artículo, clientes, gastos por categoría e inventario en un solo lugar; mobile-first, porque el negocio se opera desde el celular.",
+          icono: "app-window",
         },
         {
           titulo: "Base de datos centralizada",
           descripcion:
             "Toda la información del negocio en una sola fuente: es la que alimenta a la aplicación, al catálogo en línea y al agente.",
+          icono: "database",
         },
         {
           titulo: "Agente IA",
           descripcion:
             "Corre en infraestructura propia, entra a la aplicación y responde por Telegram: registra y consulta pedidos, ventas e inventario sin abrir el sistema.",
+          icono: "robot",
         },
         {
           titulo: "Catálogo en línea",
           descripcion:
             "Los productos con foto, descripción y disponibilidad; el cliente arma su pedido en el carrito y lo cierra por WhatsApp.",
+          icono: "shopping-bag",
         },
         {
           titulo: "Nube privada",
           descripcion:
-            "Los archivos del negocio —fotos de producto, evidencia— ordenados y accesibles desde la operación.",
+            "Los archivos del negocio (fotos de producto, evidencia) ordenados y accesibles desde la operación.",
+          icono: "cloud",
         },
         {
           titulo: "Red privada",
           descripcion: "Se entra a la aplicación sin exponer nada a internet.",
+          icono: "lock",
         },
       ],
     },
@@ -248,7 +256,7 @@ const casos: Caso[] = [
       },
     ],
     queCambio:
-      "Se digitalizó y se organizó: el negocio dejó los papeles y las hojas de cálculo, y ahora se administra de mejor manera —catálogo, ventas y gastos en un mismo sistema, con un agente que responde por Telegram.",
+      "Se digitalizó y se organizó: el negocio dejó los papeles y las hojas de cálculo, y ahora se administra de mejor manera: catálogo, ventas y gastos en un mismo sistema, con un agente que responde por Telegram.",
   },
   {
     slug: "laserbox",
@@ -268,30 +276,36 @@ const casos: Caso[] = [
           titulo: "Aplicación interna",
           descripcion:
             "Cotizaciones, órdenes de producción, materiales y proveedores en un solo lugar.",
+          icono: "app-window",
         },
         {
           titulo: "Base de datos centralizada",
           descripcion:
             "Toda la información del negocio en una sola fuente: es la que alimenta a la aplicación, a la tienda y al agente.",
+          icono: "database",
         },
         {
           titulo: "Agente IA",
           descripcion:
             "Corre en infraestructura propia, entra a la aplicación y responde por Telegram: consulta y registra sin abrir el sistema. También publica contenido en Facebook e Instagram y revisa los mensajes.",
+          icono: "robot",
         },
         {
           titulo: "Tienda en línea",
           descripcion:
             "En desarrollo: se construye con los productos que ya viven en la base de datos centralizada.",
+          icono: "shopping-bag",
         },
         {
           titulo: "Nube privada",
           descripcion:
-            "Los archivos del negocio —planos, cotizaciones, evidencia— ordenados y accesibles desde la operación.",
+            "Los archivos del negocio (planos, cotizaciones, evidencia) ordenados y accesibles desde la operación.",
+          icono: "cloud",
         },
         {
           titulo: "Red privada",
           descripcion: "Se entra a la aplicación sin exponer nada a internet.",
+          icono: "lock",
         },
       ],
     },
@@ -415,7 +429,7 @@ const casos: Caso[] = [
       },
     ],
     queCambio:
-      "Organización y rapidez: el taller dejó de llevar todo en papel y de memoria —cotizaciones, producción, materiales y archivos ahora viven en el sistema— y ganó un agente que avisa y contesta por Telegram.",
+      "Organización y rapidez: el taller dejó de llevar todo en papel y de memoria (cotizaciones, producción, materiales y archivos ahora viven en el sistema) y ganó un agente que avisa y contesta por Telegram.",
   },
   {
     slug: "sysop",
@@ -430,7 +444,7 @@ const casos: Caso[] = [
     ],
     solucion: {
       intro:
-        "Un motor operativo configurable —se construye una vez y se opera para muchos clientes— organizado en tres capas:",
+        "Un motor operativo configurable, que se construye una vez y se opera para muchos clientes, organizado en tres capas:",
       descripcion: [
         "Configuración: define qué se puede ejecutar. El nivel de plataforma administra clientes, instalaciones, ubicaciones, protocolos y las operaciones de cada ubicación.",
         "Operación: el personal ejecuta paso a paso lo que ya está configurado, desde el celular: turnos, captura de datos, evidencia e incidencias. La supervisión ve la cobertura por ubicación, las asignaciones y las emergencias pendientes de aprobar.",

@@ -12,7 +12,7 @@ type Captura = {
 /**
  * Galería con lightbox. Hoy los slides son placeholders (las capturas las toma
  * el Patrón); cuando exista el archivo, añadir `imagen` al slide y el lightbox
- * mostrará la captura real — docs/casos-de-uso.md. Cierra con Esc o clic fuera.
+ * mostrará la captura real; ver docs/casos-de-uso.md. Cierra con Esc o clic fuera.
  */
 export function CasoGallery({ capturas }: { capturas: Captura[] }) {
   const [activa, setActiva] = useState<number | null>(null)

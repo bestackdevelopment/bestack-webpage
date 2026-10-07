@@ -88,6 +88,10 @@ pnpm lint
 ## Convenciones (respetar)
 
 - **Iconos:** siempre `@tabler/icons-react`. No añadir `lucide-react` ni SVGs inline.
+- **Clave de icono → icono Tabler:** el mapa vive en `components/icono-tabler.tsx` (`ICONOS`),
+  tipado por `IconoClave` en `lib/casos-de-uso.ts`. Lo comparten el diagrama de arquitectura y
+  las tarjetas de «La solución»: cada pieza lleva **su propio** icono en el campo `icono` — no se
+  repite el mismo en todas las tarjetas. Clave nueva → tocar el mapa **y** el tipo.
 - **Colores:** usar los tokens del tema (`primary`, `secondary`, `accent`…) definidos en
   `app/globals.css`, nunca hex sueltos.
 - **Páginas de servicio:** las siete landings de `/servicios/*` (`paginas-informativas`,
@@ -110,6 +114,9 @@ pnpm lint
 - **Logo:** componente `components/logo.tsx`.
 - **Imágenes de tecnologías:** viven en `public/stack/*.svg`.
 - **Idioma:** la UI va en español; el código (nombres, tipos, props) en inglés.
+- **Copy publicado sin guion largo** (`—`, em dash): en el texto que ve el visitante se usan
+  coma, dos puntos o paréntesis. Aplica a `lib/casos-de-uso.ts` y a los docs de copy; los
+  separadores de formato de los `.md` internos no cuentan. (Regla del Patrón, 7-oct-2026.)
 - **SEO:** `app/sitemap.ts`, `app/robots.ts`, `app/icon.svg`, `app/apple-icon.tsx` y los
   `openGraph` en `app/layout.tsx`.
 

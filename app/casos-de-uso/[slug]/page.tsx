@@ -7,6 +7,7 @@ import {
   IconBox,
 } from "@tabler/icons-react"
 
+import { ICONOS } from "@/components/icono-tabler"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArquitecturaFlow } from "@/components/arquitectura-flow"
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: caso.nombre,
       description: caso.resumen,
       // Imagen de portada: la publicará el Patrón en
-      // /public/casos-de-uso/{slug}/og.jpg (1200×630) — docs/casos-de-uso.md.
+      // /public/casos-de-uso/{slug}/og.jpg (1200×630); ver docs/casos-de-uso.md.
       // Se añade a `images` cuando exista el archivo.
     },
   }
@@ -131,26 +132,27 @@ export default async function CasoDetallePage({ params }: Props) {
           <SectionHeader title="La solución" subtitle={caso.solucion.intro} />
           {caso.solucion.piezas ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {caso.solucion.piezas.map((pieza, index) => (
-                <Reveal key={index} direction="up" delay={(index % 3) * 80}>
-                  <Card className="border-border h-full">
-                    <CardHeader>
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                        <IconBox
-                          className="w-6 h-6 text-primary"
-                          stroke={1.5}
-                        />
-                      </div>
-                      <CardTitle className="text-xl">{pieza.titulo}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">
-                        {pieza.descripcion}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Reveal>
-              ))}
+              {caso.solucion.piezas.map((pieza, index) => {
+                // Cada pieza trae su propio icono; IconBox solo queda de respaldo.
+                const Icon = pieza.icono ? ICONOS[pieza.icono] : IconBox
+                return (
+                  <Reveal key={index} direction="up" delay={(index % 3) * 80}>
+                    <Card className="border-border h-full">
+                      <CardHeader>
+                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
+                          <Icon className="w-6 h-6 text-primary" stroke={1.5} />
+                        </div>
+                        <CardTitle className="text-xl">{pieza.titulo}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground">
+                          {pieza.descripcion}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Reveal>
+                )
+              })}
             </div>
           ) : (
             <Reveal direction="up">
@@ -180,7 +182,7 @@ export default async function CasoDetallePage({ params }: Props) {
             <CasoGallery
               capturas={[1, 2, 3].map((n) => ({
                 etiqueta: `Captura ${n}`,
-                // imagen: `/casos-de-uso/${caso.slug}/${n}.jpg`, — cuando exista
+                // imagen: `/casos-de-uso/${caso.slug}/${n}.jpg`, cuando exista
               }))}
             />
           </Reveal>
@@ -241,7 +243,7 @@ export default async function CasoDetallePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 7. Qué cambió — opcional: un sistema que no reemplazó una operación anterior no la lleva */}
+      {/* 7. Qué cambió (opcional): un sistema que no reemplazó una operación anterior no la lleva */}
       {caso.queCambio && (
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
           <div className="max-w-3xl mx-auto">

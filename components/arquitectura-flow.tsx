@@ -1,6 +1,5 @@
 "use client"
 
-import type { ComponentType } from "react"
 import {
   Background,
   Controls,
@@ -12,71 +11,18 @@ import {
   type NodeProps,
 } from "@xyflow/react"
 import "@xyflow/react/dist/style.css"
-import {
-  IconApi,
-  IconAppWindow,
-  IconBrandNextjs,
-  IconBrandNodejs,
-  IconBrandPrisma,
-  IconBrandReact,
-  IconBrandTailwind,
-  IconBrandTelegram,
-  IconBrandTypescript,
-  IconCloud,
-  IconCloudUpload,
-  IconDatabase,
-  IconDeviceMobile,
-  IconFileText,
-  IconLock,
-  IconRobot,
-  IconSearch,
-  IconSettings,
-  IconShare,
-  IconShoppingBag,
-  IconUsers,
-} from "@tabler/icons-react"
 
+import { ICONOS } from "@/components/icono-tabler"
 import type {
   ArquitecturaArista,
-  ArquitecturaIcono,
   ArquitecturaNodo,
+  IconoClave,
 } from "@/lib/casos-de-uso"
-
-type TablerIcon = ComponentType<{
-  className?: string
-  size?: number
-  stroke?: number
-}>
-
-/** Clave de icono (en los datos) → icono Tabler. */
-const ICONOS: Record<ArquitecturaIcono, TablerIcon> = {
-  settings: IconSettings,
-  "app-window": IconAppWindow,
-  lock: IconLock,
-  "shopping-bag": IconShoppingBag,
-  social: IconShare,
-  telegram: IconBrandTelegram,
-  "device-mobile": IconDeviceMobile,
-  users: IconUsers,
-  api: IconApi,
-  database: IconDatabase,
-  "cloud-upload": IconCloudUpload,
-  nextjs: IconBrandNextjs,
-  node: IconBrandNodejs,
-  prisma: IconBrandPrisma,
-  react: IconBrandReact,
-  tailwind: IconBrandTailwind,
-  typescript: IconBrandTypescript,
-  robot: IconRobot,
-  file: IconFileText,
-  search: IconSearch,
-  cloud: IconCloud,
-}
 
 type NodoData = {
   titulo: string
   descripcion?: string
-  icono?: ArquitecturaIcono
+  icono?: IconoClave
 }
 
 function NodoArquitectura({ data }: NodeProps) {
