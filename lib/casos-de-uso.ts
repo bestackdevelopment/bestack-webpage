@@ -574,7 +574,8 @@ const casos: Caso[] = [
         {
           id: "proveedor",
           titulo: "Proveedor",
-          descripcion: "Su propio subdominio y su marca; administra a sus clientes.",
+          descripcion:
+            "Administra a sus clientes directos; su propio subdominio y su marca.",
           icono: "users",
           x: 320,
           y: 0,
@@ -582,7 +583,8 @@ const casos: Caso[] = [
         {
           id: "directo",
           titulo: "Cliente directo",
-          descripcion: "Entra por su subdominio y ve solo lo suyo.",
+          descripcion:
+            "Cliente del proveedor: entra por su subdominio y ve solo lo suyo.",
           icono: "users",
           x: 640,
           y: 0,
@@ -590,7 +592,8 @@ const casos: Caso[] = [
         {
           id: "subcliente",
           titulo: "Sub-cliente",
-          descripcion: "El cliente de un cliente: su subdominio y lo suyo.",
+          descripcion:
+            "El cliente de un cliente directo: su subdominio y lo suyo.",
           icono: "users",
           x: 960,
           y: 0,
@@ -631,8 +634,8 @@ const casos: Caso[] = [
       ],
       aristas: [
         { from: "superadmin", to: "proveedor", etiqueta: "da de alta" },
-        { from: "proveedor", to: "directo", etiqueta: "su cliente" },
-        { from: "directo", to: "subcliente", etiqueta: "su cliente" },
+        { from: "proveedor", to: "directo" },
+        { from: "directo", to: "subcliente" },
         {
           from: "proveedor",
           to: "api",
