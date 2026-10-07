@@ -364,6 +364,10 @@ tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.
 > llano qué significa (aparecer en el buscador cuando alguien busca uno de esos espacios en la
 > ciudad). Indicación del Patrón, 7-oct-2026: el SEO es lo que se está vendiendo en este caso, así
 > que se nombra, no se insinúa.
+>
+> **El hosting es contratado, no «propio»** (corrección del Patrón, 7-oct-2026): el sitio vive en
+> un hosting contratado para el proyecto, no en infraestructura del negocio ni en la de BeStack.
+> No nombrar al proveedor en el copy.
 
 **Qué cambió.** Ahora tienen presencia en internet a través de su página web: quien busca
 oficina, coworking o sala de juntas en la ciudad ya puede encontrarlos y cotizar en línea.

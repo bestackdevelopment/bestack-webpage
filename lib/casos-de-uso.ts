@@ -700,8 +700,8 @@ const casos: Caso[] = [
         },
         {
           id: "hosting",
-          titulo: "Hosting del negocio",
-          descripcion: "Publicado en su propio hosting.",
+          titulo: "Hosting contratado",
+          descripcion: "El sitio quedó publicado en un hosting contratado.",
           icono: "cloud",
           x: 800,
           y: 100,
