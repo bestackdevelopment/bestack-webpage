@@ -359,6 +359,11 @@ tenía que ser rastreable por los buscadores para aparecer en esas búsquedas.
 > no de HTML ni de renderizado «desde el primer byte». Indicación del Patrón (7-oct-2026): este
 > caso vende búsqueda local, no stack. SysOp conserva sus nombres técnicos (indicación del
 > Patrón del 6-oct-2026).
+>
+> **El SEO va explícito en el diagrama:** la pieza se llama **«Búsqueda local (SEO)»** y explica en
+> llano qué significa (aparecer en el buscador cuando alguien busca uno de esos espacios en la
+> ciudad). Indicación del Patrón, 7-oct-2026: el SEO es lo que se está vendiendo en este caso, así
+> que se nombra, no se insinúa.
 
 **Qué cambió.** Ahora tienen presencia en internet a través de su página web: quien busca
 oficina, coworking o sala de juntas en la ciudad ya puede encontrarlos y cotizar en línea.

@@ -674,8 +674,9 @@ const casos: Caso[] = [
       nodos: [
         {
           id: "busqueda",
-          titulo: "Búsqueda local",
-          descripcion: "«Oficina», «coworking», «sala de juntas».",
+          titulo: "Búsqueda local (SEO)",
+          descripcion:
+            "Aparecer en el buscador cuando alguien busca «oficina», «coworking» o «sala de juntas» en la ciudad.",
           icono: "search",
           x: 0,
           y: 0,
